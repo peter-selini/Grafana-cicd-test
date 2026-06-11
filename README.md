@@ -9,12 +9,12 @@ v13+ we can switch to native sync without restructuring.
 ## How it works
 
 ```
-Grafana UI edits ──(export cron, every 30 min)──> PR on branch grafana-auto-export
+Grafana UI edits ──(export cron, every 15 min)──> PR on branch grafana-auto-export
 PR merged to main ──(deploy cron, every 5 min)──> pushed to Grafana
 ```
 
 - **You can keep editing dashboards in the Grafana UI.** Edits in tracked
-  folders are exported automatically as a PR within ~30 minutes. Review and
+  folders are exported automatically as a PR within ~15 minutes. Review and
   merge it to make the change permanent.
 - **Or edit the JSON directly**: open a PR changing files under `grafana/`.
   CI validates it; once merged, the deploy cron pushes it to Grafana within
@@ -26,6 +26,35 @@ PR merged to main ──(deploy cron, every 5 min)──> pushed to Grafana
   will restore the dashboard.)
 - **New dashboards created in the UI** inside a tracked folder are picked up
   by the export PR automatically. New *folders* are ignored until tracked.
+
+## Conflict semantics
+
+Two people can touch the same dashboard at once — one in the UI, one via a PR.
+The rules, in order of what actually happens:
+
+1. **Deploys are diff-driven.** Merging a PR pushes only the dashboards whose
+   files changed in that merge. UI edits to *other* dashboards are never
+   touched by a deploy; they ride along until the export cron PRs them.
+2. **Same dashboard, both sides: the repo wins.** When a merged PR touches a
+   dashboard that also has un-exported UI edits, the deploy overwrites the UI
+   version within ~5 minutes. If the export cron captured the UI edit first,
+   it is preserved on the `grafana-auto-export` PR (review it there — it may
+   need manual reconciliation against the new main); if not, it is lost.
+   Exposure window for a UI edit: up to ~15 min (export interval) plus
+   however long the export PR stays unmerged.
+3. **The export leg never reverts repo changes.** It refuses to run while a
+   merged-but-not-yet-deployed commit is pending (conflict guard), so drift it
+   captures is always genuine UI edits on top of the deployed state.
+4. **The two cron legs never overlap** (shared lock); a leg that finds the
+   lock held skips and retries on its next tick.
+5. **UI vs UI** is unchanged native Grafana behavior (optimistic locking —
+   "someone else updated this dashboard" on save).
+
+Practical guidance: for substantial UI work, merge the auto-export PR (or run
+`pull` + commit manually) before someone lands a JSON change to the same
+dashboard. Healing command after any confusion:
+`ops/deploy_cron.sh --full` reconciles Grafana to main (skips unchanged,
+reverts un-exported UI drift).
 
 ## Tooling
 
@@ -53,9 +82,10 @@ The two cron legs run on an internal box (GitHub runners cannot reach Grafana �
 it is on a private IP). See [ops/](ops/):
 
 - [ops/deploy_cron.sh](ops/deploy_cron.sh) — every 5 min: fetch `origin/main`,
-  delete dashboards whose files were removed, push the rest (no-op when
-  nothing changed). State in `~/grafana-sync/state/last-deployed`.
-- [ops/export_cron.sh](ops/export_cron.sh) — every 30 min: skip if a deploy is
+  delete dashboards whose files were removed, push only the dashboards changed
+  in the merged commits (`--full` for a manual full reconcile). State in
+  `~/grafana-sync/state/last-deployed`.
+- [ops/export_cron.sh](ops/export_cron.sh) — every 15 min: skip if a deploy is
   pending (conflict guard), otherwise pull UI drift onto the rolling branch
   `grafana-auto-export` and force-push + open a PR.
 - Install: `( crontab -l; cat ops/crontab.txt ) | crontab -` after cloning the
@@ -63,6 +93,13 @@ it is on a private IP). See [ops/](ops/):
   writing the token to `~/.config/grafana-sync/env`.
 
 Logs: `~/grafana-sync/logs/{deploy,export}.log` (self-trimmed at 5 MB).
+
+Rollout is two-phase: **phase 1** uses a Viewer-role token (read-only: import +
+drift reports, no cron legs) until the imported JSON is verified; **phase 2**
+swaps in an Editor-role token and enables the cron legs. The cron host is
+currently Peter's box; it will move to a dedicated box later — the only
+host-specific pieces are the two clones, `~/.config/grafana-sync/env`, and the
+crontab lines.
 
 ## Limitations
 

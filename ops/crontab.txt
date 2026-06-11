@@ -1,5 +1,5 @@
 # Grafana dashboards-as-code (install: ( crontab -l; cat ops/crontab.txt ) | crontab - )
-# Deploy: push merged origin/main to Grafana
+# Deploy: push merged origin/main to Grafana (diff-driven)
 */5 * * * * $HOME/grafana-sync/repo-deploy/ops/deploy_cron.sh >> $HOME/grafana-sync/logs/deploy.log 2>&1
-# Export: capture Grafana UI edits as a PR (offset from deploy)
-12,42 * * * * $HOME/grafana-sync/repo-export/ops/export_cron.sh >> $HOME/grafana-sync/logs/export.log 2>&1
+# Export: capture Grafana UI edits as a PR (offset so starts never collide with deploy)
+7,22,37,52 * * * * $HOME/grafana-sync/repo-export/ops/export_cron.sh >> $HOME/grafana-sync/logs/export.log 2>&1

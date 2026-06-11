@@ -398,7 +398,10 @@ def cmd_push(client: Client, repo_root: Path, args) -> int:
                 logger.info(f"Created folder '{entry['title']}' ({entry['uid']})")
 
         local = local_dashboards(dirpath)
-        for uid, path in local.items():
+        wanted = local
+        if args.uid:
+            wanted = {u: p for u, p in local.items() if u in set(args.uid)}
+        for uid, path in wanted.items():
             with open(path) as f:
                 dashboard = json.load(f)
             try:
@@ -596,6 +599,7 @@ def main():
 
     p = sub.add_parser("push", help="Push repo dashboards to Grafana")
     p.add_argument("--folder", action="append", help="Limit to folder UID (repeatable)")
+    p.add_argument("--uid", action="append", help="Limit to dashboard UID (repeatable); folders are still ensured")
     p.add_argument("--dry-run", action="store_true", help="Report without writing to Grafana")
     p.add_argument("--prune", action="store_true", help="Delete remote dashboards absent from the repo")
 

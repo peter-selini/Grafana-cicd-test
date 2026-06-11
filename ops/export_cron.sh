@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Auto-export leg: capture Grafana UI edits as a PR. Runs from cron every 30 min.
+# Auto-export leg: capture Grafana UI edits as a PR. Runs from cron every 15 min.
 #
 # Conflict guard: if origin/main hasn't been deployed yet (deploy leg pending or
 # failing), skip — otherwise we'd misread an undeployed repo change as a UI edit
@@ -17,7 +17,8 @@ if [ -f "$LOG" ] && [ "$(stat -c%s "$LOG")" -gt 5242880 ]; then
     tail -c 1048576 "$LOG" > "$LOG.trim" && cat "$LOG.trim" > "$LOG" && rm -f "$LOG.trim"
 fi
 
-exec 9>"$SYNC_HOME/state/export.lock"
+# Lock shared with deploy_cron.sh — the two legs never run concurrently.
+exec 9>"$SYNC_HOME/state/sync.lock"
 flock -n 9 || exit 0
 
 # shellcheck disable=SC1090
