@@ -2136,7 +2136,9 @@
   ],
   "refresh": "10s",
   "schemaVersion": 39,
-  "tags": [],
+  "tags": [
+    "cicd-managed"
+  ],
   "templating": {
     "list": [
       {
