@@ -56,8 +56,11 @@ if command -v gh > /dev/null 2>&1; then
         --title "Auto-export: Grafana UI changes" \
         --body "Dashboard edits made in the Grafana UI, exported by ops/export_cron.sh." \
         2>&1 | grep -v "already exists" || true
-else
+elif [ -n "${GITHUB_TOKEN:-}" ]; then
     "$PYTHON" ops/open_pr.py --head "$BRANCH" --base main \
         --title "Auto-export: Grafana UI changes" \
         --body "Dashboard edits made in the Grafana UI, exported by ops/export_cron.sh."
+else
+    echo "No gh/GITHUB_TOKEN — open the PR manually:"
+    echo "  https://github.com/peter-selini/Grafana-cicd-test/pull/new/$BRANCH"
 fi

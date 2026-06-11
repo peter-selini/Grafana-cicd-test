@@ -112,12 +112,17 @@ class Client:
             f"/api/search?folderUIDs={quote(folder_uid)}&type=dash-db&limit=5000"
         )
 
+    # Grafana Enterprise RBAC returns 403 (not 404) when probing a UID that
+    # doesn't exist — no resource, no scope. Treat both as "not found" on
+    # reads; a genuine permission problem still fails loudly on the write.
+    NOT_FOUND = (403, 404)
+
     def dashboard(self, uid: str) -> dict | None:
         """Fetch a dashboard model by UID, or None if it doesn't exist."""
         try:
             return self.get(f"/api/dashboards/uid/{quote(uid)}").get("dashboard", {})
         except GrafanaError as e:
-            if e.code == 404:
+            if e.code in self.NOT_FOUND:
                 return None
             raise
 
@@ -139,7 +144,7 @@ class Client:
             self.request("DELETE", f"/api/dashboards/uid/{quote(uid)}")
             return True
         except GrafanaError as e:
-            if e.code == 404:
+            if e.code in Client.NOT_FOUND:
                 return False
             raise
 
@@ -295,7 +300,7 @@ def _sync_folder_identity(client: Client, repo_root: Path, config: dict, entry: 
     try:
         remote = client.folder(entry["uid"])
     except GrafanaError as e:
-        if e.code == 404:
+        if e.code in Client.NOT_FOUND:
             logger.warning(f"Folder '{entry['title']}' ({entry['uid']}) not found in Grafana — skipping")
             return None
         raise
@@ -395,7 +400,7 @@ def cmd_push(client: Client, repo_root: Path, args) -> int:
                     client.update_folder_title(entry["uid"], entry["title"])
                     logger.info(f"Renamed folder {entry['uid']} to '{entry['title']}'")
         except GrafanaError as e:
-            if e.code != 404:
+            if e.code not in Client.NOT_FOUND:
                 raise
             if args.dry_run:
                 logger.info(f"[dry-run] Would create folder '{entry['title']}' ({entry['uid']})")
@@ -461,7 +466,7 @@ def cmd_status(client: Client, repo_root: Path, args) -> int:
         try:
             remote_folder = client.folder(entry["uid"])
         except GrafanaError as e:
-            if e.code == 404:
+            if e.code in Client.NOT_FOUND:
                 print(f"folder-missing-remote: '{entry['title']}' ({entry['uid']})")
                 drift = True
                 continue
