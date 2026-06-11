@@ -1,0 +1,728 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 4,
+      "panels": [],
+      "title": "Row title",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMax": 10,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "id": 1,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "mean",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Name",
+          "sortDesc": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "alias": "$tag_channel $tag_stat  - ($tag_host:$tag_message_type)",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cdx4otleasflsb"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "host::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "stat::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "message_type::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "channel::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "PerMDChannel",
+          "orderByTime": "ASC",
+          "policy": "default_mimid_retention",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "host::tag",
+              "operator": "=~",
+              "value": "/^$host$/"
+            },
+            {
+              "condition": "AND",
+              "key": "channel::tag",
+              "operator": "=~",
+              "value": "/^$channel$/"
+            },
+            {
+              "condition": "AND",
+              "key": "message_type::tag",
+              "operator": "=~",
+              "value": "/^$message_type$/"
+            },
+            {
+              "condition": "AND",
+              "key": "stat::tag",
+              "operator": "=~",
+              "value": "/.*InitPub.*/"
+            },
+            {
+              "condition": "AND",
+              "key": "stat::tag",
+              "operator": "=~",
+              "value": "/^$Line/"
+            }
+          ]
+        }
+      ],
+      "title": "FH Publish to Mimid - Filtered by channel, but NOT aggregated by channel",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "Crypto AVAX\\/USDT\\-PERP\\@OKEX MD BInitPubToMimidDelayNsMax  - (TA-TKY-A-23:BboUpdate)"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 24,
+        "x": 0,
+        "y": 14
+      },
+      "id": 3,
+      "options": {
+        "bucketCount": 2000,
+        "bucketSize": 1000,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        }
+      },
+      "targets": [
+        {
+          "alias": "$tag_channel $tag_stat  - ($tag_host:$tag_message_type)",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cdx4otleasflsb"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "host::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "stat::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "message_type::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "channel::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "PerMDChannel",
+          "orderByTime": "ASC",
+          "policy": "default_mimid_retention",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "host::tag",
+              "operator": "=~",
+              "value": "/^$host$/"
+            },
+            {
+              "condition": "AND",
+              "key": "channel::tag",
+              "operator": "=~",
+              "value": "/^$channel$/"
+            },
+            {
+              "condition": "AND",
+              "key": "message_type::tag",
+              "operator": "=~",
+              "value": "/^$message_type$/"
+            },
+            {
+              "condition": "AND",
+              "key": "stat::tag",
+              "operator": "=~",
+              "value": "/.*InitPub.*/"
+            },
+            {
+              "condition": "AND",
+              "key": "stat::tag",
+              "operator": "!~",
+              "value": "/^$Line/"
+            }
+          ]
+        }
+      ],
+      "title": "FH Publish to Mimid - Filtered by channel, but NOT aggregated by channel, 1usec histogram, capped at 2ms",
+      "type": "histogram"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 27
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "alias": "$tag_stat  - ($tag_host:$tag_message_type)",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cdx4otleasflsb"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "host::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "stat::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "message_type::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "PerMDChannel",
+          "orderByTime": "ASC",
+          "policy": "default_mimid_retention",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "host::tag",
+              "operator": "=~",
+              "value": "/^$host$/"
+            },
+            {
+              "condition": "AND",
+              "key": "channel::tag",
+              "operator": "=~",
+              "value": "/^$channel$/"
+            },
+            {
+              "condition": "AND",
+              "key": "message_type::tag",
+              "operator": "=~",
+              "value": "/^$message_type$/"
+            },
+            {
+              "condition": "AND",
+              "key": "stat::tag",
+              "operator": "=~",
+              "value": "/.*LastPub.*/"
+            },
+            {
+              "condition": "AND",
+              "key": "stat::tag",
+              "operator": "=~",
+              "value": "/^$Line/"
+            }
+          ]
+        }
+      ],
+      "title": "Last Publish to Mimid - Filtered by channel, but NOT aggregated",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": "*",
+        "current": {
+          "selected": true,
+          "text": [
+            "AC-HKG-D-05"
+          ],
+          "value": [
+            "AC-HKG-D-05"
+          ]
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "cdx4otleasflsb"
+        },
+        "definition": "SHOW TAG VALUES FROM \"PerMDChannel\" WITH KEY = \"host\"",
+        "hide": 0,
+        "includeAll": true,
+        "multi": true,
+        "name": "host",
+        "options": [],
+        "query": "SHOW TAG VALUES FROM \"PerMDChannel\" WITH KEY = \"host\"",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "selected": true,
+          "text": [
+            "Crypto BTC\\/USDT\\@BINANCE MD"
+          ],
+          "value": [
+            "Crypto BTC\\/USDT\\@BINANCE MD"
+          ]
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "cdx4otleasflsb"
+        },
+        "definition": "SHOW TAG VALUES FROM \"PerMDChannel\" WITH KEY = \"channel\" WHERE (\"host\"=$host)",
+        "hide": 0,
+        "includeAll": true,
+        "multi": true,
+        "name": "channel",
+        "options": [],
+        "query": "SHOW TAG VALUES FROM \"PerMDChannel\" WITH KEY = \"channel\" WHERE (\"host\"=$host)",
+        "refresh": 1,
+        "regex": "/.*Crypto*./",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "selected": true,
+          "text": [
+            "PrivateFillSummary"
+          ],
+          "value": [
+            "PrivateFillSummary"
+          ]
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "cdx4otleasflsb"
+        },
+        "definition": "SHOW TAG VALUES FROM \"PerMDChannel\" WITH KEY = \"message_type\" WHERE (\"host\"=$host)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Message",
+        "multi": true,
+        "name": "message_type",
+        "options": [],
+        "query": "SHOW TAG VALUES FROM \"PerMDChannel\" WITH KEY = \"message_type\" WHERE (\"host\"=$host)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "hide": 0,
+        "includeAll": true,
+        "multi": true,
+        "name": "Line",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "A",
+            "value": "A"
+          },
+          {
+            "selected": false,
+            "text": "B",
+            "value": "B"
+          },
+          {
+            "selected": false,
+            "text": "C",
+            "value": "C"
+          }
+        ],
+        "query": "A,B,C",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "utc",
+  "title": "Mimid Feed Latencies",
+  "uid": "cicd-f69a81146da1",
+  "weekStart": ""
+}

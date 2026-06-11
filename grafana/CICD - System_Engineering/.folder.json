@@ -1,0 +1,11 @@
+{
+  "apiVersion": "folder.grafana.app/v1beta1",
+  "kind": "Folder",
+  "metadata": {
+    "name": "cicd-ddl2hb305rsw0c",
+    "uid": "cicd-ddl2hb305rsw0c"
+  },
+  "spec": {
+    "title": "CICD - System_Engineering"
+  }
+}

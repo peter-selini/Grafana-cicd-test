@@ -510,6 +510,70 @@ def cmd_status(client: Client, repo_root: Path, args) -> int:
     return 0
 
 
+def derive_uid(old_uid: str, prefix: str) -> str:
+    """Deterministic new UID for a forked copy. Grafana UIDs max 40 chars."""
+    candidate = f"{prefix}{old_uid}"
+    if len(candidate) <= 40:
+        return candidate
+    import hashlib
+
+    return f"{prefix}{hashlib.sha1(old_uid.encode()).hexdigest()[:12]}"
+
+
+def cmd_fork(client, repo_root: Path, args) -> int:
+    """Turn a tracked (original) folder into a parallel copy with new UIDs.
+
+    Offline. The originals in Grafana are never touched again: the config entry
+    is re-pointed at the new folder uid, dashboard uids are rewritten with a
+    deterministic prefix, and cross-dashboard links (e.g. /d/<uid>/ URLs) to any
+    forked dashboard are rewritten to the forked target.
+    """
+    config = load_config(repo_root)
+    entry = next((f for f in config.get("folders", []) if f["uid"] == args.folder_uid), None)
+    if entry is None:
+        logger.error(f"Folder {args.folder_uid} is not tracked")
+        return 1
+    if entry["uid"].startswith(args.uid_prefix):
+        logger.info(f"Folder {entry['uid']} already forked")
+        return 0
+    dirs = local_folder_dirs(repo_root)
+    dirpath = dirs.get(entry["uid"])
+    if dirpath is None:
+        logger.error(f"No local directory for folder {entry['uid']}")
+        return 1
+
+    # Map old -> new uid for every dashboard in this folder.
+    uid_map = {}
+    for uid in local_dashboards(dirpath):
+        uid_map[uid] = derive_uid(uid, args.uid_prefix)
+
+    # Rewrite every dashboard file in the whole repo: uids in this folder get
+    # forked, and any cross-folder link to a forked dashboard follows it.
+    # (Longest-first so no uid is clobbered as a substring of another.)
+    replacements = sorted(uid_map.items(), key=lambda kv: -len(kv[0]))
+    for any_dir in local_folder_dirs(repo_root).values():
+        for path in local_dashboards(any_dir).values():
+            text = path.read_text()
+            new_text = text
+            for old, new in replacements:
+                new_text = new_text.replace(old, new)
+            if new_text != text:
+                json.loads(new_text)  # must still be valid JSON
+                path.write_text(new_text)
+                logger.info(f"Rewrote uids in {path.relative_to(repo_root)}")
+
+    new_folder_uid = derive_uid(entry["uid"], args.uid_prefix)
+    new_title = f"{args.title_prefix}{entry['title']}"
+    new_dir = grafana_dir(repo_root) / folder_dirname(new_title)
+    dirpath.rename(new_dir)
+    write_folder_meta(new_dir, new_folder_uid, new_title)
+    entry["uid"] = new_folder_uid
+    entry["title"] = new_title
+    save_config(repo_root, config)
+    logger.info(f"Forked -> '{new_title}' ({new_folder_uid}), {len(uid_map)} dashboards")
+    return 0
+
+
 def validate_repo(repo_root: Path) -> list[str]:
     problems = []
     base = grafana_dir(repo_root)
@@ -626,6 +690,11 @@ def main():
     p.add_argument("--folder", action="append", help="Limit to folder UID (repeatable)")
     p.add_argument("--diff", action="store_true", help="Print unified diffs for changed dashboards")
 
+    p = sub.add_parser("fork", help="Re-point a tracked folder at a parallel copy with new UIDs (offline)")
+    p.add_argument("folder_uid")
+    p.add_argument("--uid-prefix", default="cicd-", help="Prefix for derived UIDs (default: cicd-)")
+    p.add_argument("--title-prefix", default="CICD - ", help="Prefix for the new folder title (default: 'CICD - ')")
+
     sub.add_parser("validate", help="Offline validation of repo contents")
 
     args = parser.parse_args()
@@ -651,6 +720,7 @@ def main():
         "push": cmd_push,
         "delete": cmd_delete,
         "status": cmd_status,
+        "fork": cmd_fork,
         "validate": cmd_validate,
     }
     try:

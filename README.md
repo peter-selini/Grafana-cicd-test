@@ -1,10 +1,28 @@
 # Grafana Dashboards as Code
 
-This repo is the **source of truth** for Selini's Grafana dashboards
-(`https://selini-grafana.selini.tech`). Tracked dashboards live as normalized
-JSON under [grafana/](grafana/), one directory per Grafana folder. The layout is
-compatible with Grafana's native Git Sync, so when our instance is upgraded to
-v13+ we can switch to native sync without restructuring.
+This repo is the **source of truth** for Selini's CICD-managed Grafana
+dashboards (`https://selini-grafana.selini.tech`). Tracked dashboards live as
+normalized JSON under [grafana/](grafana/), one directory per Grafana folder.
+The layout is compatible with Grafana's native Git Sync, so when our instance
+is upgraded to v13+ we can switch to native sync without restructuring.
+
+## Parallel-run model
+
+The repo manages **copies** of the original dashboards, not the originals.
+Each tracked folder is a fork: `Crypto` → `CICD - Crypto`, with every
+dashboard UID prefixed `cicd-` (and cross-dashboard links rewritten to follow
+the fork). The original "model" dashboards and their folders are **never
+written to by this pipeline** — pushes can only create/update `CICD - *`
+folders, because only those UIDs appear in [grafana-sync.json](grafana-sync.json)
+and the dashboard files. The originals stay editable in the UI as before,
+until they are deprecated and the `CICD - *` copies become canonical (at which
+point they can be renamed in a PR).
+
+To bring another original folder under management:
+`track <orig-folder-uid>` (imports it), then `fork <orig-folder-uid>`
+(re-points the repo at a `cicd-` copy), commit and merge — the deploy leg
+creates the new folder in Grafana. The originals are not re-synced afterwards;
+re-import manually if a model dashboard changes and you want the copy updated.
 
 ## How it works
 
@@ -68,6 +86,7 @@ python3 tools/grafana_sync.py status [--diff]   # drift report (exit 1 = drift)
 python3 tools/grafana_sync.py pull              # Grafana -> repo (mirror)
 python3 tools/grafana_sync.py push [--dry-run]  # repo -> Grafana (skips unchanged)
 python3 tools/grafana_sync.py validate          # offline checks (what CI runs)
+python3 tools/grafana_sync.py fork <uid>        # re-point a tracked folder at a CICD copy (offline)
 ```
 
 Tracked folders are listed in [grafana-sync.json](grafana-sync.json). Dashboard
