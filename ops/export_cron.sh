@@ -6,6 +6,11 @@
 # and open a PR reverting it. Repo is the source of truth.
 set -euo pipefail
 
+# Whole body in a function: git updates this file mid-run (checkout/reset in
+# the same clone), and bash reads scripts incrementally — without this, the
+# rest of the OLD script would resume at a byte offset inside the NEW file.
+main() {
+
 PYTHON=/usr/bin/python3
 SYNC_HOME="$HOME/grafana-sync"
 REPO="$SYNC_HOME/repo-export"
@@ -64,3 +69,6 @@ else
     echo "No gh/GITHUB_TOKEN — open the PR manually:"
     echo "  https://github.com/peter-selini/Grafana-cicd-test/pull/new/$BRANCH"
 fi
+
+}
+main "$@"

@@ -14,6 +14,11 @@
 # failure it is not advanced, so the deploy retries next cycle.
 set -euo pipefail
 
+# Whole body in a function: git updates this file mid-run (reset --hard in
+# the same clone), and bash reads scripts incrementally — without this, the
+# rest of the OLD script would resume at a byte offset inside the NEW file.
+main() {
+
 PYTHON=/usr/bin/python3
 SYNC_HOME="$HOME/grafana-sync"
 REPO="$SYNC_HOME/repo-deploy"
@@ -87,3 +92,6 @@ fi
 
 echo "$NEW" > "$STATE"
 echo "$(date -Is) deployed $NEW"
+
+}
+main "$@"
