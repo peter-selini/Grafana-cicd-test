@@ -1,0 +1,2431 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 22,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<center> <img src=/public/img/network_components.png> </center>",
+        "mode": "html"
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "alias": "$tag_app_name $tag_instrument $tag_msg_type",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "msg_type::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "fh_exch_internal_latency_ms",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT max(\"max\") FROM \"autogen\".\"fh_recv_to_publish_ns\" WHERE (\"app_name\"::tag = 'bullish_fh_0_TA-SGP-C-14' AND \"instrument\"::tag = 'BTC/USDT' AND \"msg_type\"::tag = 'BBO_UPDATE') AND $timeFilter GROUP BY time(1s) fill(none)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app_name::tag",
+              "operator": "=~",
+              "value": "/^$afh$/"
+            },
+            {
+              "condition": "AND",
+              "key": "msg_type::tag",
+              "operator": "=~",
+              "value": "/^$msg_type$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            }
+          ]
+        }
+      ],
+      "title": "Network Components",
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 11
+      },
+      "id": 29,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Name",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "alias": "$tag_app_name $tag_instrument $tag_msg_type",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "msg_type::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "fh_exch_internal_latency_ms",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT max(\"max\") FROM \"autogen\".\"fh_recv_to_publish_ns\" WHERE (\"app_name\"::tag = 'bullish_fh_0_TA-SGP-C-14' AND \"instrument\"::tag = 'BTC/USDT' AND \"msg_type\"::tag = 'BBO_UPDATE') AND $timeFilter GROUP BY time(1s) fill(none)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app_name::tag",
+              "operator": "=~",
+              "value": "/^$afh$/"
+            },
+            {
+              "condition": "AND",
+              "key": "msg_type::tag",
+              "operator": "=~",
+              "value": "/^$msg_type$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            }
+          ]
+        }
+      ],
+      "title": "Exch Txn to Exch Publish (t1 - t0)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 21
+      },
+      "id": 17,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "alias": "$tag_app_name $tag_instrument $tag_msg_type",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "msg_type::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "fh_exch_to_recv_ns",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT max(\"max\") FROM \"autogen\".\"fh_recv_to_publish_ns\" WHERE (\"app_name\"::tag = 'bullish_fh_0_TA-SGP-C-14' AND \"instrument\"::tag = 'BTC/USDT' AND \"msg_type\"::tag = 'BBO_UPDATE') AND $timeFilter GROUP BY time(1s) fill(none)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "msg_type::tag",
+              "operator": "=~",
+              "value": "/^$msg_type$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "app_name::tag",
+              "operator": "=~",
+              "value": "/^$afh$/"
+            }
+          ]
+        }
+      ],
+      "title": "Exch to FH Recv (t2-t1)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 31
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "alias": "$tag_app_name $tag_instrument $tag_msg_type",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "msg_type::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "fh_recv_to_publish_ns",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT max(\"max\") FROM \"autogen\".\"fh_recv_to_publish_ns\" WHERE (\"app_name\"::tag = 'bullish_fh_0_TA-SGP-C-14' AND \"instrument\"::tag = 'BTC/USDT' AND \"msg_type\"::tag = 'BBO_UPDATE') AND $timeFilter GROUP BY time(1s) fill(none)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app_name::tag",
+              "operator": "=~",
+              "value": "/^$afh$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "msg_type::tag",
+              "operator": "=~",
+              "value": "/^$msg_type$/"
+            }
+          ]
+        }
+      ],
+      "title": "FH Recv to FH Pub (t3-t2)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 41
+      },
+      "id": 23,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "exchange::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "hostname::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "msg_type::tag"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "udp_pub_src_to_pub_ns",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$apub$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "exchange::tag",
+              "operator": "=~",
+              "value": "/^$exchange$/"
+            },
+            {
+              "condition": "AND",
+              "key": "msg_type::tag",
+              "operator": "=~",
+              "value": "/^$msg_type$/"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "exchange::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "hostname::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "msg_type::tag"
+              ],
+              "type": "tag"
+            }
+          ],
+          "hide": false,
+          "measurement": "udp_pub_src_to_pub_ns",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$brep$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "exchange::tag",
+              "operator": "=~",
+              "value": "/^$exchange$/"
+            },
+            {
+              "condition": "AND",
+              "key": "msg_type::tag",
+              "operator": "=~",
+              "value": "/^$msg_type$/"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "exchange::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "hostname::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "msg_type::tag"
+              ],
+              "type": "tag"
+            }
+          ],
+          "hide": false,
+          "measurement": "udp_pub_src_to_pub_ns",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$crep$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "exchange::tag",
+              "operator": "=~",
+              "value": "/^$exchange$/"
+            },
+            {
+              "condition": "AND",
+              "key": "msg_type::tag",
+              "operator": "=~",
+              "value": "/^$msg_type$/"
+            }
+          ]
+        }
+      ],
+      "title": "FH/Repeater Pub to Pub Recv (t4-t3, t8-t7)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 49
+      },
+      "id": 25,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "alias": "$tag_app_name $tag_exchange $tag_instrument msg=$tag_msg_type",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "exchange::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "hostname::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "msg_type::tag"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "udp_pub_read_rc_to_post_write_socket_delay_ns",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$apub$/"
+            },
+            {
+              "condition": "AND",
+              "key": "msg_type::tag",
+              "operator": "=~",
+              "value": "/^$msg_type$/"
+            },
+            {
+              "condition": "AND",
+              "key": "exchange::tag",
+              "operator": "=~",
+              "value": "/^$exchange$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_app_name $tag_exchange $tag_instrument msg=$tag_msg_type",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "exchange::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "hostname::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "msg_type::tag"
+              ],
+              "type": "tag"
+            }
+          ],
+          "hide": false,
+          "measurement": "udp_pub_read_rc_to_post_write_socket_delay_ns",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$brep$/"
+            },
+            {
+              "condition": "AND",
+              "key": "msg_type::tag",
+              "operator": "=~",
+              "value": "/^$msg_type$/"
+            },
+            {
+              "condition": "AND",
+              "key": "exchange::tag",
+              "operator": "=~",
+              "value": "/^$exchange$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_app_name $tag_exchange $tag_instrument msg=$tag_msg_type",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "exchange::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "hostname::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "msg_type::tag"
+              ],
+              "type": "tag"
+            }
+          ],
+          "hide": false,
+          "measurement": "udp_pub_read_rc_to_post_write_socket_delay_ns",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$crep$/"
+            },
+            {
+              "condition": "AND",
+              "key": "msg_type::tag",
+              "operator": "=~",
+              "value": "/^$msg_type$/"
+            },
+            {
+              "condition": "AND",
+              "key": "exchange::tag",
+              "operator": "=~",
+              "value": "/^$exchange$/"
+            }
+          ]
+        }
+      ],
+      "title": "Pub Recv to Pub Pub (t5-t4, t9-t8)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "cdx4otleasflsb"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 57
+      },
+      "id": 26,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "alias": "$tag_host max",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cdx4otleasflsb"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "host::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "NetworkDispatchCycles",
+          "orderByTime": "ASC",
+          "policy": "default_mimid_retention",
+          "query": "SELECT max(\"average\") FROM \"autogen\".\"MDBookUpdateLatency\" WHERE (\"host\"::tag = 'TA-TKY-A-13')",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              },
+              {
+                "params": [
+                  " / 3"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "host::tag",
+              "operator": "=~",
+              "value": "/^$machine_A$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_host max",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cdx4otleasflsb"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "host::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "NetworkDispatchCycles",
+          "orderByTime": "ASC",
+          "policy": "default_mimid_retention",
+          "query": "SELECT max(\"average\") FROM \"autogen\".\"MDBookUpdateLatency\" WHERE (\"host\"::tag = 'TA-TKY-A-13')",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              },
+              {
+                "params": [
+                  " / 3"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "host::tag",
+              "operator": "=~",
+              "value": "/^$machine_B$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_host max",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cdx4otleasflsb"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "host::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "NetworkDispatchCycles",
+          "orderByTime": "ASC",
+          "policy": "default_mimid_retention",
+          "query": "SELECT max(\"max\")  / 3 FROM \"default_mimid_retention\".\"NetworkDispatchCycles\" WHERE (\"host\"::tag =~ /^$machine_C$/) AND $timeFilter GROUP BY time($__interval), \"host\"::tag fill(none)",
+          "rawQuery": false,
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              },
+              {
+                "params": [
+                  " / 3"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "host::tag",
+              "operator": "=~",
+              "value": "/^$machine_C$/"
+            }
+          ]
+        }
+      ],
+      "title": "Tao Recv to Tao Done",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 66
+      },
+      "id": 27,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "alias": "b_rep $tag_source $tag_exchange $tag_instrument $tag_msg_type",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "source::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "msg_type::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "exchange::tag"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "publish_delay_ns",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"max\" FROM \"autogen\".\"publish_delay_ns\" WHERE (\"hostname\"::tag =~ /^$b_rep$/ AND \"msg_type\"::tag =~ /^$msg_type$/ AND \"instrument\"::tag =~ /^$symbol$/ AND \"exchange\"::tag =~ /^$exchange$/) AND $timeFilter GROUP BY \"source\"::tag, \"msg_type\"::tag, \"instrument\"::tag, \"exchange\"::tag",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$brep$/"
+            },
+            {
+              "condition": "AND",
+              "key": "msg_type::tag",
+              "operator": "=~",
+              "value": "/^$msg_type$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "exchange::tag",
+              "operator": "=~",
+              "value": "/^$exchange$/"
+            }
+          ]
+        },
+        {
+          "alias": "c_rep $tag_source $tag_exchange $tag_instrument $tag_msg_type",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "source::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "msg_type::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "exchange::tag"
+              ],
+              "type": "tag"
+            }
+          ],
+          "hide": false,
+          "measurement": "publish_delay_ns",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"max\" FROM \"autogen\".\"publish_delay_ns\" WHERE (\"hostname\"::tag =~ /^$c_rep$/ AND \"msg_type\"::tag =~ /^$msg_type$/ AND \"instrument\"::tag =~ /^$symbol$/ AND \"exchange\"::tag =~ /^$exchange$/) AND $timeFilter GROUP BY \"source\"::tag, \"msg_type\"::tag, \"instrument\"::tag, \"exchange\"::tag",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$crep$/"
+            },
+            {
+              "condition": "AND",
+              "key": "msg_type::tag",
+              "operator": "=~",
+              "value": "/^$msg_type$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "exchange::tag",
+              "operator": "=~",
+              "value": "/^$exchange$/"
+            }
+          ]
+        }
+      ],
+      "title": "Pub Pub to Repeater Recv (t6-t5)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 76
+      },
+      "id": 28,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "alias": "b_rep $tag_source $tag_exchange $tag_instrument  $tag_msg_type",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "source::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "msg_type::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "exchange::tag"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "process_delay_ns",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"max\" FROM \"autogen\".\"process_delay_ns\" WHERE (\"hostname\"::tag =~ /^$host$/ AND \"msg_type\"::tag =~ /^$msg_type$/ AND \"instrument\"::tag =~ /^$symbol$/ AND \"exchange\"::tag =~ /^$exchange$/) AND $timeFilter GROUP BY \"source\"::tag, \"msg_type\"::tag, \"instrument\"::tag, \"exchange\"::tag",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$brep$/"
+            },
+            {
+              "condition": "AND",
+              "key": "exchange::tag",
+              "operator": "=~",
+              "value": "/^$exchange$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "msg_type::tag",
+              "operator": "=~",
+              "value": "/^$msg_type$/"
+            }
+          ]
+        },
+        {
+          "alias": "c_rep $tag_source $tag_exchange $tag_instrument  $tag_msg_type",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "source::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "msg_type::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "exchange::tag"
+              ],
+              "type": "tag"
+            }
+          ],
+          "hide": false,
+          "measurement": "process_delay_ns",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"max\" FROM \"autogen\".\"process_delay_ns\" WHERE (\"hostname\"::tag =~ /^$host$/ AND \"msg_type\"::tag =~ /^$msg_type$/ AND \"instrument\"::tag =~ /^$symbol$/ AND \"exchange\"::tag =~ /^$exchange$/) AND $timeFilter GROUP BY \"source\"::tag, \"msg_type\"::tag, \"instrument\"::tag, \"exchange\"::tag",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$crep$/"
+            },
+            {
+              "condition": "AND",
+              "key": "exchange::tag",
+              "operator": "=~",
+              "value": "/^$exchange$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "msg_type::tag",
+              "operator": "=~",
+              "value": "/^$msg_type$/"
+            }
+          ]
+        }
+      ],
+      "title": "Repeater Recv to Repeater Pub (t7-t6)",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": "*",
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+        },
+        "definition": "SHOW TAG VALUES  ON \"omnia_stats\" FROM \"fh_json_sz\" WITH KEY=\"msg_type\"",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Message",
+        "multi": true,
+        "name": "msg_type",
+        "options": [],
+        "query": "SHOW TAG VALUES  ON \"omnia_stats\" FROM \"fh_json_sz\" WITH KEY=\"msg_type\"",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "adxzmwoffak8wb"
+        },
+        "definition": "SELECT DISTINCT SUBSTRING_INDEX(symbol, '@', 1) AS prefix\nFROM md_subscriptions ORDER BY prefix",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Symbol",
+        "multi": false,
+        "name": "symbol",
+        "options": [],
+        "query": "SELECT DISTINCT SUBSTRING_INDEX(symbol, '@', 1) AS prefix\nFROM md_subscriptions ORDER BY prefix",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "selected": false,
+          "text": "BACKPACK",
+          "value": "BACKPACK"
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "adxzmwoffak8wb"
+        },
+        "definition": "SELECT DISTINCT SUBSTRING(symbol, LOCATE('@', symbol) + 1) AS suffix FROM md_subscriptions ORDER BY suffix",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Exchange",
+        "multi": false,
+        "name": "exchange",
+        "options": [],
+        "query": "SELECT DISTINCT SUBSTRING(symbol, LOCATE('@', symbol) + 1) AS suffix FROM md_subscriptions ORDER BY suffix",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "adxzmwoffak8wb"
+        },
+        "definition": "SELECT DISTINCT A_publisher \nFROM md_subscriptions \nWHERE SUBSTRING_INDEX(symbol, '@', 1) IN (${symbol:sqlstring})\n  AND SUBSTRING(symbol, LOCATE('@', symbol) + 1) IN (${exchange:sqlstring})\nORDER BY A_publisher",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Source Host",
+        "multi": true,
+        "name": "apub",
+        "options": [],
+        "query": "SELECT DISTINCT A_publisher \nFROM md_subscriptions \nWHERE SUBSTRING_INDEX(symbol, '@', 1) IN (${symbol:sqlstring})\n  AND SUBSTRING(symbol, LOCATE('@', symbol) + 1) IN (${exchange:sqlstring})\nORDER BY A_publisher",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "adxzmwoffak8wb"
+        },
+        "definition": "SELECT DISTINCT A_fh \nFROM md_subscriptions \nWHERE SUBSTRING_INDEX(symbol, '@', 1) IN (${symbol:sqlstring})\n  AND SUBSTRING(symbol, LOCATE('@', symbol) + 1) IN (${exchange:sqlstring}) AND A_publisher IN (${apub:sqlstring}) \nORDER BY A_fh",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Source FH",
+        "multi": true,
+        "name": "afh",
+        "options": [],
+        "query": "SELECT DISTINCT A_fh \nFROM md_subscriptions \nWHERE SUBSTRING_INDEX(symbol, '@', 1) IN (${symbol:sqlstring})\n  AND SUBSTRING(symbol, LOCATE('@', symbol) + 1) IN (${exchange:sqlstring}) AND A_publisher IN (${apub:sqlstring}) \nORDER BY A_fh",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "adxzmwoffak8wb"
+        },
+        "definition": "SELECT DISTINCT B_repeater\nFROM md_subscriptions \nWHERE SUBSTRING_INDEX(symbol, '@', 1) IN (${symbol:sqlstring})\n  AND SUBSTRING_INDEX(symbol, '@', -1) IN (${exchange:sqlstring})\n  AND A_publisher IN (${apub:sqlstring})\n  AND A_fh IN (${afh:sqlstring})\n  AND B_repeater != ''\nORDER BY B_repeater",
+        "hide": 0,
+        "includeAll": false,
+        "label": "B-feed Hop",
+        "multi": true,
+        "name": "brep",
+        "options": [],
+        "query": "SELECT DISTINCT B_repeater\nFROM md_subscriptions \nWHERE SUBSTRING_INDEX(symbol, '@', 1) IN (${symbol:sqlstring})\n  AND SUBSTRING_INDEX(symbol, '@', -1) IN (${exchange:sqlstring})\n  AND A_publisher IN (${apub:sqlstring})\n  AND A_fh IN (${afh:sqlstring})\n  AND B_repeater != ''\nORDER BY B_repeater",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "adxzmwoffak8wb"
+        },
+        "definition": "SELECT DISTINCT C_repeater\nFROM md_subscriptions \nWHERE SUBSTRING_INDEX(symbol, '@', 1) IN (${symbol:sqlstring})\n  AND SUBSTRING_INDEX(symbol, '@', -1) IN (${exchange:sqlstring})\n  AND A_publisher IN (${apub:sqlstring})\n  AND A_fh IN (${afh:sqlstring})\n  AND C_repeater != ''\nORDER BY C_repeater",
+        "hide": 0,
+        "includeAll": false,
+        "label": "C-Feed Hop",
+        "multi": true,
+        "name": "crep",
+        "options": [],
+        "query": "SELECT DISTINCT C_repeater\nFROM md_subscriptions \nWHERE SUBSTRING_INDEX(symbol, '@', 1) IN (${symbol:sqlstring})\n  AND SUBSTRING_INDEX(symbol, '@', -1) IN (${exchange:sqlstring})\n  AND A_publisher IN (${apub:sqlstring})\n  AND A_fh IN (${afh:sqlstring})\n  AND C_repeater != ''\nORDER BY C_repeater",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "selected": true,
+          "text": [
+            "ac-hkg-c-08"
+          ],
+          "value": [
+            "ac-hkg-c-08"
+          ]
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "adxzmwoffak8wb"
+        },
+        "definition": "SELECT DISTINCT UPPER(machine) AS machine\nFROM md_subscriptions \nWHERE SUBSTRING_INDEX(symbol, '@', 1) IN (${symbol:sqlstring})\n  AND SUBSTRING_INDEX(symbol, '@', -1) IN (${exchange:sqlstring})\n  AND (A_publisher IN (${apub:sqlstring}) OR A_fh IN (${afh:sqlstring}))\nORDER BY UPPER(machine)",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Destination A",
+        "multi": true,
+        "name": "machine_A",
+        "options": [],
+        "query": "SELECT DISTINCT UPPER(machine) AS machine\nFROM md_subscriptions \nWHERE SUBSTRING_INDEX(symbol, '@', 1) IN (${symbol:sqlstring})\n  AND SUBSTRING_INDEX(symbol, '@', -1) IN (${exchange:sqlstring})\n  AND (A_publisher IN (${apub:sqlstring}) OR A_fh IN (${afh:sqlstring}))\nORDER BY UPPER(machine)",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "selected": true,
+          "text": [
+            "ac-hkg-c-08"
+          ],
+          "value": [
+            "ac-hkg-c-08"
+          ]
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "adxzmwoffak8wb"
+        },
+        "definition": "SELECT DISTINCT UPPER(machine)\nFROM md_subscriptions \nWHERE SUBSTRING_INDEX(symbol, '@', 1) IN (${symbol:sqlstring})\n  AND SUBSTRING(symbol, LOCATE('@', symbol) + 1) IN (${exchange:sqlstring}) AND ( A_fh IN (${afh:sqlstring}) AND B_repeater in (${brep:sqlstring}) AND B_publisher != 'Not found' AND B_publisher != '')\nORDER BY machine",
+        "description": "B channel destination",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Destination B",
+        "multi": true,
+        "name": "machine_B",
+        "options": [],
+        "query": "SELECT DISTINCT UPPER(machine)\nFROM md_subscriptions \nWHERE SUBSTRING_INDEX(symbol, '@', 1) IN (${symbol:sqlstring})\n  AND SUBSTRING(symbol, LOCATE('@', symbol) + 1) IN (${exchange:sqlstring}) AND ( A_fh IN (${afh:sqlstring}) AND B_repeater in (${brep:sqlstring}) AND B_publisher != 'Not found' AND B_publisher != '')\nORDER BY machine",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "selected": true,
+          "text": [
+            "ta-sgp-c-17"
+          ],
+          "value": [
+            "ta-sgp-c-17"
+          ]
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "adxzmwoffak8wb"
+        },
+        "definition": "SELECT DISTINCT UPPER(machine)\nFROM md_subscriptions \nWHERE SUBSTRING_INDEX(symbol, '@', 1) IN (${symbol:sqlstring})\n  AND SUBSTRING(symbol, LOCATE('@', symbol) + 1) IN (${exchange:sqlstring}) AND ( A_fh IN (${afh:sqlstring}) AND C_repeater in (${crep:sqlstring})  AND C_publisher != 'Not found' AND C_publisher != '')\nORDER BY machine",
+        "description": "C channel destination",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Destination C",
+        "multi": true,
+        "name": "machine_C",
+        "options": [],
+        "query": "SELECT DISTINCT UPPER(machine)\nFROM md_subscriptions \nWHERE SUBSTRING_INDEX(symbol, '@', 1) IN (${symbol:sqlstring})\n  AND SUBSTRING(symbol, LOCATE('@', symbol) + 1) IN (${exchange:sqlstring}) AND ( A_fh IN (${afh:sqlstring}) AND C_repeater in (${crep:sqlstring})  AND C_publisher != 'Not found' AND C_publisher != '')\nORDER BY machine",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "utc",
+  "title": "Global Latency Metrics",
+  "uid": "ady3sm4yar11ca",
+  "weekStart": ""
+}

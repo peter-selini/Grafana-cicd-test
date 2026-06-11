@@ -1,0 +1,11 @@
+{
+  "apiVersion": "folder.grafana.app/v1beta1",
+  "kind": "Folder",
+  "metadata": {
+    "name": "0ZLlyMH7z",
+    "uid": "0ZLlyMH7z"
+  },
+  "spec": {
+    "title": "Crypto"
+  }
+}

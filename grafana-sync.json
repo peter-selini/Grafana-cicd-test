@@ -1,4 +1,17 @@
 {
   "grafana_url": "https://selini-grafana.selini.tech",
-  "folders": []
+  "folders": [
+    {
+      "uid": "afbdf0pjzhkaof",
+      "title": "Peter"
+    },
+    {
+      "uid": "ddl2hb305rsw0c",
+      "title": "System_Engineering"
+    },
+    {
+      "uid": "0ZLlyMH7z",
+      "title": "Crypto"
+    }
+  ]
 }

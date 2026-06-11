@@ -1,0 +1,4823 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "This dashboard provides various performance metrics for Linux systems, with templating to select the influxdb datasource and host.",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "gnetId": 555,
+  "graphTooltip": 1,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "collapsed": false,
+      "datasource": {
+        "type": "influxdb",
+        "uid": "000000001"
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 34,
+      "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "000000001"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "1.0 System Disk",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-RdYlGr"
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 22,
+        "w": 3,
+        "x": 0,
+        "y": 1
+      },
+      "id": 25,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "alias": "$tag_instance Free",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "policy": "default",
+          "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND $timeFilter  AND \"instance\" = 'root'  GROUP BY time($interval) , \"instance\"   fill(null) ",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "$tag_instance Used ",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+          },
+          "hide": false,
+          "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'used' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND $timeFilter  AND \"instance\" = 'root'  GROUP BY time($interval) , \"instance\"   fill(null) ",
+          "rawQuery": true,
+          "refId": "G",
+          "resultFormat": "time_series"
+        },
+        {
+          "alias": "$tag_instance Used",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'used' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/ AND \"instance\" =~ /^$instance$/  AND $timeFilter GROUP BY time($interval), \"instance\"  fill(null)",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "$tag_instance Reserved",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "measurement": "df_value",
+          "orderByTime": "ASC",
+          "policy": "default_collectd_retention",
+          "query": "SELECT last(value) FROM \"df_value\" WHERE \"type_instance\" = 'reserved' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/ AND $timeFilter GROUP BY time($interval), \"instance\" fill(null)",
+          "rawQuery": true,
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "type::tag",
+              "operator": "=",
+              "value": "df_complex"
+            },
+            {
+              "condition": "AND",
+              "key": "host::tag",
+              "operator": "=~",
+              "value": "/^$host$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_instance Total",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT sum(\"value\") FROM \"df_value\" WHERE \"host\" = '$host' AND (\"type_instance\" = 'used' OR \"type_instance\" = 'free') AND \"type\" = 'df_complex' GROUP BY \"instance\"\n\n",
+          "rawQuery": true,
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT last(value) FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/ AND $timeFilter GROUP BY time($interval), \"instance\" fill(null)",
+          "rawQuery": true,
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND \"instance\" =~ /^$instance$/   AND $timeFilter GROUP BY time($interval) , \"instance\"   fill(null) ",
+          "rawQuery": true,
+          "refId": "F",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "title": "root (/) - Free & Used",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "root- Total",
+            "mode": "reduceRow",
+            "reduce": {
+              "include": [
+                "root Free",
+                "root Used "
+              ],
+              "reducer": "sum"
+            },
+            "replaceFields": false
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "type": "color-text"
+            },
+            "filterable": true,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              },
+              {
+                "color": "#29299b",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "string"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 22,
+        "w": 8,
+        "x": 3,
+        "y": 1
+      },
+      "id": 56,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": true,
+          "fields": [
+            "/root Host -->"
+          ],
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": false,
+            "displayName": "0"
+          }
+        ]
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "alias": "",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT *  FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^${host}$/ AND \"instance\" = 'root' AND $timeFilter",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "table",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "title": "/root - Free & Used - Monitoring",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "/root Host -->",
+            "binary": {
+              "left": "host",
+              "operator": "+",
+              "right": "Time"
+            },
+            "mode": "reduceRow",
+            "reduce": {
+              "include": [
+                "host"
+              ],
+              "reducer": "uniqueValues"
+            },
+            "replaceFields": true,
+            "unary": {
+              "fieldName": "host",
+              "operator": "abs"
+            }
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "byVariable": false,
+            "include": {
+              "names": [
+                "/root Host -->",
+                "Time"
+              ]
+            }
+          }
+        },
+        {
+          "disabled": true,
+          "id": "reduce",
+          "options": {
+            "includeTimeField": false,
+            "labelsToFields": false,
+            "mode": "reduceFields",
+            "reducers": [
+              "uniqueValues"
+            ]
+          }
+        },
+        {
+          "id": "extractFields",
+          "options": {
+            "format": "kvp",
+            "keepTime": true,
+            "replace": true,
+            "source": "/root Host -->"
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "0": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Time": {
+                "aggregations": [
+                  "lastNotNull"
+                ],
+                "operation": "aggregate"
+              }
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 23
+      },
+      "id": 57,
+      "panels": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "continuous-RdYlGr"
+              },
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "blue"
+                  }
+                ]
+              },
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 0,
+            "y": 24
+          },
+          "id": 41,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "value_and_name",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.4.2",
+          "targets": [
+            {
+              "alias": "$tag_instance Free",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "policy": "default",
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND $timeFilter  AND \"instance\" = 'boot'  GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "$tag_instance Used ",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "hide": false,
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'used' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND $timeFilter  AND \"instance\" = 'boot'  GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "G",
+              "resultFormat": "time_series"
+            },
+            {
+              "alias": "$tag_instance Used",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'used' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/ AND \"instance\" =~ /^$instance$/  AND $timeFilter GROUP BY time($interval), \"instance\"  fill(null)",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "$tag_instance Reserved",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "measurement": "df_value",
+              "orderByTime": "ASC",
+              "policy": "default_collectd_retention",
+              "query": "SELECT last(value) FROM \"df_value\" WHERE \"type_instance\" = 'reserved' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/ AND $timeFilter GROUP BY time($interval), \"instance\" fill(null)",
+              "rawQuery": true,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "last"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "type::tag",
+                  "operator": "=",
+                  "value": "df_complex"
+                },
+                {
+                  "condition": "AND",
+                  "key": "host::tag",
+                  "operator": "=~",
+                  "value": "/^$host$/"
+                }
+              ]
+            },
+            {
+              "alias": "$tag_instance Total",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(\"value\") FROM \"df_value\" WHERE \"host\" = '$host' AND (\"type_instance\" = 'used' OR \"type_instance\" = 'free') AND \"type\" = 'df_complex' GROUP BY \"instance\"\n\n",
+              "rawQuery": true,
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT last(value) FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/ AND $timeFilter GROUP BY time($interval), \"instance\" fill(null)",
+              "rawQuery": true,
+              "refId": "E",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND \"instance\" =~ /^$instance$/   AND $timeFilter GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "F",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "/boot - Free & Used",
+          "transformations": [
+            {
+              "id": "calculateField",
+              "options": {
+                "alias": "boot- Total",
+                "mode": "reduceRow",
+                "reduce": {
+                  "include": [
+                    "boot Used ",
+                    "boot Free"
+                  ],
+                  "reducer": "sum"
+                }
+              }
+            }
+          ],
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 6,
+            "y": 24
+          },
+          "id": 55,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "value_and_name",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.4.2",
+          "targets": [
+            {
+              "alias": "",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT *  FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^${host}$/ AND \"instance\" = 'boot' AND $timeFilter",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "table",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "/boot - Free & Used",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "isNotNull",
+                      "options": {}
+                    },
+                    "fieldName": "instance"
+                  }
+                ],
+                "match": "any",
+                "type": "include"
+              }
+            },
+            {
+              "id": "calculateField",
+              "options": {
+                "alias": "/boot Host -->",
+                "binary": {
+                  "left": "host",
+                  "operator": "+",
+                  "right": "Time"
+                },
+                "mode": "reduceRow",
+                "reduce": {
+                  "include": [
+                    "host"
+                  ],
+                  "reducer": "uniqueValues"
+                },
+                "replaceFields": true,
+                "unary": {
+                  "fieldName": "host",
+                  "operator": "abs"
+                }
+              }
+            }
+          ],
+          "type": "stat"
+        }
+      ],
+      "title": "1.1 System Disk - Rocky 9 - /boot",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 24
+      },
+      "id": 49,
+      "panels": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "continuous-RdYlGr"
+              },
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "blue"
+                  }
+                ]
+              },
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 0,
+            "y": 33
+          },
+          "id": 48,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "value_and_name",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.4.2",
+          "targets": [
+            {
+              "alias": "$tag_instance Free",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND $timeFilter  AND \"instance\" = 'local'  GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "$tag_instance Used",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'used' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND $timeFilter  AND \"instance\" = 'local'  GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "G",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "/local  - Free & Used",
+          "transformations": [
+            {
+              "id": "calculateField",
+              "options": {
+                "alias": "data - Total",
+                "mode": "reduceRow",
+                "reduce": {
+                  "include": [
+                    "local Free",
+                    "local Used"
+                  ],
+                  "reducer": "sum"
+                }
+              }
+            }
+          ],
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 6,
+            "y": 33
+          },
+          "id": 42,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "value_and_name",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.4.2",
+          "targets": [
+            {
+              "alias": "$tag_instance Free",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "policy": "default",
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND $timeFilter  AND \"instance\" = 'local'  GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "$tag_instance Used",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "hide": true,
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'used' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND $timeFilter  AND \"instance\" = 'local'  GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "G",
+              "resultFormat": "time_series"
+            },
+            {
+              "alias": "",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT *  FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^${host}$/ AND \"instance\" = 'local' AND $timeFilter",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "table",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "/local - Free & Used",
+          "transformations": [
+            {
+              "id": "calculateField",
+              "options": {
+                "alias": "/local Host -->",
+                "binary": {
+                  "left": "host",
+                  "operator": "+",
+                  "right": "Time"
+                },
+                "mode": "reduceRow",
+                "reduce": {
+                  "include": [
+                    "host"
+                  ],
+                  "reducer": "uniqueValues"
+                },
+                "replaceFields": true,
+                "unary": {
+                  "fieldName": "host",
+                  "operator": "abs"
+                }
+              }
+            }
+          ],
+          "type": "stat"
+        }
+      ],
+      "title": "2.1 Non-Root Disk",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 25
+      },
+      "id": 51,
+      "panels": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "continuous-RdYlGr"
+              },
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "blue"
+                  }
+                ]
+              },
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 12,
+            "x": 0,
+            "y": 34
+          },
+          "id": 37,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "value_and_name",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.4.2",
+          "targets": [
+            {
+              "alias": "$tag_instance Free",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND $timeFilter  AND \"instance\" = 'local'  GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "$tag_instance Used",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'used' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND $timeFilter  AND \"instance\" = 'local'  GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "G",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "$tag_instance Free",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "hide": false,
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND $timeFilter   GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series"
+            },
+            {
+              "alias": "$tag_instance Used",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "hide": true,
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'used' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND $timeFilter   GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "C",
+              "resultFormat": "time_series"
+            }
+          ],
+          "title": "/local - Free",
+          "transformations": [
+            {
+              "id": "calculateField",
+              "options": {
+                "alias": "/local-data* - Free",
+                "mode": "reduceRow",
+                "reduce": {
+                  "include": [
+                    "local-data1 Free",
+                    "local-data2 Free",
+                    "local-data3 Free",
+                    "local-data4 Free",
+                    "local-data5 Free"
+                  ],
+                  "reducer": "sum"
+                },
+                "replaceFields": false
+              }
+            },
+            {
+              "id": "filterFieldsByName",
+              "options": {
+                "byVariable": false,
+                "include": {
+                  "names": [
+                    "Time",
+                    "local-data1 Free",
+                    "local-data2 Free",
+                    "local-data3 Free",
+                    "local-data4 Free",
+                    "local-data5 Free",
+                    "/local-data* - Free"
+                  ]
+                }
+              }
+            }
+          ],
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 6,
+            "x": 12,
+            "y": 34
+          },
+          "id": 54,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "value_and_name",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.4.2",
+          "targets": [
+            {
+              "alias": "",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT *  FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^${host}$/  AND $timeFilter",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "table",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "/local-data* Host",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "regex",
+                      "options": {
+                        "value": ".*local-data*"
+                      }
+                    },
+                    "fieldName": "instance"
+                  }
+                ],
+                "match": "any",
+                "type": "include"
+              }
+            },
+            {
+              "id": "calculateField",
+              "options": {
+                "alias": "/local-data Host -->",
+                "binary": {
+                  "left": "host",
+                  "operator": "+",
+                  "right": "Time"
+                },
+                "mode": "reduceRow",
+                "reduce": {
+                  "include": [
+                    "host"
+                  ],
+                  "reducer": "uniqueValues"
+                },
+                "replaceFields": true,
+                "unary": {
+                  "fieldName": "host",
+                  "operator": "abs"
+                }
+              }
+            }
+          ],
+          "transparent": true,
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "continuous-RdYlGr"
+              },
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "blue"
+                  }
+                ]
+              },
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 7,
+            "w": 12,
+            "x": 0,
+            "y": 43
+          },
+          "id": 50,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "value_and_name",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.4.2",
+          "targets": [
+            {
+              "alias": "$tag_instance Free",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND $timeFilter  AND \"instance\" = 'local'  GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "$tag_instance Used",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'used' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND $timeFilter  AND \"instance\" = 'local'  GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "G",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "$tag_instance Free",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "hide": true,
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND $timeFilter   GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series"
+            },
+            {
+              "alias": "$tag_instance Used",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "hide": false,
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'used' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND $timeFilter   GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "C",
+              "resultFormat": "time_series"
+            }
+          ],
+          "title": "/local-data* - Used",
+          "transformations": [
+            {
+              "id": "calculateField",
+              "options": {
+                "alias": "/local-data* - Used",
+                "mode": "reduceRow",
+                "reduce": {
+                  "include": [
+                    "local-data1 Free",
+                    "local-data1 Used",
+                    "local-data2 Used",
+                    "local-data3 Used",
+                    "local-data4 Used",
+                    "local-data5 Used"
+                  ],
+                  "reducer": "sum"
+                },
+                "replaceFields": false
+              }
+            },
+            {
+              "id": "filterFieldsByName",
+              "options": {
+                "byVariable": false,
+                "include": {
+                  "names": [
+                    "Time",
+                    "local-data1 Used",
+                    "local-data2 Used",
+                    "local-data3 Used",
+                    "local-data4 Used",
+                    "local-data5 Used",
+                    "/local-data* - Used"
+                  ]
+                }
+              }
+            }
+          ],
+          "type": "stat"
+        }
+      ],
+      "title": "2.2 Non Root Disk - InfluxDB",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 26
+      },
+      "id": 52,
+      "panels": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "continuous-RdYlGr"
+              },
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "blue"
+                  }
+                ]
+              },
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 0,
+            "y": 35
+          },
+          "id": 38,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "value_and_name",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.4.2",
+          "targets": [
+            {
+              "alias": "$tag_instance Free",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "policy": "default",
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND $timeFilter  AND \"instance\" = 'data'  GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "$tag_instance Used",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "hide": false,
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'used' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND $timeFilter  AND \"instance\" = 'data'  GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "G",
+              "resultFormat": "time_series"
+            },
+            {
+              "alias": "$tag_instance Used",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'used' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/ AND \"instance\" =~ /^$instance$/  AND $timeFilter GROUP BY time($interval), \"instance\"  fill(null)",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "$tag_instance Reserved",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "measurement": "df_value",
+              "orderByTime": "ASC",
+              "policy": "default_collectd_retention",
+              "query": "SELECT last(value) FROM \"df_value\" WHERE \"type_instance\" = 'reserved' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/ AND $timeFilter GROUP BY time($interval), \"instance\" fill(null)",
+              "rawQuery": true,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "last"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "type::tag",
+                  "operator": "=",
+                  "value": "df_complex"
+                },
+                {
+                  "condition": "AND",
+                  "key": "host::tag",
+                  "operator": "=~",
+                  "value": "/^$host$/"
+                }
+              ]
+            },
+            {
+              "alias": "$tag_instance Total",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(\"value\") FROM \"df_value\" WHERE \"host\" = '$host' AND (\"type_instance\" = 'used' OR \"type_instance\" = 'free') AND \"type\" = 'df_complex' GROUP BY \"instance\"\n\n",
+              "rawQuery": true,
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT last(value) FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/ AND $timeFilter GROUP BY time($interval), \"instance\" fill(null)",
+              "rawQuery": true,
+              "refId": "E",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND \"instance\" =~ /^$instance$/   AND $timeFilter GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "F",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "/data  - Free & Used",
+          "transformations": [
+            {
+              "id": "calculateField",
+              "options": {
+                "alias": "data - Total",
+                "mode": "reduceRow",
+                "reduce": {
+                  "include": [
+                    "data Free",
+                    "data Used"
+                  ],
+                  "reducer": "sum"
+                }
+              }
+            }
+          ],
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 6,
+            "y": 35
+          },
+          "id": 45,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "value_and_name",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.4.2",
+          "targets": [
+            {
+              "alias": "",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT *  FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^${host}$/ AND \"instance\" = 'data' AND $timeFilter",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "table",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "/data - Free & Used",
+          "transformations": [
+            {
+              "id": "calculateField",
+              "options": {
+                "alias": "/data Host -->",
+                "binary": {
+                  "left": "host",
+                  "operator": "+",
+                  "right": "Time"
+                },
+                "mode": "reduceRow",
+                "reduce": {
+                  "include": [
+                    "host"
+                  ],
+                  "reducer": "uniqueValues"
+                },
+                "replaceFields": true,
+                "unary": {
+                  "fieldName": "host",
+                  "operator": "abs"
+                }
+              }
+            }
+          ],
+          "type": "stat"
+        }
+      ],
+      "title": "3. Non Root Disk - Zesty",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 27
+      },
+      "id": 47,
+      "panels": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "continuous-RdYlGr"
+              },
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "blue"
+                  }
+                ]
+              },
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 0,
+            "y": 5
+          },
+          "id": 40,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "value_and_name",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.4.2",
+          "targets": [
+            {
+              "alias": "$tag_instance Free",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "policy": "default",
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND $timeFilter  AND \"instance\" = 'research_backup'  GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "$tag_instance Used",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "hide": false,
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'used' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND $timeFilter  AND \"instance\" = 'research_backup'  GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "G",
+              "resultFormat": "time_series"
+            },
+            {
+              "alias": "$tag_instance Used",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'used' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/ AND \"instance\" =~ /^$instance$/  AND $timeFilter GROUP BY time($interval), \"instance\"  fill(null)",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "$tag_instance Reserved",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "measurement": "df_value",
+              "orderByTime": "ASC",
+              "policy": "default_collectd_retention",
+              "query": "SELECT last(value) FROM \"df_value\" WHERE \"type_instance\" = 'reserved' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/ AND $timeFilter GROUP BY time($interval), \"instance\" fill(null)",
+              "rawQuery": true,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "last"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "type::tag",
+                  "operator": "=",
+                  "value": "df_complex"
+                },
+                {
+                  "condition": "AND",
+                  "key": "host::tag",
+                  "operator": "=~",
+                  "value": "/^$host$/"
+                }
+              ]
+            },
+            {
+              "alias": "$tag_instance Total",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(\"value\") FROM \"df_value\" WHERE \"host\" = '$host' AND (\"type_instance\" = 'used' OR \"type_instance\" = 'free') AND \"type\" = 'df_complex' GROUP BY \"instance\"\n\n",
+              "rawQuery": true,
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT last(value) FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/ AND $timeFilter GROUP BY time($interval), \"instance\" fill(null)",
+              "rawQuery": true,
+              "refId": "E",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND \"instance\" =~ /^$instance$/   AND $timeFilter GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "F",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "/rearch_backup - Free & Used",
+          "transformations": [
+            {
+              "id": "calculateField",
+              "options": {
+                "alias": "research_backup - Total",
+                "mode": "reduceRow",
+                "reduce": {
+                  "include": [
+                    "research_backup Free",
+                    "research_backup Used"
+                  ],
+                  "reducer": "sum"
+                }
+              }
+            }
+          ],
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 6,
+            "y": 5
+          },
+          "id": 44,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "value_and_name",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.4.2",
+          "targets": [
+            {
+              "alias": "$tag_instance Free",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "policy": "default",
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND $timeFilter  AND \"instance\" = 'local-ebs_store'  GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "$tag_instance Used",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "hide": true,
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'used' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND $timeFilter  AND \"instance\" = 'local-ebs_store'  GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "G",
+              "resultFormat": "time_series"
+            },
+            {
+              "alias": "",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT *  FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^${host}$/ AND \"instance\" = 'research_backup' AND $timeFilter",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "table",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "/research_backup - Free & Used",
+          "transformations": [
+            {
+              "id": "calculateField",
+              "options": {
+                "alias": "/research_backup Host -->",
+                "binary": {
+                  "left": "host",
+                  "operator": "+",
+                  "right": "Time"
+                },
+                "mode": "reduceRow",
+                "reduce": {
+                  "include": [
+                    "host"
+                  ],
+                  "reducer": "uniqueValues"
+                },
+                "replaceFields": true,
+                "unary": {
+                  "fieldName": "host",
+                  "operator": "abs"
+                }
+              }
+            }
+          ],
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "continuous-RdYlGr"
+              },
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "blue"
+                  }
+                ]
+              },
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 0,
+            "y": 13
+          },
+          "id": 39,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "value_and_name",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.4.2",
+          "targets": [
+            {
+              "alias": "$tag_instance Free",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "policy": "default",
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND $timeFilter  AND \"instance\" = 'local-ebs_store'  GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "$tag_instance Used",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "hide": false,
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'used' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND $timeFilter  AND \"instance\" = 'local-ebs_store'  GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "G",
+              "resultFormat": "time_series"
+            },
+            {
+              "alias": "$tag_instance Used",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'used' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/ AND \"instance\" =~ /^$instance$/  AND $timeFilter GROUP BY time($interval), \"instance\"  fill(null)",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "$tag_instance Reserved",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "measurement": "df_value",
+              "orderByTime": "ASC",
+              "policy": "default_collectd_retention",
+              "query": "SELECT last(value) FROM \"df_value\" WHERE \"type_instance\" = 'reserved' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/ AND $timeFilter GROUP BY time($interval), \"instance\" fill(null)",
+              "rawQuery": true,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "last"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "type::tag",
+                  "operator": "=",
+                  "value": "df_complex"
+                },
+                {
+                  "condition": "AND",
+                  "key": "host::tag",
+                  "operator": "=~",
+                  "value": "/^$host$/"
+                }
+              ]
+            },
+            {
+              "alias": "$tag_instance Total",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(\"value\") FROM \"df_value\" WHERE \"host\" = '$host' AND (\"type_instance\" = 'used' OR \"type_instance\" = 'free') AND \"type\" = 'df_complex' GROUP BY \"instance\"\n\n",
+              "rawQuery": true,
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT last(value) FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/ AND $timeFilter GROUP BY time($interval), \"instance\" fill(null)",
+              "rawQuery": true,
+              "refId": "E",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND \"instance\" =~ /^$instance$/   AND $timeFilter GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "F",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "/local/ebs_store  - Free & Used",
+          "transformations": [
+            {
+              "id": "calculateField",
+              "options": {
+                "alias": "local-ebs_store - Total",
+                "mode": "reduceRow",
+                "reduce": {
+                  "include": [
+                    "local-ebs_store Free",
+                    "local-ebs_store Used"
+                  ],
+                  "reducer": "sum"
+                }
+              }
+            }
+          ],
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 6,
+            "y": 13
+          },
+          "id": 43,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "value_and_name",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.4.2",
+          "targets": [
+            {
+              "alias": "$tag_instance Free",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "policy": "default",
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND $timeFilter  AND \"instance\" = 'local-ebs_store'  GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "$tag_instance Used",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "hide": true,
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'used' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND $timeFilter  AND \"instance\" = 'local-ebs_store'  GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "G",
+              "resultFormat": "time_series"
+            },
+            {
+              "alias": "",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT *  FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^${host}$/ AND \"instance\" = 'local-ebs_store' AND $timeFilter",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "table",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "/local/ebs_store  - Free & Used",
+          "transformations": [
+            {
+              "id": "calculateField",
+              "options": {
+                "alias": "/local/ebs_store Host -->",
+                "binary": {
+                  "left": "host",
+                  "operator": "+",
+                  "right": "Time"
+                },
+                "mode": "reduceRow",
+                "reduce": {
+                  "include": [
+                    "host"
+                  ],
+                  "reducer": "uniqueValues"
+                },
+                "replaceFields": true,
+                "unary": {
+                  "fieldName": "host",
+                  "operator": "abs"
+                }
+              }
+            }
+          ],
+          "type": "stat"
+        }
+      ],
+      "title": "Non Root Disk - To be terminated",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 28
+      },
+      "id": 53,
+      "panels": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "blue"
+                  }
+                ]
+              },
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 24,
+            "x": 0,
+            "y": 1
+          },
+          "id": 36,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "auto",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.4.2",
+          "targets": [
+            {
+              "alias": "$tag_instance Free",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "policy": "default",
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND \"instance\" =~ /^$instance$/   AND $timeFilter GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "$tag_instance Used",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "hide": false,
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'used' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/ AND \"instance\" =~ /^$instance$/  AND $timeFilter GROUP BY time($interval), \"instance\"  fill(null)",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series"
+            },
+            {
+              "alias": "$tag_instance Reserved",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "measurement": "df_value",
+              "orderByTime": "ASC",
+              "policy": "default_collectd_retention",
+              "query": "SELECT last(value) FROM \"df_value\" WHERE \"type_instance\" = 'reserved' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/ AND $timeFilter GROUP BY time($interval), \"instance\" fill(null)",
+              "rawQuery": true,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "last"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "type::tag",
+                  "operator": "=",
+                  "value": "df_complex"
+                },
+                {
+                  "condition": "AND",
+                  "key": "host::tag",
+                  "operator": "=~",
+                  "value": "/^$host$/"
+                }
+              ]
+            },
+            {
+              "alias": "$tag_instance Total",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(\"value\") FROM \"df_value\" WHERE \"host\" = '$host' AND (\"type_instance\" = 'used' OR \"type_instance\" = 'free') AND \"type\" = 'df_complex' GROUP BY \"instance\"\n\n",
+              "rawQuery": true,
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT last(value) FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/ AND $timeFilter GROUP BY time($interval), \"instance\" fill(null)",
+              "rawQuery": true,
+              "refId": "E",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(value) FROM \"df_value\" WHERE \"type_instance\" = 'free' AND \"type\" = 'df_complex' AND \"host\" =~ /^$host$/   AND \"instance\" =~ /^$instance$/   AND $timeFilter GROUP BY time($interval) , \"instance\"   fill(null) ",
+              "rawQuery": true,
+              "refId": "F",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "Disk - Free & Used",
+          "transformations": [
+            {
+              "id": "calculateField",
+              "options": {
+                "alias": "Total Free",
+                "mode": "reduceRow",
+                "reduce": {
+                  "include": [
+                    "data Free",
+                    "root Free"
+                  ],
+                  "reducer": "sum"
+                },
+                "replaceFields": false,
+                "unary": {
+                  "fieldName": "root Free",
+                  "operator": "abs"
+                }
+              }
+            },
+            {
+              "id": "calculateField",
+              "options": {
+                "alias": "Total Used",
+                "mode": "reduceRow",
+                "reduce": {
+                  "include": [
+                    "data Used",
+                    "root Used"
+                  ],
+                  "reducer": "sum"
+                }
+              }
+            }
+          ],
+          "type": "stat"
+        }
+      ],
+      "title": "All Disk Size from InfluxDb",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 29
+      },
+      "id": 46,
+      "panels": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 2,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": true,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 14,
+            "w": 24,
+            "x": 0,
+            "y": 45
+          },
+          "id": 26,
+          "options": {
+            "legend": {
+              "calcs": [
+                "lastNotNull",
+                "max"
+              ],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "10.4.2",
+          "targets": [
+            {
+              "alias": "$tag_instance Used Space (%)",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "policy": "default",
+              "query": "SELECT mean(value) FROM \"df_value\" WHERE \"type_instance\" = 'used' AND \"type\" = 'percent_bytes' AND \"host\" =~ /^$host$/ AND $timeFilter GROUP BY time($interval), \"instance\" fill(null)",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "$tag_instance Used Inode (%)",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "policy": "default",
+              "query": "SELECT mean(value) FROM \"df_value\" WHERE \"type_instance\" = 'used' AND \"type\" = 'percent_inodes' AND \"host\" =~ /^$host$/ AND $timeFilter GROUP BY time($interval), \"instance\" fill(null)",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "Disk Usage Percentage",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Disk utilization %",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 30
+      },
+      "id": 35,
+      "panels": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 2,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": true,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "ms"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 7,
+            "w": 12,
+            "x": 0,
+            "y": 9
+          },
+          "id": 27,
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "lastNotNull",
+                "max"
+              ],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "10.4.2",
+          "targets": [
+            {
+              "alias": "$tag_instance I/O Time",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "policy": "default",
+              "query": "SELECT derivative(mean(value), 1s) FROM \"disk_io_time\" WHERE \"type\" = 'disk_io_time' AND \"host\" =~ /^$host$/ AND $timeFilter GROUP BY time($interval), \"instance\" fill(null)",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "Disk I/O Time",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 2,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": true,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "ms"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 7,
+            "w": 12,
+            "x": 12,
+            "y": 9
+          },
+          "id": 28,
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "lastNotNull",
+                "max"
+              ],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "10.4.2",
+          "targets": [
+            {
+              "alias": "$tag_instance I/O Time",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "policy": "default",
+              "query": "SELECT derivative(mean(value), 1s) FROM \"disk_weighted_io_time\" WHERE \"type\" = 'disk_io_time' AND \"host\" =~ /^$host$/ AND $timeFilter GROUP BY time($interval), \"instance\" fill(null)",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "Disk Weighted I/O Time",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 2,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": true,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "Bps"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 7,
+            "w": 16,
+            "x": 0,
+            "y": 16
+          },
+          "id": 24,
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "lastNotNull",
+                "max"
+              ],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "10.4.2",
+          "targets": [
+            {
+              "alias": "$tag_instance Data Read",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "policy": "default",
+              "query": "SELECT derivative(mean(value), 1s) FROM \"disk_read\" WHERE \"type\" = 'disk_octets' AND \"host\" =~ /^$host$/ AND $timeFilter GROUP BY time($interval), \"instance\" fill(null)",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "$tag_instance Data Write",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "policy": "default",
+              "query": "SELECT derivative(mean(value), 1s) FROM \"disk_write\" WHERE \"type\" = 'disk_octets' AND \"host\" =~ /^$host$/ AND $timeFilter GROUP BY time($interval), \"instance\" fill(null)",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "Disk I/O",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 2,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": true,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 7,
+            "w": 8,
+            "x": 16,
+            "y": 16
+          },
+          "id": 29,
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "lastNotNull",
+                "max"
+              ],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "10.4.2",
+          "targets": [
+            {
+              "alias": "$tag_instance queue length",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+              },
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "policy": "default",
+              "query": "SELECT derivative(mean(value), 1s) FROM \"disk_value\" WHERE \"type\" = 'pending_operations' AND \"host\" =~ /^$host$/ AND $timeFilter GROUP BY time($interval), \"instance\" fill(null)",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "Disk I/O Pending Queue Length",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Disk IO",
+      "type": "row"
+    }
+  ],
+  "refresh": "5m",
+  "schemaVersion": 39,
+  "tags": [
+    "linux",
+    "disk_monitoring"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "fdwnak0f42pz4d"
+        },
+        "definition": "",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Host",
+        "multi": true,
+        "name": "host",
+        "options": [],
+        "query": "SHOW TAG VALUES  WITH KEY = \"host\"",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": "",
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "b76ee73b-bb3a-4ee2-ac1f-9170bfe7d09d"
+        },
+        "definition": "SHOW TAG VALUES FROM \"df_value\" WITH KEY = \"instance\"\n",
+        "description": "Filesystem Mount Polnt",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Instance",
+        "multi": true,
+        "name": "instance",
+        "options": [],
+        "query": "SHOW TAG VALUES FROM \"df_value\" WITH KEY = \"instance\"\n",
+        "refresh": 1,
+        "regex": "^(?!.*tmp-log4j-hotpatch)(?!.*run-docker-runtime).*$",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "auto": true,
+        "auto_count": 300,
+        "auto_min": "10s",
+        "current": {
+          "selected": false,
+          "text": "auto",
+          "value": "$__auto_interval_interval"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "",
+        "multi": false,
+        "name": "interval",
+        "options": [
+          {
+            "selected": true,
+            "text": "auto",
+            "value": "$__auto_interval_interval"
+          },
+          {
+            "selected": false,
+            "text": "10s",
+            "value": "10s"
+          },
+          {
+            "selected": false,
+            "text": "1m",
+            "value": "1m"
+          },
+          {
+            "selected": false,
+            "text": "5m",
+            "value": "5m"
+          },
+          {
+            "selected": false,
+            "text": "15m",
+            "value": "15m"
+          },
+          {
+            "selected": false,
+            "text": "1h",
+            "value": "1h"
+          },
+          {
+            "selected": false,
+            "text": "6h",
+            "value": "6h"
+          },
+          {
+            "selected": false,
+            "text": "1d",
+            "value": "1d"
+          }
+        ],
+        "query": "10s,1m,5m,15m,1h,6h,1d",
+        "queryValue": "",
+        "refresh": 2,
+        "skipUrlSync": false,
+        "type": "interval"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "utc",
+  "title": "Server - Disk Metrics",
+  "uid": "900000003",
+  "weekStart": ""
+}

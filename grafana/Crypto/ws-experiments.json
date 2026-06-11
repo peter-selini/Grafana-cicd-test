@@ -1,0 +1,506 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 17,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Last *",
+          "sortDesc": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "alias": "$tag_app_name $tag_instrument $tag_msg_type $tag_mem_level $tag_compression_level $tag_window_bits $tag_strategy",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "msg_type::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "python_fh_exch_to_recv_ns",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT max(\"max\") FROM \"autogen\".\"python_fh_exch_to_recv_ns\" WHERE (\"app_name\"::tag =~ /^$app_name$/ AND \"msg_type\"::tag =~ /^$msg_type$/ AND \"instrument\"::tag =~ /^$symbol$/ AND \"mem_level\"::tag =~ /^$mem_level$/ AND \"compression_level\"::tag =~ /^$compression_level$/ AND \"window_bits\"::tag =~ /^$window_bits$/ AND \"strategy\"::tag =~ /^$strategy$/) AND $timeFilter GROUP BY time($__interval), \"app_name\"::tag, \"msg_type\"::tag, \"instrument\"::tag, \"mem_level\"::tag, \"compression_level\"::tag, \"window_bits\"::tag, \"strategy\"::tag fill(none)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app_name::tag",
+              "operator": "=~",
+              "value": "/^$app_name$/"
+            },
+            {
+              "condition": "AND",
+              "key": "msg_type::tag",
+              "operator": "=~",
+              "value": "/^$msg_type$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "mem_level::tag",
+              "operator": "=~",
+              "value": "/^$mem_level$/"
+            },
+            {
+              "condition": "AND",
+              "key": "compression_level::tag",
+              "operator": "=~",
+              "value": "/^$compression_level$/"
+            },
+            {
+              "condition": "AND",
+              "key": "window_bits::tag",
+              "operator": "=~",
+              "value": "/^$window_bits$/"
+            },
+            {
+              "condition": "AND",
+              "key": "strategy::tag",
+              "operator": "=~",
+              "value": "/^$strategy$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_app_name $tag_instrument $tag_msg_type",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "msg_type::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "fh_exch_to_recv_ns",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app_name::tag",
+              "operator": "=",
+              "value": "binance_fh_0_TKY-A-02"
+            },
+            {
+              "condition": "AND",
+              "key": "msg_type::tag",
+              "operator": "=",
+              "value": "INCREMENTAL_ORDERBOOK_UPDATE"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=",
+              "value": "BTC/USDT"
+            }
+          ]
+        }
+      ],
+      "title": "Exchange to FH Receive",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": "*",
+        "current": {
+          "selected": true,
+          "text": [
+            "okex_fh_7-ABC-C-01"
+          ],
+          "value": [
+            "okex_fh_7-ABC-C-01"
+          ]
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+        },
+        "definition": "SHOW TAG VALUES ON \"omnia_stats\" FROM \"python_fh_exch_to_recv_ns\" WITH KEY=\"app_name\"",
+        "hide": 0,
+        "includeAll": true,
+        "label": "FH Name",
+        "multi": true,
+        "name": "app_name",
+        "options": [],
+        "query": "SHOW TAG VALUES ON \"omnia_stats\" FROM \"python_fh_exch_to_recv_ns\" WITH KEY=\"app_name\"",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+        },
+        "definition": "SHOW TAG VALUES  ON \"omnia_stats\" FROM \"python_fh_exch_to_recv_ns\" WITH KEY=\"instrument\" WHERE \"app_name\" = $app_name",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Symbol",
+        "multi": true,
+        "name": "symbol",
+        "options": [],
+        "query": "SHOW TAG VALUES  ON \"omnia_stats\" FROM \"python_fh_exch_to_recv_ns\" WITH KEY=\"instrument\" WHERE \"app_name\" = $app_name",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+        },
+        "definition": "SHOW TAG VALUES  ON \"omnia_stats\" FROM \"python_fh_exch_to_recv_ns\" WITH KEY=\"msg_type\" WHERE \"app_name\" = $app_name",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Message",
+        "multi": true,
+        "name": "msg_type",
+        "options": [],
+        "query": "SHOW TAG VALUES  ON \"omnia_stats\" FROM \"python_fh_exch_to_recv_ns\" WITH KEY=\"msg_type\" WHERE \"app_name\" = $app_name",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+        },
+        "definition": "SHOW TAG VALUES  ON \"omnia_stats\" FROM \"python_fh_exch_to_recv_ns\" WITH KEY=\"mem_level\" WHERE \"app_name\" = $app_name",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Mem Level",
+        "multi": true,
+        "name": "mem_level",
+        "options": [],
+        "query": "SHOW TAG VALUES  ON \"omnia_stats\" FROM \"python_fh_exch_to_recv_ns\" WITH KEY=\"mem_level\" WHERE \"app_name\" = $app_name",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+        },
+        "definition": "SHOW TAG VALUES  ON \"omnia_stats\" FROM \"python_fh_exch_to_recv_ns\" WITH KEY=\"compression_level\" WHERE \"app_name\" = $app_name",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Compression Level",
+        "multi": true,
+        "name": "compression_level",
+        "options": [],
+        "query": "SHOW TAG VALUES  ON \"omnia_stats\" FROM \"python_fh_exch_to_recv_ns\" WITH KEY=\"compression_level\" WHERE \"app_name\" = $app_name",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+        },
+        "definition": "SHOW TAG VALUES  ON \"omnia_stats\" FROM \"python_fh_exch_to_recv_ns\" WITH KEY=\"window_bits\" WHERE \"app_name\" = $app_name",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Window Bits",
+        "multi": true,
+        "name": "window_bits",
+        "options": [],
+        "query": "SHOW TAG VALUES  ON \"omnia_stats\" FROM \"python_fh_exch_to_recv_ns\" WITH KEY=\"window_bits\" WHERE \"app_name\" = $app_name",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "bb9aa2c0-372f-4d33-9bbb-b0e6c8ecc19b"
+        },
+        "definition": "SHOW TAG VALUES  ON \"omnia_stats\" FROM \"python_fh_exch_to_recv_ns\" WITH KEY=\"strategy\" WHERE \"app_name\" = $app_name",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Strategy",
+        "multi": true,
+        "name": "strategy",
+        "options": [],
+        "query": "SHOW TAG VALUES  ON \"omnia_stats\" FROM \"python_fh_exch_to_recv_ns\" WITH KEY=\"strategy\" WHERE \"app_name\" = $app_name",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "utc",
+  "title": "WS Experiments",
+  "uid": "a84490a0-96cb-42ed-87cd-76adbb2f1513",
+  "weekStart": ""
+}

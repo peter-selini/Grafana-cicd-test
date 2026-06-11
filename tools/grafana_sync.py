@@ -333,7 +333,13 @@ def cmd_pull(client: Client, repo_root: Path, args) -> int:
         for item in remote_list:
             uid = item["uid"]
             remote_uids.add(uid)
-            dashboard = client.dashboard(uid)
+            try:
+                dashboard = client.dashboard(uid)
+            except GrafanaError as e:
+                # e.g. 500 "dashboard data is invalid" — corrupt server-side.
+                # Skip it (and keep any local copy) rather than aborting the pull.
+                logger.warning(f"Skipping {uid} ('{item.get('title')}'): {e}")
+                continue
             if dashboard is None:
                 continue
             text = canon(dashboard)
@@ -405,7 +411,12 @@ def cmd_push(client: Client, repo_root: Path, args) -> int:
             with open(path) as f:
                 dashboard = json.load(f)
             try:
-                remote = client.dashboard(uid)
+                try:
+                    remote = client.dashboard(uid)
+                except GrafanaError as e:
+                    # Corrupt server-side — push anyway; overwrite heals it.
+                    logger.warning(f"Remote fetch failed for {uid} ({e}); overwriting")
+                    remote = None
                 if remote is not None and canon(remote) == canon(dashboard):
                     logger.info(f"Unchanged: {path.name}")
                     continue
@@ -473,7 +484,12 @@ def cmd_status(client: Client, repo_root: Path, args) -> int:
             else:
                 with open(local[uid]) as f:
                     local_text = canon(json.load(f))
-                remote = client.dashboard(uid)
+                try:
+                    remote = client.dashboard(uid)
+                except GrafanaError as e:
+                    # Corrupt server-side; not actionable drift — warn only.
+                    logger.warning(f"fetch-error (not counted as drift): {uid}: {e}")
+                    continue
                 remote_text = canon(remote) if remote is not None else ""
                 if local_text != remote_text:
                     print(f"changed: {local[uid].relative_to(repo_root)} ({uid})")
