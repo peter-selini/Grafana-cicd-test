@@ -19,6 +19,8 @@ Subcommands:
 Auth: GRAFANA_API_KEY environment variable (service account token, Editor role).
 """
 
+from __future__ import annotations
+
 import argparse
 import difflib
 import json
