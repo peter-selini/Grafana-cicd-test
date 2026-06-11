@@ -1,0 +1,1439 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "iDaPMksnk"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-red",
+                "value": null
+              },
+              {
+                "color": "#473826",
+                "value": 0
+              },
+              {
+                "color": "semi-dark-green",
+                "value": 1000
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 0,
+        "y": 0
+      },
+      "id": 8,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "iDaPMksnk"
+          },
+          "hide": false,
+          "query": "from(bucket: \"Mimid_PnLStatsTest\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exch_daily_pnl\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"pnl\")  \r\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)\r\n  |> last()  \r\n  |> group(columns: [\"_measurement\", \"_field\"])\r\n  |> sum()",
+          "refId": "B"
+        }
+      ],
+      "title": "Firm Daily PnL",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "iDaPMksnk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 18,
+        "x": 6,
+        "y": 0
+      },
+      "id": 19,
+      "maxDataPoints": 100,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "iDaPMksnk"
+          },
+          "query": "from(bucket: \"Mimid_PnLStatsTest\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"firm_daily_pnl\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"pnl\")\r\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)  \r\n  |> yield(name: \"last\")",
+          "refId": "A"
+        }
+      ],
+      "title": "Firm Daily PnL",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "iDaPMksnk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 1,
+          "displayName": "${__field.labels.__values}",
+          "mappings": [
+            {
+              "options": {
+                "from": -99,
+                "result": {
+                  "index": 0,
+                  "text": "0.0k"
+                },
+                "to": 99
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -199,
+                "result": {
+                  "index": 1,
+                  "text": "-0.1k"
+                },
+                "to": -99
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -299,
+                "result": {
+                  "index": 2,
+                  "text": "-0.2k"
+                },
+                "to": -199
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -399,
+                "result": {
+                  "index": 3,
+                  "text": "-0.3k"
+                },
+                "to": -299
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -499,
+                "result": {
+                  "index": 4,
+                  "text": "-0.4k"
+                },
+                "to": -399
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -599,
+                "result": {
+                  "index": 5,
+                  "text": "-0.5k"
+                },
+                "to": -499
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -699,
+                "result": {
+                  "index": 6,
+                  "text": "-0.6k"
+                },
+                "to": -599
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -799,
+                "result": {
+                  "index": 7,
+                  "text": "-0.7k"
+                },
+                "to": -699
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -899,
+                "result": {
+                  "index": 8,
+                  "text": "-0.8k"
+                },
+                "to": -799
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -999,
+                "result": {
+                  "index": 9,
+                  "text": "-0.9k"
+                },
+                "to": -899
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 99,
+                "result": {
+                  "index": 10,
+                  "text": "0.1k"
+                },
+                "to": 199
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 199,
+                "result": {
+                  "index": 11,
+                  "text": "0.2k"
+                },
+                "to": 299
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 299,
+                "result": {
+                  "index": 12,
+                  "text": "0.3k"
+                },
+                "to": 399
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 399,
+                "result": {
+                  "index": 13,
+                  "text": "0.4k"
+                },
+                "to": 499
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 499,
+                "result": {
+                  "index": 14,
+                  "text": "0.5k"
+                },
+                "to": 599
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 599,
+                "result": {
+                  "index": 15,
+                  "text": "0.6k"
+                },
+                "to": 699
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 699,
+                "result": {
+                  "index": 16,
+                  "text": "0.7k"
+                },
+                "to": 799
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 799,
+                "result": {
+                  "index": 17,
+                  "text": "0.8k"
+                },
+                "to": 899
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 899,
+                "result": {
+                  "index": 18,
+                  "text": "0.9k"
+                },
+                "to": 999
+              },
+              "type": "range"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "#4c4636",
+                "value": -1000
+              },
+              {
+                "color": "green",
+                "value": 1000
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 21,
+        "w": 6,
+        "x": 0,
+        "y": 8
+      },
+      "id": 10,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "iDaPMksnk"
+          },
+          "query": "from(bucket: \"Mimid_PnLStatsTest\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exch_daily_pnl\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"pnl\")\r\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "refId": "A"
+        }
+      ],
+      "title": "Exchange Daily PnL",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "iDaPMksnk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 21,
+        "w": 18,
+        "x": 6,
+        "y": 8
+      },
+      "id": 2,
+      "maxDataPoints": 100,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "iDaPMksnk"
+          },
+          "query": "from(bucket: \"Mimid_PnLStatsTest\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exch_daily_pnl\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"pnl\")\r\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)  \r\n  |> yield(name: \"last\")",
+          "refId": "A"
+        }
+      ],
+      "title": "Exchange Daily PnL",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "iDaPMksnk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "#3a2f1d",
+                "value": 0
+              },
+              {
+                "color": "#fdc455",
+                "value": 1000000
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 6,
+        "x": 0,
+        "y": 29
+      },
+      "id": 12,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "iDaPMksnk"
+          },
+          "query": "from(bucket: \"Mimid_PnLStatsTest\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exch_daily_trade_vol\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"trade_vol\")  \r\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)\r\n  |> last()  \r\n  |> group(columns: [\"_measurement\", \"_field\"])\r\n  |> sum()",
+          "refId": "A"
+        }
+      ],
+      "title": "Firm Daily Volume",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "iDaPMksnk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 18,
+        "x": 6,
+        "y": 29
+      },
+      "id": 20,
+      "maxDataPoints": 100,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "iDaPMksnk"
+          },
+          "query": "from(bucket: \"Mimid_PnLStatsTest\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"firm_daily_trade_vol\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"trade_vol\")\r\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)  \r\n  |> yield(name: \"last\")",
+          "refId": "A"
+        }
+      ],
+      "title": "Firm Daily Trade Volume",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "iDaPMksnk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 1,
+          "displayName": "${__field.labels.__values}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "#373028",
+                "value": 0
+              },
+              {
+                "color": "#ffcd55",
+                "value": 1000000
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 18,
+        "w": 6,
+        "x": 0,
+        "y": 38
+      },
+      "id": 14,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "iDaPMksnk"
+          },
+          "query": "from(bucket: \"Mimid_PnLStatsTest\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exch_daily_trade_vol\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"trade_vol\")\r\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "refId": "A"
+        }
+      ],
+      "title": "Exchange Daily Volume",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "iDaPMksnk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 18,
+        "w": 18,
+        "x": 6,
+        "y": 38
+      },
+      "id": 4,
+      "maxDataPoints": 100,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "iDaPMksnk"
+          },
+          "query": "from(bucket: \"Mimid_PnLStatsTest\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exch_daily_trade_vol\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"trade_vol\")\r\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)  \r\n  |> yield(name: \"last\")",
+          "refId": "A"
+        }
+      ],
+      "title": "Exchange Daily Volume",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "iDaPMksnk"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-red",
+                "value": null
+              },
+              {
+                "color": "#473826",
+                "value": 0
+              },
+              {
+                "color": "semi-dark-green",
+                "value": 1000
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 6,
+        "x": 0,
+        "y": 56
+      },
+      "id": 16,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "iDaPMksnk"
+          },
+          "hide": false,
+          "query": "from(bucket: \"Mimid_PnLStatsTest\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exch_grp_risk\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"grp_risk\")  \r\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)\r\n  |> last()  \r\n  |> group(columns: [\"_measurement\", \"_field\"])\r\n  |> sum()",
+          "refId": "B"
+        }
+      ],
+      "title": "Firm Group Risk",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "iDaPMksnk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 18,
+        "x": 6,
+        "y": 56
+      },
+      "id": 21,
+      "maxDataPoints": 100,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "iDaPMksnk"
+          },
+          "query": "from(bucket: \"Mimid_PnLStatsTest\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"firm_grp_risk\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"grp_risk\")\r\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)  \r\n  |> yield(name: \"last\")",
+          "refId": "A"
+        }
+      ],
+      "title": "Firm Daily Group Risk",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "iDaPMksnk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 1,
+          "displayName": "${__field.labels.__values}",
+          "mappings": [
+            {
+              "options": {
+                "from": -99,
+                "result": {
+                  "index": 0,
+                  "text": "0.0k"
+                },
+                "to": 99
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -199,
+                "result": {
+                  "index": 1,
+                  "text": "-0.1k"
+                },
+                "to": -99
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -299,
+                "result": {
+                  "index": 2,
+                  "text": "-0.2k"
+                },
+                "to": -199
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -399,
+                "result": {
+                  "index": 3,
+                  "text": "-0.3k"
+                },
+                "to": -299
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -499,
+                "result": {
+                  "index": 4,
+                  "text": "-0.4k"
+                },
+                "to": -399
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -599,
+                "result": {
+                  "index": 5,
+                  "text": "-0.5k"
+                },
+                "to": -499
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -699,
+                "result": {
+                  "index": 6,
+                  "text": "-0.6k"
+                },
+                "to": -599
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -799,
+                "result": {
+                  "index": 7,
+                  "text": "-0.7k"
+                },
+                "to": -699
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -899,
+                "result": {
+                  "index": 8,
+                  "text": "-0.8k"
+                },
+                "to": -799
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -999,
+                "result": {
+                  "index": 9,
+                  "text": "-0.9k"
+                },
+                "to": -899
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 99,
+                "result": {
+                  "index": 10,
+                  "text": "0.1k"
+                },
+                "to": 199
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 199,
+                "result": {
+                  "index": 11,
+                  "text": "0.2k"
+                },
+                "to": 299
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 299,
+                "result": {
+                  "index": 12,
+                  "text": "0.3k"
+                },
+                "to": 399
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 399,
+                "result": {
+                  "index": 13,
+                  "text": "0.4k"
+                },
+                "to": 499
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 499,
+                "result": {
+                  "index": 14,
+                  "text": "0.5k"
+                },
+                "to": 599
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 599,
+                "result": {
+                  "index": 15,
+                  "text": "0.6k"
+                },
+                "to": 699
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 699,
+                "result": {
+                  "index": 16,
+                  "text": "0.7k"
+                },
+                "to": 799
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 799,
+                "result": {
+                  "index": 17,
+                  "text": "0.8k"
+                },
+                "to": 899
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 899,
+                "result": {
+                  "index": 18,
+                  "text": "0.9k"
+                },
+                "to": 999
+              },
+              "type": "range"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "#4c4636",
+                "value": -1000
+              },
+              {
+                "color": "green",
+                "value": 1000
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 18,
+        "w": 6,
+        "x": 0,
+        "y": 65
+      },
+      "id": 18,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "iDaPMksnk"
+          },
+          "query": "from(bucket: \"Mimid_PnLStatsTest\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exch_grp_risk\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"grp_risk\")\r\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "refId": "A"
+        }
+      ],
+      "title": "Exchange Group Risk",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "iDaPMksnk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "grp_risk COINBASE"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 18,
+        "w": 18,
+        "x": 6,
+        "y": 65
+      },
+      "id": 6,
+      "maxDataPoints": 100,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "iDaPMksnk"
+          },
+          "query": "from(bucket: \"Mimid_PnLStatsTest\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exch_grp_risk\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"grp_risk\")\r\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)  \r\n  |> yield(name: \"last\")",
+          "refId": "A"
+        }
+      ],
+      "title": "Exchange Group Risk",
+      "type": "timeseries"
+    }
+  ],
+  "schemaVersion": 36,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "utc",
+  "title": "Crypto-Daily-Exchange-PnL-Test",
+  "uid": "cicd-F28YAZTVz",
+  "weekStart": ""
+}

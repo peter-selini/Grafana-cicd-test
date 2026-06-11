@@ -1,0 +1,11 @@
+{
+  "apiVersion": "folder.grafana.app/v1beta1",
+  "kind": "Folder",
+  "metadata": {
+    "name": "cicd-0ZLlyMH7z",
+    "uid": "cicd-0ZLlyMH7z"
+  },
+  "spec": {
+    "title": "CICD - Crypto"
+  }
+}

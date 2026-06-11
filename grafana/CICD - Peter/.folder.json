@@ -1,0 +1,11 @@
+{
+  "apiVersion": "folder.grafana.app/v1beta1",
+  "kind": "Folder",
+  "metadata": {
+    "name": "cicd-afbdf0pjzhkaof",
+    "uid": "cicd-afbdf0pjzhkaof"
+  },
+  "spec": {
+    "title": "CICD - Peter"
+  }
+}

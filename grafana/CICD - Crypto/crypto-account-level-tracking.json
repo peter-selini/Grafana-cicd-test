@@ -1,0 +1,3255 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "_NkF9laVk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 1,
+          "mappings": [
+            {
+              "options": {
+                "from": -99,
+                "result": {
+                  "index": 0,
+                  "text": "0.0k"
+                },
+                "to": 99
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -199,
+                "result": {
+                  "index": 1,
+                  "text": "-0.1k"
+                },
+                "to": -99
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -299,
+                "result": {
+                  "index": 2,
+                  "text": "-0.2k"
+                },
+                "to": -199
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -399,
+                "result": {
+                  "index": 3,
+                  "text": "-0.3k"
+                },
+                "to": -299
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -499,
+                "result": {
+                  "index": 4,
+                  "text": "-0.4k"
+                },
+                "to": -399
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -599,
+                "result": {
+                  "index": 5,
+                  "text": "-0.5k"
+                },
+                "to": -499
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -699,
+                "result": {
+                  "index": 6,
+                  "text": "-0.6k"
+                },
+                "to": -599
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -799,
+                "result": {
+                  "index": 7,
+                  "text": "-0.7k"
+                },
+                "to": -699
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -899,
+                "result": {
+                  "index": 8,
+                  "text": "-0.8k"
+                },
+                "to": -799
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -999,
+                "result": {
+                  "index": 9,
+                  "text": "-0.9k"
+                },
+                "to": -899
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 99,
+                "result": {
+                  "index": 10,
+                  "text": "0.1k"
+                },
+                "to": 199
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 199,
+                "result": {
+                  "index": 11,
+                  "text": "0.2k"
+                },
+                "to": 299
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 299,
+                "result": {
+                  "index": 12,
+                  "text": "0.3k"
+                },
+                "to": 399
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 399,
+                "result": {
+                  "index": 13,
+                  "text": "0.4k"
+                },
+                "to": 499
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 499,
+                "result": {
+                  "index": 14,
+                  "text": "0.5k"
+                },
+                "to": 599
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 599,
+                "result": {
+                  "index": 15,
+                  "text": "0.6k"
+                },
+                "to": 699
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 699,
+                "result": {
+                  "index": 16,
+                  "text": "0.7k"
+                },
+                "to": 799
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 799,
+                "result": {
+                  "index": 17,
+                  "text": "0.8k"
+                },
+                "to": 899
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 899,
+                "result": {
+                  "index": 18,
+                  "text": "0.9k"
+                },
+                "to": 999
+              },
+              "type": "range"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "#4c4636",
+                "value": -1000
+              },
+              {
+                "color": "green",
+                "value": 1000
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 8,
+        "x": 0,
+        "y": 0
+      },
+      "id": 11,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 24,
+          "valueSize": 48
+        },
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "alias": "",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "_NkF9laVk"
+          },
+          "query": "SELECT SUM(last_pnl) FROM (\n  SELECT last(\"pnl\") as last_pnl\n  FROM \"default\".\"acct_lvl_daily_pnl\"\n  WHERE (\"label\" =~ /^$label$/) AND (\"level\" =~ /^$level$/)\n  AND $timeFilter\n  GROUP BY time($__interval), \"label\", \"level\" fill(none)\n) \nGROUP BY time($__interval)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      ],
+      "title": "Total Daily PnL for Selection",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "_NkF9laVk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 1,
+          "mappings": [
+            {
+              "options": {
+                "from": -99,
+                "result": {
+                  "index": 0,
+                  "text": "0.0k"
+                },
+                "to": 99
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -199,
+                "result": {
+                  "index": 1,
+                  "text": "-0.1k"
+                },
+                "to": -99
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -299,
+                "result": {
+                  "index": 2,
+                  "text": "-0.2k"
+                },
+                "to": -199
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -399,
+                "result": {
+                  "index": 3,
+                  "text": "-0.3k"
+                },
+                "to": -299
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -499,
+                "result": {
+                  "index": 4,
+                  "text": "-0.4k"
+                },
+                "to": -399
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -599,
+                "result": {
+                  "index": 5,
+                  "text": "-0.5k"
+                },
+                "to": -499
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -699,
+                "result": {
+                  "index": 6,
+                  "text": "-0.6k"
+                },
+                "to": -599
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -799,
+                "result": {
+                  "index": 7,
+                  "text": "-0.7k"
+                },
+                "to": -699
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -899,
+                "result": {
+                  "index": 8,
+                  "text": "-0.8k"
+                },
+                "to": -799
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -999,
+                "result": {
+                  "index": 9,
+                  "text": "-0.9k"
+                },
+                "to": -899
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 99,
+                "result": {
+                  "index": 10,
+                  "text": "0.1k"
+                },
+                "to": 199
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 199,
+                "result": {
+                  "index": 11,
+                  "text": "0.2k"
+                },
+                "to": 299
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 299,
+                "result": {
+                  "index": 12,
+                  "text": "0.3k"
+                },
+                "to": 399
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 399,
+                "result": {
+                  "index": 13,
+                  "text": "0.4k"
+                },
+                "to": 499
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 499,
+                "result": {
+                  "index": 14,
+                  "text": "0.5k"
+                },
+                "to": 599
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 599,
+                "result": {
+                  "index": 15,
+                  "text": "0.6k"
+                },
+                "to": 699
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 699,
+                "result": {
+                  "index": 16,
+                  "text": "0.7k"
+                },
+                "to": 799
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 799,
+                "result": {
+                  "index": 17,
+                  "text": "0.8k"
+                },
+                "to": 899
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 899,
+                "result": {
+                  "index": 18,
+                  "text": "0.9k"
+                },
+                "to": 999
+              },
+              "type": "range"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#4c4636",
+                "value": null
+              },
+              {
+                "color": "#d9d9d9",
+                "value": 1000000
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 8,
+        "x": 8,
+        "y": 0
+      },
+      "id": 13,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 24,
+          "valueSize": 48
+        },
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "alias": "",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "_NkF9laVk"
+          },
+          "query": "SELECT SUM(last_trade_vol) FROM (\nSELECT last(\"trade_vol\") as last_trade_vol\nFROM \"default\".\"acct_lvl_daily_trade_vol\"\nWHERE (\"level\" =~ /^$level$/ AND \"label\" =~ /^$label$/)\nAND $timeFilter\nGROUP BY time($__interval), \"label\", \"level\"\n)\nGROUP BY time($__interval)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      ],
+      "title": "Total Daily Trade Volume for Selection",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "_NkF9laVk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 1,
+          "mappings": [
+            {
+              "options": {
+                "from": -99,
+                "result": {
+                  "index": 0,
+                  "text": "0.0k"
+                },
+                "to": 99
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -199,
+                "result": {
+                  "index": 1,
+                  "text": "-0.1k"
+                },
+                "to": -99
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -299,
+                "result": {
+                  "index": 2,
+                  "text": "-0.2k"
+                },
+                "to": -199
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -399,
+                "result": {
+                  "index": 3,
+                  "text": "-0.3k"
+                },
+                "to": -299
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -499,
+                "result": {
+                  "index": 4,
+                  "text": "-0.4k"
+                },
+                "to": -399
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -599,
+                "result": {
+                  "index": 5,
+                  "text": "-0.5k"
+                },
+                "to": -499
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -699,
+                "result": {
+                  "index": 6,
+                  "text": "-0.6k"
+                },
+                "to": -599
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -799,
+                "result": {
+                  "index": 7,
+                  "text": "-0.7k"
+                },
+                "to": -699
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -899,
+                "result": {
+                  "index": 8,
+                  "text": "-0.8k"
+                },
+                "to": -799
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -999,
+                "result": {
+                  "index": 9,
+                  "text": "-0.9k"
+                },
+                "to": -899
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 99,
+                "result": {
+                  "index": 10,
+                  "text": "0.1k"
+                },
+                "to": 199
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 199,
+                "result": {
+                  "index": 11,
+                  "text": "0.2k"
+                },
+                "to": 299
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 299,
+                "result": {
+                  "index": 12,
+                  "text": "0.3k"
+                },
+                "to": 399
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 399,
+                "result": {
+                  "index": 13,
+                  "text": "0.4k"
+                },
+                "to": 499
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 499,
+                "result": {
+                  "index": 14,
+                  "text": "0.5k"
+                },
+                "to": 599
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 599,
+                "result": {
+                  "index": 15,
+                  "text": "0.6k"
+                },
+                "to": 699
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 699,
+                "result": {
+                  "index": 16,
+                  "text": "0.7k"
+                },
+                "to": 799
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 799,
+                "result": {
+                  "index": 17,
+                  "text": "0.8k"
+                },
+                "to": 899
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 899,
+                "result": {
+                  "index": 18,
+                  "text": "0.9k"
+                },
+                "to": 999
+              },
+              "type": "range"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#fb975a",
+                "value": null
+              },
+              {
+                "color": "#4c4636",
+                "value": -10000
+              },
+              {
+                "color": "blue",
+                "value": 10000
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 8,
+        "x": 16,
+        "y": 0
+      },
+      "id": 16,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 24,
+          "valueSize": 48
+        },
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "_NkF9laVk"
+          },
+          "query": "SELECT SUM(last_grp_risk) FROM (\nSELECT last(\"grp_risk\") as last_grp_risk\nFROM \"default\".\"acct_lvl_grp_risk\"\nWHERE (\"level\" =~ /^$level$/ AND \"label\" =~ /^$label$/)\nAND $timeFilter\nGROUP BY time($__interval), \"label\", \"level\"\n)\nGROUP BY time($__interval)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      ],
+      "title": "Total Notional Risk for Selection",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "_NkF9laVk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 4
+      },
+      "id": 12,
+      "interval": "1m",
+      "maxDataPoints": 480,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "_NkF9laVk"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "label"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "level"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "acct_lvl_daily_pnl",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT SUM(last_pnl) FROM (\n    SELECT last(\"pnl\") AS last_pnl \n    FROM \"default\".\"acct_lvl_daily_pnl\"\n    WHERE (\"level\" =~ /^$level$/ AND \"label\" =~ /^$label$/)\n    AND $timeFilter\n    GROUP BY time($__interval), \"label\", \"level\"\n) \nGROUP BY time($__interval)\n",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "pnl"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "label::tag",
+              "operator": "!=",
+              "value": "SLN--DEFI"
+            },
+            {
+              "condition": "AND",
+              "key": "level::tag",
+              "operator": "=",
+              "value": "1"
+            }
+          ]
+        }
+      ],
+      "title": "Total Daily PnL for Selection",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "_NkF9laVk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "yellow",
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#4c4636",
+                "value": null
+              },
+              {
+                "color": "#8c8c8c",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "acct_lvl_daily_trade_vol.sum"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 4
+      },
+      "id": 14,
+      "interval": "1m",
+      "maxDataPoints": 480,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "_NkF9laVk"
+          },
+          "query": "SELECT SUM(last_trade_vol) FROM (\n    SELECT last(\"trade_vol\") AS last_trade_vol \n    FROM \"default\".\"acct_lvl_daily_trade_vol\"\n    WHERE (\"level\" =~ /^$level$/ AND \"label\" =~ /^$label$/)\n    AND $timeFilter\n    GROUP BY time($__interval), \"label\", \"level\"\n) \nGROUP BY time($__interval)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      ],
+      "title": "Total Daily Trade Volume for Selection",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "_NkF9laVk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds",
+            "seriesBy": "last"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#fb975a",
+                "value": null
+              },
+              {
+                "color": "blue",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 4
+      },
+      "id": 15,
+      "interval": "1m",
+      "maxDataPoints": 480,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "_NkF9laVk"
+          },
+          "query": "SELECT SUM(last_grp_risk) FROM (\n    SELECT last(\"grp_risk\") AS last_grp_risk \n    FROM \"default\".\"acct_lvl_grp_risk\"\n    WHERE (\"level\" =~ /^$level$/ AND \"label\" =~ /^$label$/)\n    AND $timeFilter\n    GROUP BY time($__interval), \"label\", \"level\"\n) \nGROUP BY time($__interval)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      ],
+      "title": "Total Notional Risk for Selection",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "_NkF9laVk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 1,
+          "displayName": "${__field.labels.label}",
+          "mappings": [
+            {
+              "options": {
+                "from": -99,
+                "result": {
+                  "index": 0,
+                  "text": "0.0k"
+                },
+                "to": 99
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -199,
+                "result": {
+                  "index": 1,
+                  "text": "-0.1k"
+                },
+                "to": -99
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -299,
+                "result": {
+                  "index": 2,
+                  "text": "-0.2k"
+                },
+                "to": -199
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -399,
+                "result": {
+                  "index": 3,
+                  "text": "-0.3k"
+                },
+                "to": -299
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -499,
+                "result": {
+                  "index": 4,
+                  "text": "-0.4k"
+                },
+                "to": -399
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -599,
+                "result": {
+                  "index": 5,
+                  "text": "-0.5k"
+                },
+                "to": -499
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -699,
+                "result": {
+                  "index": 6,
+                  "text": "-0.6k"
+                },
+                "to": -599
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -799,
+                "result": {
+                  "index": 7,
+                  "text": "-0.7k"
+                },
+                "to": -699
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -899,
+                "result": {
+                  "index": 8,
+                  "text": "-0.8k"
+                },
+                "to": -799
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -999,
+                "result": {
+                  "index": 9,
+                  "text": "-0.9k"
+                },
+                "to": -899
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 99,
+                "result": {
+                  "index": 10,
+                  "text": "0.1k"
+                },
+                "to": 199
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 199,
+                "result": {
+                  "index": 11,
+                  "text": "0.2k"
+                },
+                "to": 299
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 299,
+                "result": {
+                  "index": 12,
+                  "text": "0.3k"
+                },
+                "to": 399
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 399,
+                "result": {
+                  "index": 13,
+                  "text": "0.4k"
+                },
+                "to": 499
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 499,
+                "result": {
+                  "index": 14,
+                  "text": "0.5k"
+                },
+                "to": 599
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 599,
+                "result": {
+                  "index": 15,
+                  "text": "0.6k"
+                },
+                "to": 699
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 699,
+                "result": {
+                  "index": 16,
+                  "text": "0.7k"
+                },
+                "to": 799
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 799,
+                "result": {
+                  "index": 17,
+                  "text": "0.8k"
+                },
+                "to": 899
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 899,
+                "result": {
+                  "index": 18,
+                  "text": "0.9k"
+                },
+                "to": 999
+              },
+              "type": "range"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-red",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": -10000
+              },
+              {
+                "color": "super-light-red",
+                "value": -5000
+              },
+              {
+                "color": "#00000000",
+                "value": -1000
+              },
+              {
+                "color": "light-green",
+                "value": 1000
+              },
+              {
+                "color": "green",
+                "value": 5000
+              },
+              {
+                "color": "#71a86a",
+                "value": 10000
+              },
+              {
+                "color": "dark-green",
+                "value": 50000
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 16,
+        "w": 6,
+        "x": 0,
+        "y": 12
+      },
+      "id": 8,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background_solid",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 12,
+          "valueSize": 20
+        },
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "_NkF9laVk"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "label"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "level"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "acct_lvl_daily_pnl",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT last(\"pnl\") FROM \"default\".\"acct_lvl_daily_pnl\" \nWHERE (\"level\" =~ /^$level$/ AND \"label\"=~ /^$label$/ AND \"pnl\" != 0) \nAND $timeFilter \nGROUP BY time($__interval), \"label\", \"level\" fill(none)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "pnl"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "level",
+              "operator": "=~",
+              "value": "/^$level$/"
+            },
+            {
+              "condition": "AND",
+              "key": "label",
+              "operator": "=~",
+              "value": "/^$label$/"
+            },
+            {
+              "condition": "AND",
+              "key": "pnl",
+              "operator": "!=",
+              "value": "0"
+            }
+          ]
+        }
+      ],
+      "title": "Daily PnL by Mimid Account Level ${level}",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "_NkF9laVk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 16,
+        "w": 18,
+        "x": 6,
+        "y": 12
+      },
+      "id": 3,
+      "interval": "1m",
+      "maxDataPoints": 1440,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "desc"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "_NkF9laVk"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "label"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "level"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "acct_lvl_daily_pnl",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"Mimid_PnLStatsTestNew\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"acct_lvl_daily_pnl\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"pnl\")\r\n  |> filter(fn: (r) => r[\"level\"] == \"${level}\")\r\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)  \r\n  |> yield(name: \"last\")",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "pnl"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "label",
+              "operator": "=~",
+              "value": "/^$label$/"
+            },
+            {
+              "condition": "AND",
+              "key": "level",
+              "operator": "=~",
+              "value": "/^$level$/"
+            },
+            {
+              "condition": "AND",
+              "key": "label::tag",
+              "operator": "=~",
+              "value": "/^$label$/"
+            }
+          ]
+        }
+      ],
+      "title": "Daily PnL by Mimid Account Level ${level}",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "_NkF9laVk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 1,
+          "displayName": "${__field.labels.label}",
+          "mappings": [
+            {
+              "options": {
+                "from": -99,
+                "result": {
+                  "index": 0,
+                  "text": "0.0k"
+                },
+                "to": 99
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -199,
+                "result": {
+                  "index": 1,
+                  "text": "-0.1k"
+                },
+                "to": -99
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -299,
+                "result": {
+                  "index": 2,
+                  "text": "-0.2k"
+                },
+                "to": -199
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -399,
+                "result": {
+                  "index": 3,
+                  "text": "-0.3k"
+                },
+                "to": -299
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -499,
+                "result": {
+                  "index": 4,
+                  "text": "-0.4k"
+                },
+                "to": -399
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -599,
+                "result": {
+                  "index": 5,
+                  "text": "-0.5k"
+                },
+                "to": -499
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -699,
+                "result": {
+                  "index": 6,
+                  "text": "-0.6k"
+                },
+                "to": -599
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -799,
+                "result": {
+                  "index": 7,
+                  "text": "-0.7k"
+                },
+                "to": -699
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -899,
+                "result": {
+                  "index": 8,
+                  "text": "-0.8k"
+                },
+                "to": -799
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -999,
+                "result": {
+                  "index": 9,
+                  "text": "-0.9k"
+                },
+                "to": -899
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 99,
+                "result": {
+                  "index": 10,
+                  "text": "0.1k"
+                },
+                "to": 199
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 199,
+                "result": {
+                  "index": 11,
+                  "text": "0.2k"
+                },
+                "to": 299
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 299,
+                "result": {
+                  "index": 12,
+                  "text": "0.3k"
+                },
+                "to": 399
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 399,
+                "result": {
+                  "index": 13,
+                  "text": "0.4k"
+                },
+                "to": 499
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 499,
+                "result": {
+                  "index": 14,
+                  "text": "0.5k"
+                },
+                "to": 599
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 599,
+                "result": {
+                  "index": 15,
+                  "text": "0.6k"
+                },
+                "to": 699
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 699,
+                "result": {
+                  "index": 16,
+                  "text": "0.7k"
+                },
+                "to": 799
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 799,
+                "result": {
+                  "index": 17,
+                  "text": "0.8k"
+                },
+                "to": 899
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 899,
+                "result": {
+                  "index": 18,
+                  "text": "0.9k"
+                },
+                "to": 999
+              },
+              "type": "range"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#000000",
+                "value": null
+              },
+              {
+                "color": "#363636",
+                "value": 10000000
+              },
+              {
+                "color": "#626262",
+                "value": 100000000
+              },
+              {
+                "color": "#c1c1c1",
+                "value": 250000000
+              },
+              {
+                "color": "#ffffff",
+                "value": 500000000
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 16,
+        "w": 6,
+        "x": 0,
+        "y": 28
+      },
+      "id": 9,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background_solid",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 12,
+          "valueSize": 20
+        },
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "_NkF9laVk"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "label"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "level"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "acct_lvl_daily_trade_vol",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT last(\"trade_vol\") FROM \"default\".\"acct_lvl_daily_trade_vol\" WHERE (\"level\" =~ /^$level$/ AND \"label\" =~ /^$label$/ AND abs(\"trade_vol\") > 0) AND $timeFilter GROUP BY time($__interval), \"label\", \"level\" fill(none)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "trade_vol"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "level",
+              "operator": "=~",
+              "value": "/^$level$/"
+            },
+            {
+              "condition": "AND",
+              "key": "label",
+              "operator": "=~",
+              "value": "/^$label$/"
+            },
+            {
+              "condition": "AND",
+              "key": "trade_vol::field",
+              "operator": ">",
+              "value": "0"
+            }
+          ]
+        }
+      ],
+      "title": "Daily Trade Volume by Mimid Account Level ${level}",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "_NkF9laVk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 16,
+        "w": 18,
+        "x": 6,
+        "y": 28
+      },
+      "id": 6,
+      "interval": "1m",
+      "maxDataPoints": 1440,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "_NkF9laVk"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "label"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "level"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "acct_lvl_daily_trade_vol",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"Mimid_PnLStatsTestNew\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"acct_lvl_daily_trade_vol\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"trade_vol\")\r\n  |> filter(fn: (r) => r[\"level\"] == \"${level}\")\r\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)  \r\n  |> yield(name: \"last\")",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "trade_vol"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "label",
+              "operator": "=~",
+              "value": "/^$label$/"
+            },
+            {
+              "condition": "AND",
+              "key": "level",
+              "operator": "=~",
+              "value": "/^$level$/"
+            },
+            {
+              "condition": "AND",
+              "key": "label::tag",
+              "operator": "=~",
+              "value": "/^$label$/"
+            }
+          ]
+        }
+      ],
+      "title": "Daily Trade Volume by Mimid Account Level ${level}",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "_NkF9laVk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 1,
+          "displayName": "${__field.labels.label}",
+          "mappings": [
+            {
+              "options": {
+                "from": -99,
+                "result": {
+                  "index": 0,
+                  "text": "0.0k"
+                },
+                "to": 99
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -199,
+                "result": {
+                  "index": 1,
+                  "text": "-0.1k"
+                },
+                "to": -99
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -299,
+                "result": {
+                  "index": 2,
+                  "text": "-0.2k"
+                },
+                "to": -199
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -399,
+                "result": {
+                  "index": 3,
+                  "text": "-0.3k"
+                },
+                "to": -299
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -499,
+                "result": {
+                  "index": 4,
+                  "text": "-0.4k"
+                },
+                "to": -399
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -599,
+                "result": {
+                  "index": 5,
+                  "text": "-0.5k"
+                },
+                "to": -499
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -699,
+                "result": {
+                  "index": 6,
+                  "text": "-0.6k"
+                },
+                "to": -599
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -799,
+                "result": {
+                  "index": 7,
+                  "text": "-0.7k"
+                },
+                "to": -699
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -899,
+                "result": {
+                  "index": 8,
+                  "text": "-0.8k"
+                },
+                "to": -799
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -999,
+                "result": {
+                  "index": 9,
+                  "text": "-0.9k"
+                },
+                "to": -899
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 99,
+                "result": {
+                  "index": 10,
+                  "text": "0.1k"
+                },
+                "to": 199
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 199,
+                "result": {
+                  "index": 11,
+                  "text": "0.2k"
+                },
+                "to": 299
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 299,
+                "result": {
+                  "index": 12,
+                  "text": "0.3k"
+                },
+                "to": 399
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 399,
+                "result": {
+                  "index": 13,
+                  "text": "0.4k"
+                },
+                "to": 499
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 499,
+                "result": {
+                  "index": 14,
+                  "text": "0.5k"
+                },
+                "to": 599
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 599,
+                "result": {
+                  "index": 15,
+                  "text": "0.6k"
+                },
+                "to": 699
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 699,
+                "result": {
+                  "index": 16,
+                  "text": "0.7k"
+                },
+                "to": 799
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 799,
+                "result": {
+                  "index": 17,
+                  "text": "0.8k"
+                },
+                "to": 899
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 899,
+                "result": {
+                  "index": 18,
+                  "text": "0.9k"
+                },
+                "to": 999
+              },
+              "type": "range"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-orange"
+              },
+              {
+                "color": "semi-dark-orange",
+                "value": -2000000
+              },
+              {
+                "color": "orange",
+                "value": -1000000
+              },
+              {
+                "color": "light-orange",
+                "value": -500000
+              },
+              {
+                "color": "super-light-orange",
+                "value": -250000
+              },
+              {
+                "color": "#515151",
+                "value": -100000
+              },
+              {
+                "color": "super-light-blue",
+                "value": 100000
+              },
+              {
+                "color": "light-blue",
+                "value": 250000
+              },
+              {
+                "color": "blue",
+                "value": 500000
+              },
+              {
+                "color": "semi-dark-blue",
+                "value": 1000000
+              },
+              {
+                "color": "dark-blue",
+                "value": 2000000
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 6,
+        "x": 0,
+        "y": 44
+      },
+      "id": 10,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background_solid",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 12,
+          "valueSize": 20
+        },
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "_NkF9laVk"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "label"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "level"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "acct_lvl_grp_risk",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"Mimid_PnLStatsTestNew\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"acct_lvl_grp_risk\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"grp_risk\")\r\n  |> filter(fn: (r) => r[\"level\"] == \"${level}\")\r\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "grp_risk"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "level",
+              "operator": "=~",
+              "value": "/^$level$/"
+            },
+            {
+              "condition": "AND",
+              "key": "label",
+              "operator": "=~",
+              "value": "/^$label$/"
+            }
+          ]
+        }
+      ],
+      "title": "Notional Risk by Mimid Account Level ${level}",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "_NkF9laVk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 18,
+        "x": 6,
+        "y": 44
+      },
+      "id": 5,
+      "interval": "1m",
+      "maxDataPoints": 1440,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "_NkF9laVk"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "label"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "level"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "acct_lvl_grp_risk",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"Mimid_PnLStatsTestNew\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"acct_lvl_grp_risk\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"grp_risk\")\r\n  |> filter(fn: (r) => r[\"level\"] == \"${level}\")\r\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)  \r\n  |> yield(name: \"last\")",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "grp_risk"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "label",
+              "operator": "=~",
+              "value": "/^$label$/"
+            },
+            {
+              "condition": "AND",
+              "key": "level",
+              "operator": "=~",
+              "value": "/^$level$/"
+            }
+          ]
+        }
+      ],
+      "title": "Notional Risk by Mimid Account Level ${level}",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "_NkF9laVk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 1,
+          "displayName": "${__field.labels.label}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#F2495C"
+              },
+              {
+                "color": "#4c4636",
+                "value": -50
+              },
+              {
+                "color": "green",
+                "value": 50
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 6,
+        "x": 0,
+        "y": 61
+      },
+      "id": 18,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 12,
+          "valueSize": 20
+        },
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "_NkF9laVk"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "label"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "level"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "acct_lvl_daily_pnl_trade_vol_ratio",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"Mimid_PnLStatsTestNew\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"acct_lvl_grp_risk\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"grp_risk\")\r\n  |> filter(fn: (r) => contains(value: r[\"level\"], set: ${level:json}))\r\n  |> filter(fn: (r) => contains(value: r[\"label\"], set: ${label:json}))\r\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "pnl_trade_vol_ratio"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "level",
+              "operator": "=~",
+              "value": "/^$level$/"
+            },
+            {
+              "condition": "AND",
+              "key": "label",
+              "operator": "=~",
+              "value": "/^$label$/"
+            }
+          ]
+        }
+      ],
+      "title": "PPM by Mimid Account Level ${level}",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "_NkF9laVk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 18,
+        "x": 6,
+        "y": 61
+      },
+      "id": 20,
+      "interval": "1m",
+      "maxDataPoints": 1440,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "_NkF9laVk"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "label"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "level"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "measurement": "acct_lvl_daily_pnl_trade_vol_ratio",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"Mimid_PnLStatsTestNew\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"acct_lvl_grp_risk\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"grp_risk\")\r\n  |> filter(fn: (r) => contains(value: r[\"level\"], set: ${level:json}))\r\n  |> filter(fn: (r) => contains(value: r[\"label\"], set: ${label:json}))\r\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)  \r\n  |> yield(name: \"last\")",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "pnl_trade_vol_ratio"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "label",
+              "operator": "=~",
+              "value": "/^$label$/"
+            },
+            {
+              "condition": "AND",
+              "key": "level",
+              "operator": "=~",
+              "value": "/^$level$/"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "name": "Expression",
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "($A > 1000) * (1000 - $A) + $A + ($A < -1000) * (-1000 - $A)",
+          "hide": false,
+          "refId": "cappedPPM",
+          "type": "math"
+        }
+      ],
+      "title": "PPM by Mimid Account Level ${level}",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": [
+            "1"
+          ],
+          "value": [
+            "1"
+          ]
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "_NkF9laVk"
+        },
+        "definition": "SHOW TAG VALUES WITH KEY IN (\"level\")",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Mimid Account Level",
+        "multi": true,
+        "name": "level",
+        "options": [],
+        "query": "SHOW TAG VALUES WITH KEY IN (\"level\")",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "hide": 0,
+        "label": "Label Start Filter",
+        "name": "include",
+        "options": [
+          {
+            "selected": true,
+            "text": "",
+            "value": ""
+          }
+        ],
+        "query": "",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "FAKE",
+            "STAGE--BINANCEDM-UM"
+          ],
+          "value": [
+            "FAKE",
+            "STAGE--BINANCEDM-UM"
+          ]
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "_NkF9laVk"
+        },
+        "definition": "SHOW TAG VALUES WITH KEY = \"label\"",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Exclude Labels",
+        "multi": true,
+        "name": "exclude",
+        "options": [],
+        "query": "SHOW TAG VALUES WITH KEY = \"label\"",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "_NkF9laVk"
+        },
+        "definition": "SHOW TAG VALUES WITH KEY = \"label\" WHERE \"level\" =~ /^$level$/ AND \"label\" =~ /^$include.*/ AND \"label\" !~ /^$exclude.*/",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Mimid Label",
+        "multi": true,
+        "name": "label",
+        "options": [],
+        "query": "SHOW TAG VALUES WITH KEY = \"label\" WHERE \"level\" =~ /^$level$/ AND \"label\" =~ /^$include.*/ AND \"label\" !~ /^$exclude.*/",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now/d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "utc",
+  "title": "Crypto-Account-Level-Tracking",
+  "uid": "cicd-oUjj9no4p",
+  "weekStart": ""
+}

@@ -1,0 +1,4011 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "TA-TKY-A-03_LOCAL fh_binance_glaze BTC/USDT INCREMENTAL_ORDERBOOK_UPDATE"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "lastNotNull",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "alias": "$tag_hostname $tag_app_name $tag_instrument $tag_msg_type",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdz8c9d9vaozkd"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "msg_type::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "hostname::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "fh_json_full_cycle_ns",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT max(\"max\") FROM \"autogen\".\"fh_json_full_cycle_ns\" WHERE (\"app_name\"::tag =~ /^$app_name$/ AND \"instrument\"::tag =~ /^$symbol$/ AND \"msg_type\"::tag =~ /^$msg_type$/) AND $timeFilter GROUP BY time($__interval), \"app_name\"::tag, \"instrument\"::tag, \"msg_type\"::tag fill(null)",
+          "rawQuery": false,
+          "refId": "A1",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app_name::tag",
+              "operator": "=~",
+              "value": "/^$app_name$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "msg_type::tag",
+              "operator": "=~",
+              "value": "/^$msg_type$/"
+            },
+            {
+              "condition": "AND",
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$Host$/"
+            }
+          ]
+        }
+      ],
+      "title": "JSON Full Cycle Latency - Msg Processing Time",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 14
+      },
+      "id": 24,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "lastNotNull",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Name",
+          "sortDesc": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "alias": "deque_sz $tag_hostname $tag_app_name $tag_instrument",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdz8c9d9vaozkd"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "hostname::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "tail_delete_book_deleted_levels_deque_sz",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"max\" FROM \"autogen\".\"fh_book_update_delta_ns\" WHERE (\"app_name\"::tag =~ /^$app_name$/ AND \"msg_type\"::tag =~ /^$msg_type$/ AND \"instrument\"::tag =~ /^$symbol$/) AND $timeFilter GROUP BY \"app_name\"::tag, \"msg_type\"::tag, \"instrument\"::tag",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app_name::tag",
+              "operator": "=~",
+              "value": "/^$app_name$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$Host$/"
+            }
+          ]
+        },
+        {
+          "alias": "map_sz $tag_hostname $tag_app_name $tag_instrument",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdz8c9d9vaozkd"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "hostname::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "tail_delete_book_deleted_levels_sz",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"max\" FROM \"autogen\".\"fh_book_update_delta_ns\" WHERE (\"app_name\"::tag =~ /^$app_name$/ AND \"msg_type\"::tag =~ /^$msg_type$/ AND \"instrument\"::tag =~ /^$symbol$/) AND $timeFilter GROUP BY \"app_name\"::tag, \"msg_type\"::tag, \"instrument\"::tag",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app_name::tag",
+              "operator": "=~",
+              "value": "/^$app_name$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$Host$/"
+            }
+          ]
+        },
+        {
+          "alias": "book_sz $tag_hostname $tag_app_name $tag_instrument",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdz8c9d9vaozkd"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "hostname::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "l2book_num_lvls",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"max\" FROM \"autogen\".\"fh_book_update_delta_ns\" WHERE (\"app_name\"::tag =~ /^$app_name$/ AND \"msg_type\"::tag =~ /^$msg_type$/ AND \"instrument\"::tag =~ /^$symbol$/) AND $timeFilter GROUP BY \"app_name\"::tag, \"msg_type\"::tag, \"instrument\"::tag",
+          "rawQuery": false,
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app_name::tag",
+              "operator": "=~",
+              "value": "/^$app_name$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$Host$/"
+            }
+          ]
+        }
+      ],
+      "title": "Tail delete book stats",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "TA-TKY-A-03_LOCAL fh_binance_glaze BTC/USDT INCREMENTAL_ORDERBOOK_UPDATE"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 28
+      },
+      "id": 23,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "lastNotNull",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Name",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "alias": "$tag_hostname $tag_app_name $tag_instrument $tag_msg_type",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdz8c9d9vaozkd"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "msg_type::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "hostname::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "fh_json_full_cycle_exclude_book_update_ns",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT max(\"max\") FROM \"autogen\".\"fh_json_full_cycle_ns\" WHERE (\"app_name\"::tag =~ /^$app_name$/ AND \"instrument\"::tag =~ /^$symbol$/ AND \"msg_type\"::tag =~ /^$msg_type$/) AND $timeFilter GROUP BY time($__interval), \"app_name\"::tag, \"instrument\"::tag, \"msg_type\"::tag fill(null)",
+          "rawQuery": false,
+          "refId": "A1",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app_name::tag",
+              "operator": "=~",
+              "value": "/^$app_name$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "msg_type::tag",
+              "operator": "=~",
+              "value": "/^$msg_type$/"
+            },
+            {
+              "condition": "AND",
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$Host$/"
+            }
+          ]
+        }
+      ],
+      "title": "JSON Full Cycle Exclude Book Update (i.e. FH receive -> FH publish delta)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 40
+      },
+      "id": 18,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "lastNotNull",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Name",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "alias": "$tag_hostname $tag_app_name $tag_msg_type",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdz8c9d9vaozkd"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "msg_type::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "hostname::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "lws_process_ns",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"max\" FROM \"autogen\".\"fh_book_update_delta_ns\" WHERE (\"app_name\"::tag =~ /^$app_name$/ AND \"msg_type\"::tag =~ /^$msg_type$/ AND \"instrument\"::tag =~ /^$symbol$/) AND $timeFilter GROUP BY \"app_name\"::tag, \"msg_type\"::tag, \"instrument\"::tag",
+          "rawQuery": false,
+          "refId": "A1",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app_name::tag",
+              "operator": "=~",
+              "value": "/^$app_name$/"
+            },
+            {
+              "condition": "AND",
+              "key": "msg_type::tag",
+              "operator": "=~",
+              "value": "/^$msg_type$/"
+            },
+            {
+              "condition": "AND",
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$Host$/"
+            }
+          ]
+        }
+      ],
+      "title": "FH lws Process Time",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 54
+      },
+      "id": 9,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "lastNotNull",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "alias": "$tag_hostname $tag_app_name $tag_instrument $tag_msg_type",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdz8c9d9vaozkd"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "msg_type::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "hostname::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "fh_json_full_cycle_ns",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT max(\"max\") FROM \"autogen\".\"fh_json_full_cycle_ns\" WHERE (\"app_name\"::tag =~ /^$app_name$/ AND \"instrument\"::tag =~ /^$symbol$/ AND \"msg_type\"::tag =~ /^$msg_type$/) AND $timeFilter GROUP BY time($__interval), \"app_name\"::tag, \"instrument\"::tag, \"msg_type\"::tag fill(null)",
+          "rawQuery": false,
+          "refId": "A1",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "count"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app_name::tag",
+              "operator": "=~",
+              "value": "/^$app_name$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "msg_type::tag",
+              "operator": "=~",
+              "value": "/^$msg_type$/"
+            },
+            {
+              "condition": "AND",
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$Host$/"
+            }
+          ]
+        }
+      ],
+      "title": "JSON Full Cycle Count - Msg Processing Time",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 68
+      },
+      "id": 17,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "lastNotNull",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "alias": "$tag_hostname $tag_app_name $tag_instrument $tag_msg_type",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdz8c9d9vaozkd"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "msg_type::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "hostname::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "fh_exch_to_recv_ns",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT max(\"max\") FROM \"autogen\".\"fh_recv_to_publish_ns\" WHERE (\"app_name\"::tag = 'bullish_fh_0_TA-SGP-C-14' AND \"instrument\"::tag = 'BTC/USDT' AND \"msg_type\"::tag = 'BBO_UPDATE') AND $timeFilter GROUP BY time(1s) fill(none)",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app_name::tag",
+              "operator": "=~",
+              "value": "/^$app_name$/"
+            },
+            {
+              "condition": "AND",
+              "key": "msg_type::tag",
+              "operator": "=~",
+              "value": "/^$msg_type$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$Host$/"
+            }
+          ]
+        }
+      ],
+      "title": "Exchange to FH Receive",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 82
+      },
+      "id": 22,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "lastNotNull",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Name",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "alias": "$tag_hostname $tag_app_name $tag_instrument $tag_msg_type",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdz8c9d9vaozkd"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "msg_type::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "hostname::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "fh_exch_internal_latency_ms",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT max(\"max\") FROM \"autogen\".\"fh_recv_to_publish_ns\" WHERE (\"app_name\"::tag = 'bullish_fh_0_TA-SGP-C-14' AND \"instrument\"::tag = 'BTC/USDT' AND \"msg_type\"::tag = 'BBO_UPDATE') AND $timeFilter GROUP BY time(1s) fill(none)",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app_name::tag",
+              "operator": "=~",
+              "value": "/^$app_name$/"
+            },
+            {
+              "condition": "AND",
+              "key": "msg_type::tag",
+              "operator": "=~",
+              "value": "/^$msg_type$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$Host$/"
+            }
+          ]
+        }
+      ],
+      "title": "Exchange Internal Latency",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 96
+      },
+      "id": 19,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "lastNotNull",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "alias": "$tag_hostname $tag_app_name",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdz8c9d9vaozkd"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "hostname::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "timer_latency",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"max\" FROM \"autogen\".\"fh_book_update_delta_ns\" WHERE (\"app_name\"::tag =~ /^$app_name$/ AND \"msg_type\"::tag =~ /^$msg_type$/ AND \"instrument\"::tag =~ /^$symbol$/) AND $timeFilter GROUP BY \"app_name\"::tag, \"msg_type\"::tag, \"instrument\"::tag",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app_name::tag",
+              "operator": "=~",
+              "value": "/^$app_name$/"
+            },
+            {
+              "condition": "AND",
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$Host$/"
+            }
+          ]
+        }
+      ],
+      "title": "FH Timer Latency",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 110
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "lastNotNull",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "alias": "$tag_hostname $tag_app_name $tag_msg_type",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdz8c9d9vaozkd"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "msg_type::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "hostname::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "fh_recv_to_publish_ns",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT max(\"max\") FROM \"autogen\".\"fh_recv_to_publish_ns\" WHERE (\"app_name\"::tag = 'bullish_fh_0_TA-SGP-C-14' AND \"instrument\"::tag = 'BTC/USDT' AND \"msg_type\"::tag = 'BBO_UPDATE') AND $timeFilter GROUP BY time(1s) fill(none)",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "median"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app_name::tag",
+              "operator": "=~",
+              "value": "/^$app_name$/"
+            },
+            {
+              "condition": "AND",
+              "key": "msg_type::tag",
+              "operator": "=~",
+              "value": "/^$msg_type$/"
+            },
+            {
+              "condition": "AND",
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$Host$/"
+            }
+          ]
+        }
+      ],
+      "title": "FH Recv to Packet Send Latency - Feed Handler Delay",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 124
+      },
+      "id": 6,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "lastNotNull",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "alias": "$tag_hostname $tag_app_name $tag_instrument $tag_msg_type",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdz8c9d9vaozkd"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "msg_type::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "hostname::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "fh_book_update_delta_ns",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"max\" FROM \"autogen\".\"fh_book_update_delta_ns\" WHERE (\"app_name\"::tag =~ /^$app_name$/ AND \"msg_type\"::tag =~ /^$msg_type$/ AND \"instrument\"::tag =~ /^$symbol$/) AND $timeFilter GROUP BY \"app_name\"::tag, \"msg_type\"::tag, \"instrument\"::tag",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app_name::tag",
+              "operator": "=~",
+              "value": "/^$app_name$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$Host$/"
+            }
+          ]
+        }
+      ],
+      "title": "FH Book Update Time",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": true,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 138
+      },
+      "id": 13,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "lastNotNull",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "alias": "$tag_hostname $tag_app_name $tag_instrument",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdz8c9d9vaozkd"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "hostname::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "l2book_on_update_ns",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"max\" FROM \"autogen\".\"fh_book_update_delta_ns\" WHERE (\"app_name\"::tag =~ /^$app_name$/ AND \"msg_type\"::tag =~ /^$msg_type$/ AND \"instrument\"::tag =~ /^$symbol$/) AND $timeFilter GROUP BY \"app_name\"::tag, \"msg_type\"::tag, \"instrument\"::tag",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app_name::tag",
+              "operator": "=~",
+              "value": "/^$app_name$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$Host$/"
+            }
+          ]
+        }
+      ],
+      "title": "L2book On Update Time - Time taken by on_update function",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 152
+      },
+      "id": 14,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "lastNotNull",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "alias": "$tag_hostname $tag_app_name $tag_instrument",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdz8c9d9vaozkd"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "hostname::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "l2book_pub_full_snap_ns",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"max\" FROM \"autogen\".\"fh_book_update_delta_ns\" WHERE (\"app_name\"::tag =~ /^$app_name$/ AND \"msg_type\"::tag =~ /^$msg_type$/ AND \"instrument\"::tag =~ /^$symbol$/) AND $timeFilter GROUP BY \"app_name\"::tag, \"msg_type\"::tag, \"instrument\"::tag",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app_name::tag",
+              "operator": "=~",
+              "value": "/^$app_name$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$Host$/"
+            }
+          ]
+        }
+      ],
+      "title": "L2book Publish Full Snapshot Time - Time taken by publish_full_snapshot function",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 166
+      },
+      "id": 15,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "lastNotNull",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "alias": "$tag_hostname $tag_app_name $tag_instrument",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdz8c9d9vaozkd"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "hostname::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "l2book_num_lvls",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"max\" FROM \"autogen\".\"fh_book_update_delta_ns\" WHERE (\"app_name\"::tag =~ /^$app_name$/ AND \"msg_type\"::tag =~ /^$msg_type$/ AND \"instrument\"::tag =~ /^$symbol$/) AND $timeFilter GROUP BY \"app_name\"::tag, \"msg_type\"::tag, \"instrument\"::tag",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app_name::tag",
+              "operator": "=~",
+              "value": "/^$app_name$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$Host$/"
+            }
+          ]
+        }
+      ],
+      "title": "L2book Num Lvls",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "bybitdm_fh_2_SGP-C-17 undefined"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 180
+      },
+      "id": 20,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "lastNotNull",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "alias": "$tag_hostname $tag_app_name $tag_instrument",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdz8c9d9vaozkd"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "hostname::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "total_connected",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"max\" FROM \"autogen\".\"fh_book_update_delta_ns\" WHERE (\"app_name\"::tag =~ /^$app_name$/ AND \"msg_type\"::tag =~ /^$msg_type$/ AND \"instrument\"::tag =~ /^$symbol$/) AND $timeFilter GROUP BY \"app_name\"::tag, \"msg_type\"::tag, \"instrument\"::tag",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app_name::tag",
+              "operator": "=~",
+              "value": "/^$app_name$/"
+            },
+            {
+              "condition": "AND",
+              "key": "hostname::tag",
+              "operator": "=",
+              "value": "select tag value"
+            }
+          ]
+        }
+      ],
+      "title": "WS Open connections",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "bybitdm_fh_2_SGP-C-17 undefined"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 190
+      },
+      "id": 21,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "lastNotNull",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "alias": "$tag_app_name $tag_instrument",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdz8c9d9vaozkd"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "max::field"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "num_all_disconnects",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"max\" FROM \"autogen\".\"fh_book_update_delta_ns\" WHERE (\"app_name\"::tag =~ /^$app_name$/ AND \"msg_type\"::tag =~ /^$msg_type$/ AND \"instrument\"::tag =~ /^$symbol$/) AND $timeFilter GROUP BY \"app_name\"::tag, \"msg_type\"::tag, \"instrument\"::tag",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app_name::tag",
+              "operator": "=~",
+              "value": "/^$app_name$/"
+            }
+          ]
+        }
+      ],
+      "title": "Num Symbols All WS sessions disconnected",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 200
+      },
+      "id": 16,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "lastNotNull",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "alias": "$tag_hostname $tag_app_name $tag_instrument",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdz8c9d9vaozkd"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "hostname::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "l2book_update_num_lvls",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"max\" FROM \"autogen\".\"fh_book_update_delta_ns\" WHERE (\"app_name\"::tag =~ /^$app_name$/ AND \"msg_type\"::tag =~ /^$msg_type$/ AND \"instrument\"::tag =~ /^$symbol$/) AND $timeFilter GROUP BY \"app_name\"::tag, \"msg_type\"::tag, \"instrument\"::tag",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app_name::tag",
+              "operator": "=~",
+              "value": "/^$app_name$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$Host$/"
+            }
+          ]
+        }
+      ],
+      "title": "L2book Update Num Lvls",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 214
+      },
+      "id": 7,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "lastNotNull",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "alias": "$tag_hostname $col $tag_app_name",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdz8c9d9vaozkd"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "hostname::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "fh_cycle_dist_ns",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"max\" FROM \"autogen\".\"fh_cycle_dist_ns\" WHERE (\"app_name\"::tag =~ /^$app_name$/) AND $timeFilter GROUP BY \"app_name\"::tag",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              },
+              {
+                "params": [
+                  "Max"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "min"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              },
+              {
+                "params": [
+                  "Min"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app_name::tag",
+              "operator": "=~",
+              "value": "/^$app_name$/"
+            },
+            {
+              "condition": "AND",
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$Host$/"
+            }
+          ]
+        }
+      ],
+      "title": "FH Last Recv to Recv - Time between Json msgs",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 228
+      },
+      "id": 4,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "lastNotNull",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "alias": "$tag_hostname $tag_app_name $tag_instrument $tag_msg_type",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdz8c9d9vaozkd"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "msg_type::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "hostname::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "fh_json_sz",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"max\" FROM \"autogen\".\"fh_json_sz\" WHERE (\"app_name\"::tag =~ /^$app_name$/ AND \"msg_type\"::tag =~ /^$msg_type$/ AND \"instrument\"::tag =~ /^$symbol$/) AND $timeFilter GROUP BY \"app_name\"::tag, \"msg_type\"::tag, \"instrument\"::tag",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app_name::tag",
+              "operator": "=~",
+              "value": "/^$app_name$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "msg_type::tag",
+              "operator": "=~",
+              "value": "/^$msg_type$/"
+            },
+            {
+              "condition": "AND",
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$Host$/"
+            }
+          ]
+        }
+      ],
+      "title": "JSON Size",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 242
+      },
+      "id": 5,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "lastNotNull",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "maxWidth": -5,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "alias": "$tag_hostname $tag_app_name $tag_instrument $tag_msg_type",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdz8c9d9vaozkd"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "msg_type::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "hostname::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "fh_packet_sz",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"max\" FROM \"autogen\".\"fh_packet_sz\" WHERE (\"app_name\"::tag =~ /^$app_name$/ AND \"msg_type\"::tag =~ /^$msg_type$/ AND \"instrument\"::tag =~ /^$symbol$/) AND $timeFilter GROUP BY \"app_name\"::tag, \"msg_type\"::tag, \"instrument\"::tag",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app_name::tag",
+              "operator": "=~",
+              "value": "/^$app_name$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "msg_type::tag",
+              "operator": "=~",
+              "value": "/^$msg_type$/"
+            },
+            {
+              "condition": "AND",
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$Host$/"
+            }
+          ]
+        }
+      ],
+      "title": "Packet Size - Size of internal Binary Msg put on FH ring channel",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 256
+      },
+      "id": 8,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "lastNotNull",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.0",
+      "targets": [
+        {
+          "alias": "$tag_hostname $tag_app_name $tag_instrument $tag_msg_type",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdz8c9d9vaozkd"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "app_name::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "instrument::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "msg_type::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "hostname::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "0"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "fh_packet_sz",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"max\" FROM \"autogen\".\"fh_packet_sz\" WHERE (\"app_name\"::tag =~ /^$app_name$/ AND \"msg_type\"::tag =~ /^$msg_type$/ AND \"instrument\"::tag =~ /^$symbol$/) AND $timeFilter GROUP BY \"app_name\"::tag, \"msg_type\"::tag, \"instrument\"::tag",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "count"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app_name::tag",
+              "operator": "=~",
+              "value": "/^$app_name$/"
+            },
+            {
+              "condition": "AND",
+              "key": "instrument::tag",
+              "operator": "=~",
+              "value": "/^$symbol$/"
+            },
+            {
+              "condition": "AND",
+              "key": "msg_type::tag",
+              "operator": "=~",
+              "value": "/^$msg_type$/"
+            },
+            {
+              "condition": "AND",
+              "key": "hostname::tag",
+              "operator": "=~",
+              "value": "/^$Host$/"
+            }
+          ]
+        }
+      ],
+      "title": "Packet Size - Count of internal Binary Msg put on FH ring channel",
+      "type": "timeseries"
+    }
+  ],
+  "schemaVersion": 39,
+  "tags": [
+    "New InfluxDb for Field Handlers"
+  ],
+  "templating": {
+    "list": [
+      {
+        "allValue": "*",
+        "current": {
+          "selected": true,
+          "text": [
+            "TA-TKY-A-98_LOCAL",
+            "TA-TKY-A-98",
+            "TA-TKY-A-52_LOCAL",
+            "TA-TKY-A-03_LOCAL",
+            "TA-TKY-A-03",
+            "TA-SGP-C-99_LOCAL",
+            "TA-SGP-C-23_LOCAL",
+            "TA-SGP-C-17_LOCAL",
+            "TA-SGP-C-07_LOCAL"
+          ],
+          "value": [
+            "TA-TKY-A-98_LOCAL",
+            "TA-TKY-A-98",
+            "TA-TKY-A-52_LOCAL",
+            "TA-TKY-A-03_LOCAL",
+            "TA-TKY-A-03",
+            "TA-SGP-C-99_LOCAL",
+            "TA-SGP-C-23_LOCAL",
+            "TA-SGP-C-17_LOCAL",
+            "TA-SGP-C-07_LOCAL"
+          ]
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "bdz8c9d9vaozkd"
+        },
+        "definition": "SHOW TAG VALUES ON \"omnia_stats\" FROM \"fh_exch_to_recv_ns\" WITH KEY=\"hostname\"",
+        "hide": 0,
+        "includeAll": true,
+        "multi": true,
+        "name": "Host",
+        "options": [],
+        "query": "SHOW TAG VALUES ON \"omnia_stats\" FROM \"fh_exch_to_recv_ns\" WITH KEY=\"hostname\"",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "bdz8c9d9vaozkd"
+        },
+        "definition": "SHOW TAG VALUES ON \"omnia_stats\" FROM \"fh_json_sz\" WITH KEY=\"app_name\"",
+        "hide": 0,
+        "includeAll": true,
+        "label": "FH Name",
+        "multi": true,
+        "name": "app_name",
+        "options": [],
+        "query": "SHOW TAG VALUES ON \"omnia_stats\" FROM \"fh_json_sz\" WITH KEY=\"app_name\"",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "bdz8c9d9vaozkd"
+        },
+        "definition": "SHOW TAG VALUES  ON \"omnia_stats\" FROM \"fh_json_full_cycle_ns\" WITH KEY=\"instrument\" WHERE \"app_name\" = $app_name",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Symbol",
+        "multi": true,
+        "name": "symbol",
+        "options": [],
+        "query": "SHOW TAG VALUES  ON \"omnia_stats\" FROM \"fh_json_full_cycle_ns\" WITH KEY=\"instrument\" WHERE \"app_name\" = $app_name",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "bdz8c9d9vaozkd"
+        },
+        "definition": "SHOW TAG VALUES  ON \"omnia_stats\" FROM \"fh_json_full_cycle_ns\" WITH KEY=\"msg_type\" WHERE \"app_name\" = $app_name",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Message",
+        "multi": true,
+        "name": "msg_type",
+        "options": [],
+        "query": "SHOW TAG VALUES  ON \"omnia_stats\" FROM \"fh_json_full_cycle_ns\" WITH KEY=\"msg_type\" WHERE \"app_name\" = $app_name",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "2024-10-08T20:09:54.941Z",
+    "to": "2024-10-08T20:11:27.513Z"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "utc",
+  "title": "FH Metrics - fh-stats.selini.tech",
+  "uid": "cicd-adz8c3pf2m4u8e",
+  "weekStart": ""
+}

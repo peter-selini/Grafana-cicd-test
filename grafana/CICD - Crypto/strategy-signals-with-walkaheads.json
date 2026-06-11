@@ -1,0 +1,5890 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisWidth": 60,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "stepAfter",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/BUY A/i"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#0A50A1",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 0
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 8
+              },
+              {
+                "id": "custom.showPoints",
+                "value": "always"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/SELL A/i"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#BF1B00",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 0
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 8
+              },
+              {
+                "id": "custom.showPoints",
+                "value": "always"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/BuyOrder/"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#5195ce",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 0
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 8
+              },
+              {
+                "id": "custom.showPoints",
+                "value": "always"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/SellOrder/i"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#f29191",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 0
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 8
+              },
+              {
+                "id": "custom.showPoints",
+                "value": "always"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/.*/"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/Bid$/"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "light-blue",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/Ask$/"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "light-red",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/BUY/i"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-blue",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 0
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 8
+              },
+              {
+                "id": "custom.showPoints",
+                "value": "always"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/SELL/i"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-red",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 0
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 8
+              },
+              {
+                "id": "custom.showPoints",
+                "value": "always"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/SELL R/i"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#60030e",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 0
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 8
+              },
+              {
+                "id": "custom.showPoints",
+                "value": "always"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/BUY R/i"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#02275f",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 0
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 8
+              },
+              {
+                "id": "custom.showPoints",
+                "value": "always"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/varad_walkahead/"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "left"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "interval": "",
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Name",
+          "sortDesc": false,
+          "width": 400
+        },
+        "timezone": [
+          "browser",
+          "utc"
+        ],
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "alias": "$tag_strategy $col",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "baaf210d-cf36-41ba-b20e-6b1ed067afc9"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "default_signals_retention",
+          "query": "SELECT mean(\"signal\") AS \"Signal\" FROM \"default_signals_retention\".\"StrategySignal\" WHERE (\"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($interval), \"strategy\" fill(none)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "signal"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "Signal"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "BidSignal"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "BidSignal"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "AskSignal"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "AskSignal"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "bid"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "Bid"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "ask"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "Ask"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy $col",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"signal\") AS \"Signal\" FROM \"default_signals_retention\".\"StrategySignal\" WHERE (\"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($interval), \"strategy\" fill(none)",
+          "rawQuery": false,
+          "refId": "A1",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "signal"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "Signal"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "BidSignal"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "BidSIgnal"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "AskSignal"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "AskSignal"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "bid"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "Bid"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "ask"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "Ask"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            },
+            {
+              "condition": "AND",
+              "key": "bid::field",
+              "operator": ">",
+              "value": "0"
+            },
+            {
+              "condition": "AND",
+              "key": "ask::field",
+              "operator": ">",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy BUY $tag_aggressorIndicator",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "baaf210d-cf36-41ba-b20e-6b1ed067afc9"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "aggressorIndicator::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "StrategyFill",
+          "orderByTime": "ASC",
+          "policy": "default_signals_retention",
+          "query": "SELECT max(\"fillPrice\") AS \"BUY\" FROM \"default_signals_retention\".\"StrategyFill\" WHERE (\"strategy\" =~ /^$Strategy$/ AND \"execside\" = 'buy') AND $timeFilter GROUP BY time($interval), \"strategy\", \"aggressorIndicator\"::tag fill(none)",
+          "rawQuery": false,
+          "refId": "Buy",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "fillPrice"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              },
+              {
+                "params": [
+                  "BUY"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            },
+            {
+              "condition": "AND",
+              "key": "execside",
+              "operator": "=",
+              "value": "buy"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy $tag_execside $tag_aggressorIndicator",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "aggressorIndicator::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "execside::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "StrategyFill",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT max(\"fillPrice\") AS \"BUY\" FROM \"default_signals_retention\".\"StrategyFill\" WHERE (\"strategy\" =~ /^$Strategy$/ AND \"execside\" = 'buy') AND $timeFilter GROUP BY time($interval), \"strategy\", \"aggressorIndicator\"::tag fill(none)",
+          "rawQuery": false,
+          "refId": "Buy1",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "fillPrice"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy SELL $tag_aggressorIndicator",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "baaf210d-cf36-41ba-b20e-6b1ed067afc9"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "aggressorIndicator::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "StrategyFill",
+          "orderByTime": "ASC",
+          "policy": "default_signals_retention",
+          "refId": "Sell",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "fillPrice"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            },
+            {
+              "condition": "AND",
+              "key": "execside",
+              "operator": "=",
+              "value": "sell"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy SELL $tag_aggressorIndicator",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "aggressorIndicator::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "measurement": "StrategyFill",
+          "orderByTime": "ASC",
+          "policy": "default_signals_retention",
+          "refId": "Sell1",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "fillPrice"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            },
+            {
+              "condition": "AND",
+              "key": "execside",
+              "operator": "=",
+              "value": "sell"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy BuyOrder",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "baaf210d-cf36-41ba-b20e-6b1ed067afc9"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "measurement": "StrategyOrder",
+          "orderByTime": "ASC",
+          "policy": "default_signals_retention",
+          "query": "SELECT max(\"price\") FROM \"default_signals_retention\".\"StrategyOrder\" WHERE (\"side\" = 'buy' AND \"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($__interval), \"strategy\" fill(none)",
+          "rawQuery": false,
+          "refId": "BuyOrders",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "price"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "side",
+              "operator": "=",
+              "value": "buy"
+            },
+            {
+              "condition": "AND",
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy BuyOrder",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "measurement": "StrategyOrder",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT max(\"price\") FROM \"default_signals_retention\".\"StrategyOrder\" WHERE (\"side\" = 'buy' AND \"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($__interval), \"strategy\" fill(none)",
+          "rawQuery": false,
+          "refId": "BuyOrders1",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "price"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "side",
+              "operator": "=",
+              "value": "buy"
+            },
+            {
+              "condition": "AND",
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy SellOrder",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "baaf210d-cf36-41ba-b20e-6b1ed067afc9"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "measurement": "StrategyOrder",
+          "orderByTime": "ASC",
+          "policy": "default_signals_retention",
+          "query": "SELECT max(\"price\") FROM \"default_signals_retention\".\"StrategyOrder\" WHERE (\"side\" = 'sell' AND \"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($__interval), \"strategy\" fill(none)",
+          "rawQuery": false,
+          "refId": "SellOrders",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "price"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "side",
+              "operator": "=",
+              "value": "sell"
+            },
+            {
+              "condition": "AND",
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy SellOrder",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "measurement": "StrategyOrder",
+          "orderByTime": "ASC",
+          "policy": "default_signals_retention",
+          "query": "SELECT max(\"price\") FROM \"default_signals_retention\".\"StrategyOrder\" WHERE (\"side\" = 'sell' AND \"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($__interval), \"strategy\" fill(none)",
+          "rawQuery": false,
+          "refId": "SellOrders1",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "price"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "side",
+              "operator": "=",
+              "value": "sell"
+            },
+            {
+              "condition": "AND",
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "aecrekfr5f9q8f"
+          },
+          "hide": true,
+          "query": "from(bucket: \"signals_db/default_signals_retention\")// Try this bucket first\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"StrategySignal\")\n  |> filter(fn: (r) => r.strategy == \"HYPERLIQUID_BTCUSD-PERP_binance_mid_GridOL_EmaRelValStableRatio\")\n  |> filter(fn: (r) => r._field == \"bid\" or r._field == \"ask\")\n  |> timeShift(duration: -60s)\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)  \n  |> yield(name: \"last\")\n  // Remove aggregation window temporarily to see if raw data exists\n  |> pivot(rowKey: [\"_time\"], columnKey: [\"_field\"], valueColumn: \"_value\")\n",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "aecrekfr5f9q8f"
+          },
+          "hide": true,
+          "query": "// Get the non-shifted signal data\nnonShiftedSignal = from(bucket: \"signals_db/default_signals_retention\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"StrategySignal\")\n  |> filter(fn: (r) => r.strategy == \"${Strategy}\")\n  |> filter(fn: (r) => r._field == \"signal\")\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)\n  |> drop(columns: [\"_field\"])\n  |> rename(columns: {_value: \"signal\"})\n\n// Time-shifted mid price calculation with variable for timeshift\ntimeShiftedMid = from(bucket: \"signals_db/default_signals_retention\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"StrategySignal\")\n  |> filter(fn: (r) => r.strategy == \"${Strategy}\")\n  |> filter(fn: (r) => r._field == \"bid\" or r._field == \"ask\")\n  |> timeShift(duration: duration(v: \"${walkahead}\"))\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)\n  |> pivot(rowKey: [\"_time\"], columnKey: [\"_field\"], valueColumn: \"_value\")\n  |> map(fn: (r) => ({\n       _time: r._time,\n       strategy: r.strategy,\n       shifted_mid: (r.bid + r.ask) / 2.0\n     }))\n\n// Calculate the cumulative difference\njoin(tables: {sig: nonShiftedSignal, mid: timeShiftedMid}, on: [\"_time\", \"strategy\"])\n  |> map(fn: (r) => ({\n       _time: r._time,\n       strategy: r.strategy,\n       walkahead: r.shifted_mid - r.signal\n     }))\n  |> cumulativeSum(columns: [\"walkahead\"])\n  |> set(key: \"timeshift\", value: \"${walkahead}\")",
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "aecrekfr5f9q8f"
+          },
+          "hide": true,
+          "query": "// Get the non-shifted signal data\nnonShiftedSignal = from(bucket: \"signals_db/default_signals_retention\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"StrategySignal\")\n  |> filter(fn: (r) => r.strategy == \"${Strategy}\")\n  |> filter(fn: (r) => r._field == \"signal\")\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)\n  |> drop(columns: [\"_field\"])\n  |> rename(columns: {_value: \"signal\"})\n\n// Get mid price calculation without timeshift\nmidPrice = from(bucket: \"signals_db/default_signals_retention\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"StrategySignal\")\n  |> filter(fn: (r) => r.strategy == \"${Strategy}\")\n  |> filter(fn: (r) => r._field == \"bid\" or r._field == \"ask\")\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)\n  |> pivot(rowKey: [\"_time\"], columnKey: [\"_field\"], valueColumn: \"_value\")\n  |> map(fn: (r) => ({\n       _time: r._time,\n       strategy: r.strategy,\n       mid: (r.bid + r.ask) / 2.0\n     }))\n\n// Join the signal and mid price data\njoined = join(tables: {sig: nonShiftedSignal, mid: midPrice}, on: [\"_time\", \"strategy\"])\n  |> map(fn: (r) => ({\n       _time: r._time,\n       strategy: r.strategy,\n       signal: r.signal,\n       mid: r.mid,\n       diff: r.signal - r.mid\n     }))\n\n// Use a sliding window approach with a fixed duration\n// Parse walkahead as a duration (assuming it's formatted like \"1h\", \"30m\", etc.)\nlookbackInterval = duration(v: \"${walkahead}\")\n\njoined\n  |> window(every: $__interval, period: lookbackInterval)\n  |> sum(column: \"diff\")\n  |> duplicate(column: \"_stop\", as: \"_time\")\n  |> window(every: inf)\n  |> set(key: \"walkahead\", value: \"${walkahead}\")",
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "aecrekfr5f9q8f"
+          },
+          "hide": true,
+          "query": "// Get the non-shifted signal data\nnonShiftedSignal = from(bucket: \"signals_db/default_signals_retention\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"StrategySignal\")\n  |> filter(fn: (r) => contains(value: r.strategy, set: ${Strategy:json}))\n  |> filter(fn: (r) => r._field == \"signal\")\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)\n  |> drop(columns: [\"_field\"])\n  |> rename(columns: {_value: \"signal\"})\n\n// Get current mid price\ncurrentMid = from(bucket: \"signals_db/default_signals_retention\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"StrategySignal\")\n  |> filter(fn: (r) => contains(value: r.strategy, set: ${Strategy:json}))\n  |> filter(fn: (r) => r._field == \"bid\" or r._field == \"ask\")\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)\n  |> pivot(rowKey: [\"_time\", \"strategy\"], columnKey: [\"_field\"], valueColumn: \"_value\")\n  |> map(fn: (r) => ({\n       _time: r._time,\n       strategy: r.strategy,\n       current_mid: (r.bid + r.ask) / 2.0\n     }))\n\n// Get future mid price (time-shifted by walkahead)\nfutureMid = from(bucket: \"signals_db/default_signals_retention\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"StrategySignal\")\n  |> filter(fn: (r) => contains(value: r.strategy, set: ${Strategy:json}))\n  |> filter(fn: (r) => r._field == \"bid\" or r._field == \"ask\")\n  |> timeShift(duration: duration(v: \"${walkahead}\"))\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)\n  |> pivot(rowKey: [\"_time\", \"strategy\"], columnKey: [\"_field\"], valueColumn: \"_value\")\n  |> map(fn: (r) => ({\n       _time: r._time,\n       strategy: r.strategy,\n       future_mid: (r.bid + r.ask) / 2.0\n     }))\n\n// First join signal and current mid\nsignalAndCurrentMid = join(\n  tables: {sig: nonShiftedSignal, cur_mid: currentMid},\n  on: [\"_time\", \"strategy\"]\n)\n\n// Then join with future mid, calculate the conditional difference\n// and keep only the necessary fields\njoin(\n  tables: {combined: signalAndCurrentMid, fut_mid: futureMid},\n  on: [\"_time\", \"strategy\"]\n)\n  |> map(fn: (r) => {\n      signal_mid_diff = r.signal - r.current_mid\n      \n      return {\n        _time: r._time,\n        strategy: r.strategy,\n        // If signal - mid is negative, use future_mid - current_mid\n        // If signal - mid is positive, use current_mid - future_mid\n        // If signal - mid is exactly 0, use 0\n        varad_walkahead: if signal_mid_diff == 0.0\n                        then 0.0\n                        else if signal_mid_diff > 0.0 \n                              then r.future_mid - r.current_mid \n                              else r.current_mid - r.future_mid\n      }\n  })\n  |> group(columns: [\"strategy\"])\n  |> cumulativeSum(columns: [\"varad_walkahead\"])\n  |> set(key: \"walkahead\", value: \"${walkahead}\")",
+          "refId": "E"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "aecrekfr5f9q8f"
+          },
+          "hide": true,
+          "query": "// Convert walkahead to a duration\nwalkDuration = duration(v: \"${walkahead}\")\n\n// Get current bid, ask data for time t\ncurrentPrices = from(bucket: \"signals_db/default_signals_retention\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"StrategySignal\")\n  |> filter(fn: (r) => r.strategy == \"${Strategy}\")\n  |> filter(fn: (r) => r._field == \"bid\" or r._field == \"ask\")\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)\n  |> pivot(rowKey: [\"_time\"], columnKey: [\"_field\"], valueColumn: \"_value\")\n  |> map(fn: (r) => ({\n       _time: r._time,\n       strategy: r.strategy,\n       bid_t: r.bid,\n       ask_t: r.ask,\n       mid_t: (r.bid + r.ask) / 2.0\n     }))\n\n// Get historical data (walkahead time earlier)\nhistoricalData = from(bucket: \"signals_db/default_signals_retention\")\n  |> range(\n       start: experimental.subDuration(\n         d: walkDuration,\n         from: v.timeRangeStart\n       ),\n       stop: experimental.subDuration(\n         d: walkDuration,\n         from: v.timeRangeStop\n       )\n     )\n  |> filter(fn: (r) => r._measurement == \"StrategySignal\")\n  |> filter(fn: (r) => r.strategy == \"${Strategy}\")\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)\n  |> pivot(rowKey: [\"_time\", \"strategy\"], columnKey: [\"_field\"], valueColumn: \"_value\")\n  |> map(fn: (r) => {\n       // If signal columns don't exist, create them from the signal\n       bid_signal = if exists r.bidSignal then r.bidSignal else r.signal\n       ask_signal = if exists r.askSignal then r.askSignal else r.signal\n       \n       return {\n         _time: experimental.addDuration(\n           d: walkDuration,\n           to: r._time\n         ),  // Shift time forward to align with current time\n         strategy: r.strategy,\n         bid_signal: bid_signal,\n         ask_signal: ask_signal,\n         bid_hist: r.bid,\n         ask_hist: r.ask\n       }\n     })\n\n// Join historical signals with current prices\njoin(\n  tables: {hist: historicalData, curr: currentPrices},\n  on: [\"_time\", \"strategy\"]\n)\n  |> map(fn: (r) => {\n       // Apply the logic as described\n       value = if r.bid_signal > r.ask_hist then\n                 r.bid_signal - r.mid_t\n               else if r.ask_signal < r.bid_hist then\n                 r.mid_t - r.ask_signal\n               else\n                 0.0\n                 \n       return {\n         _time: r._time,\n         strategy: r.strategy,\n         value: value\n       }\n     })\n  |> window(every: $__interval)\n  |> sum(column: \"value\")\n  |> duplicate(column: \"_stop\", as: \"_time\")\n  |> window(every: inf)\n  |> set(key: \"walkahead\", value: \"${walkahead}\")",
+          "refId": "F"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "aecrekfr5f9q8f"
+          },
+          "hide": true,
+          "query": "// Get the non-shifted signal data\nnonShiftedSignal = from(bucket: \"signals_db/default_signals_retention\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"StrategySignal\")\n  |> filter(fn: (r) => r.strategy == \"${Strategy}\")\n  |> filter(fn: (r) => r._field == \"signal\")\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)\n  |> drop(columns: [\"_field\"])\n  |> rename(columns: {_value: \"signal\"})\n\n// Get current mid price\ncurrentMid = from(bucket: \"signals_db/default_signals_retention\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"StrategySignal\")\n  |> filter(fn: (r) => r.strategy == \"${Strategy}\")\n  |> filter(fn: (r) => r._field == \"bid\" or r._field == \"ask\")\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)\n  |> pivot(rowKey: [\"_time\"], columnKey: [\"_field\"], valueColumn: \"_value\")\n  |> map(fn: (r) => ({\n       _time: r._time,\n       strategy: r.strategy,\n       current_mid: (r.bid + r.ask) / 2.0\n     }))\n\n// Get future mid price (time-shifted by walkahead)\nfutureMid = from(bucket: \"signals_db/default_signals_retention\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"StrategySignal\")\n  |> filter(fn: (r) => r.strategy == \"${Strategy}\")\n  |> filter(fn: (r) => r._field == \"bid\" or r._field == \"ask\")\n  |> timeShift(duration: duration(v: \"${walkahead}\"))\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)\n  |> pivot(rowKey: [\"_time\"], columnKey: [\"_field\"], valueColumn: \"_value\")\n  |> map(fn: (r) => ({\n       _time: r._time,\n       strategy: r.strategy,\n       future_mid: (r.bid + r.ask) / 2.0\n     }))\n\n// First join signal and current mid\nsignalAndCurrentMid = join(\n  tables: {sig: nonShiftedSignal, cur_mid: currentMid},\n  on: [\"_time\", \"strategy\"]\n)\n\n// Then join with future mid and calculate the conditional difference\njoin(\n  tables: {combined: signalAndCurrentMid, fut_mid: futureMid},\n  on: [\"_time\", \"strategy\"]\n)\n  |> map(fn: (r) => ({\n       _time: r._time,\n       strategy: r.strategy,\n       signal: r.signal,\n       current_mid: r.current_mid,\n       future_mid: r.future_mid,\n       signal_mid_diff: r.signal - r.current_mid,\n       // If signal - mid is negative, use future_mid - current_mid\n       // Otherwise, use current_mid - future_mid\n       conditional_diff: if r.signal - r.current_mid < 0.0 \n                         then r.future_mid - r.current_mid \n                         else r.current_mid - r.future_mid\n     }))\n  |> cumulativeSum(columns: [\"conditional_diff\"])\n  |> set(key: \"walkahead\", value: \"${walkahead}\")",
+          "refId": "testing_walkahead"
+        }
+      ],
+      "title": "Valuation, BBO, and Fills",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisWidth": 60,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "stepAfter",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/PnL/"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/varad_walkahead/"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "left"
+              },
+              {
+                "id": "unit",
+                "value": "WA"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 12
+      },
+      "id": 2,
+      "interval": "",
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "min"
+          ],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": true,
+          "width": 400
+        },
+        "timezone": [
+          "utc"
+        ],
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "alias": "$tag_strategy PnL",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "baaf210d-cf36-41ba-b20e-6b1ed067afc9"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "default_signals_retention",
+          "query": "SELECT mean(\"pnl\") FROM \"retain_30_days\".\"StrategySignal\" WHERE (\"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($interval), \"strategy\" fill(none)",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "pnl"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy PnL",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "default_signals_retention",
+          "query": "SELECT mean(\"pnl\") FROM \"retain_30_days\".\"StrategySignal\" WHERE (\"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($interval), \"strategy\" fill(none)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "pnl"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "aecrekfr5f9q8f"
+          },
+          "hide": true,
+          "query": "// Get all the data we need in a single query\nallData = from(bucket: \"signals_db/default_signals_retention\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"StrategySignal\")\n  |> filter(fn: (r) => contains(value: r.strategy, set: ${Strategy:json}))\n  |> filter(fn: (r) => r._field == \"signal\" or r._field == \"bid\" or r._field == \"ask\")\n  // Aggregate early to reduce data points being processed\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)\n\n// Separate signals from bid/ask\nsignalData = allData\n  |> filter(fn: (r) => r._field == \"signal\")\n  |> drop(columns: [\"_field\"])\n  |> rename(columns: {_value: \"signal\"})\n\n// Process current mid price\nmidData = allData\n  |> filter(fn: (r) => r._field == \"bid\" or r._field == \"ask\")\n  |> pivot(rowKey: [\"_time\", \"strategy\"], columnKey: [\"_field\"], valueColumn: \"_value\")\n  |> map(fn: (r) => ({\n       _time: r._time,\n       strategy: r.strategy,\n       current_mid: (r.bid + r.ask) / 2.0\n     }))\n  |> drop(columns: [\"bid\", \"ask\"])\n\n// Get future mid price using duplicate of midData and timeShift\nfutureMidData = midData\n  |> timeShift(duration: duration(v: \"-${walkahead}\"))\n  |> rename(columns: {current_mid: \"future_mid\"})\n\n// Join signals and current mid\nsignalAndMid = join(\n  tables: {sig: signalData, mid: midData},\n  on: [\"_time\", \"strategy\"]\n)\n\n// Join with future mid and calculate\nresult = join(\n  tables: {sm: signalAndMid, fm: futureMidData},\n  on: [\"_time\", \"strategy\"]\n)\n  |> map(fn: (r) => {\n      signal_mid_diff = r.signal - r.current_mid\n      \n      return {\n        _time: r._time,\n        strategy: r.strategy,\n        varad_walkahead: if signal_mid_diff == 0.0\n                        then 0.0\n                        else if signal_mid_diff > 0.0 \n                              then r.future_mid - r.current_mid \n                              else r.current_mid - r.future_mid\n      }\n  })\n  |> group(columns: [\"strategy\"])\n  |> cumulativeSum(columns: [\"varad_walkahead\"])\n  |> set(key: \"walkahead\", value: \"${walkahead}\")\n\nresult",
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "aecrekfr5f9q8f"
+          },
+          "hide": true,
+          "query": "// Get all the data we need in a single query\nallData = from(bucket: \"signals_db/default_signals_retention\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"StrategySignal\")\n  |> filter(fn: (r) => contains(value: r.strategy, set: ${Strategy:json}))\n  |> filter(fn: (r) => r._field == \"signal\" or r._field == \"bid\" or r._field == \"ask\")\n  // Aggregate early to reduce data points being processed\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)\n\n// Separate signals from bid/ask\nsignalData = allData\n  |> filter(fn: (r) => r._field == \"signal\")\n  |> drop(columns: [\"_field\"])\n  |> rename(columns: {_value: \"signal\"})\n\n// Process current mid price\nmidData = allData\n  |> filter(fn: (r) => r._field == \"bid\" or r._field == \"ask\")\n  |> pivot(rowKey: [\"_time\", \"strategy\"], columnKey: [\"_field\"], valueColumn: \"_value\")\n  |> map(fn: (r) => ({\n       _time: r._time,\n       strategy: r.strategy,\n       current_mid: (r.bid + r.ask) / 2.0,\n       bid: r.bid,\n       ask: r.ask\n     }))\n\n// Get future mid price using duplicate of midData and timeShift\nfutureMidData = midData\n  |> timeShift(duration: duration(v: \"-${walkahead}\"))\n  |> rename(columns: {\n      current_mid: \"future_mid\",\n      bid: \"future_bid\", \n      ask: \"future_ask\"\n    })\n\n// Join signals and current mid - keep all fields\nsignalAndMid = join(\n  tables: {sig: signalData, mid: midData},\n  on: [\"_time\", \"strategy\"]\n)\n\n// Join with future mid and calculate - keep all component fields\ncomponentResult = join(\n  tables: {sm: signalAndMid, fm: futureMidData},\n  on: [\"_time\", \"strategy\"]\n)\n  |> map(fn: (r) => {\n      signal_mid_diff = r.signal - r.current_mid\n      \n      // Calculate the incremental change\n      incremental_walkahead = if signal_mid_diff == 0.0\n                             then 0.0\n                             else if signal_mid_diff > 0.0 \n                                   then r.future_mid - r.current_mid \n                                   else r.current_mid - r.future_mid\n      \n      return {\n        _time: r._time,\n        strategy: r.strategy,\n        // Component fields\n        signal: r.signal,\n        current_mid: r.current_mid,\n        future_mid: r.future_mid,\n        signal_mid_diff: signal_mid_diff,\n        // The calculated field (pre-cumsum)\n        incremental_walkahead: incremental_walkahead,\n        // This will become the cumulative sum\n        varad_walkahead: incremental_walkahead\n      }\n  })\n  |> group(columns: [\"strategy\"])\n  |> sort(columns: [\"_time\"])\n  \n// Apply cumulative sum - creates a copy of the table with cumulative sum\ncumulativeResult = componentResult\n  |> cumulativeSum(columns: [\"varad_walkahead\"])\n  |> set(key: \"walkahead\", value: \"${walkahead}\")\n\n// Final result is the cumulative result\ncumulativeResult",
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "aecrekfr5f9q8f"
+          },
+          "hide": false,
+          "query": "// Optimized Walk-Forward Analysis Query\n\n// --- Step 1: Prepare a unified stream of CURRENT data (signal and mid-price) ---\n// This avoids the first expensive join by pivoting all necessary fields into one table.\ncurrentData = from(bucket: \"signals_db/default_signals_retention\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"StrategySignal\")\n  |> filter(fn: (r) => contains(value: r.strategy, set: ${Strategy:json}))\n  |> filter(fn: (r) => r._field == \"signal\" or r._field == \"bid\" or r._field == \"ask\")\n  // Aggregate early to reduce the number of rows before the expensive pivot\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)\n  // CORE OPTIMIZATION: Pivot all fields into columns. This makes signal, bid, and ask\n  // available in the same row, eliminating the need for a self-join.\n  |> pivot(rowKey: [\"_time\", \"strategy\"], columnKey: [\"_field\"], valueColumn: \"_value\")\n  // Now, calculate the current mid-price. We drop rows that might be missing a field.\n  |> filter(fn: (r) => exists r.bid and exists r.ask and exists r.signal)\n  |> map(fn: (r) => ({\n      _time: r._time,\n      strategy: r.strategy,\n      signal: r.signal,\n      current_mid: (r.bid + r.ask) / 2.0\n    }))\n\n// --- Step 2: Prepare a lightweight stream of FUTURE mid-prices ---\n// This stream only processes bid and ask, making it much leaner.\nfutureMidData = from(bucket: \"signals_db/default_signals_retention\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"StrategySignal\")\n  |> filter(fn: (r) => contains(value: r.strategy, set: ${Strategy:json}))\n  // Only fetch bid and ask, we don't need 'signal' for the future price.\n  |> filter(fn: (r) => r._field == \"bid\" or r._field == \"ask\")\n  |> aggregateWindow(every: $__interval, fn: last, createEmpty: false)\n  |> pivot(rowKey: [\"_time\", \"strategy\"], columnKey: [\"_field\"], valueColumn: \"_value\")\n  |> filter(fn: (r) => exists r.bid and exists r.ask)\n  |> map(fn: (r) => ({\n      _time: r._time,\n      strategy: r.strategy,\n      // We are calculating the mid-price that will become the \"future_mid\"\n      _value: (r.bid + r.ask) / 2.0\n    }))\n  // This is the magic: shift the timestamps of this data BACKWARDS by the walkahead duration.\n  // This makes the future data's timestamp align with the current data's timestamp for the join.\n  |> timeShift(duration: duration(v: \"-${walkahead}\"))\n  // Rename the value to 'future_mid' for clarity in the join.\n  |> rename(columns: {_value: \"future_mid\"})\n\n// --- Step 3: Join the two streams and calculate the final result ---\n// We now perform only ONE join operation.\nresult = join(\n  tables: {current: currentData, future: futureMidData},\n  on: [\"_time\", \"strategy\"]\n)\n  |> map(fn: (r) => {\n      // The logic for calculating the difference based on signal direction\n      signal_mid_diff = r.signal - r.current_mid\n      \n      return {\n        _time: r._time,\n        strategy: r.strategy,\n        varad_walkahead: if r.future_mid == 0.0 or r.current_mid == 0.0 // Avoid division by zero or invalid data\n                        then 0.0\n                        else if signal_mid_diff > 0.0 \n                              then r.future_mid - r.current_mid // Profit on long\n                              else r.current_mid - r.future_mid // Profit on short\n      }\n  })\n  // The rest of the query remains the same as it's efficient.\n  |> group(columns: [\"strategy\"])\n  |> cumulativeSum(columns: [\"varad_walkahead\"])\n  |> set(key: \"walkahead\", value: \"${walkahead}\")\n\nresult",
+          "refId": "LATEST_FAST"
+        }
+      ],
+      "title": "PnL",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisWidth": 60,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "stepAfter",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/A/"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 20
+      },
+      "id": 16,
+      "interval": "",
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "min"
+          ],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": true,
+          "width": 400
+        },
+        "timezone": [
+          "utc"
+        ],
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "name": "Expression",
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "$B * $C",
+          "hide": false,
+          "refId": "A",
+          "type": "math"
+        },
+        {
+          "datasource": {
+            "name": "Expression",
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "$B1 * $C1",
+          "hide": false,
+          "refId": "A1",
+          "type": "math"
+        },
+        {
+          "alias": "$tag_strategy Position",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "baaf210d-cf36-41ba-b20e-6b1ed067afc9"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "default_signals_retention",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "positionAsFloat"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy Position",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "default_signals_retention",
+          "refId": "B1",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "positionAsFloat"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy Price",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "baaf210d-cf36-41ba-b20e-6b1ed067afc9"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "default_signals_retention",
+          "query": "SELECT last(\"bid\") FROM \"default\".\"StrategySignal\" WHERE (\"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($interval), \"strategy\" fill(none)",
+          "rawQuery": false,
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bid"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy Price",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy::tag"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "default_signals_retention",
+          "query": "SELECT last(\"bid\") FROM \"default\".\"StrategySignal\" WHERE (\"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($interval), \"strategy\" fill(none)",
+          "rawQuery": false,
+          "refId": "C1",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bid"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        }
+      ],
+      "title": "Position",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisWidth": 60,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "stepAfter",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/.*/"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/fill_B_A.*/"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "points"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "light-blue",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 8
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/fill_S_A.*/"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "points"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "light-red",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 8
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/fill_B_R.*/"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "points"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-blue",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 8
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/fill_S_R.*/"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "points"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-red",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 8
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 27
+      },
+      "id": 9,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": true,
+          "width": 400
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "alias": "$tag_strategy bidSignal",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "bidSignal",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "BidSignal"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy askSignal",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "askSignal",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "AskSignal"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy signal",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "signal",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "signal"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy bid",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "bid",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bid"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            },
+            {
+              "condition": "AND",
+              "key": "bid::field",
+              "operator": ">",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy ask",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "ask",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "ask"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            },
+            {
+              "condition": "AND",
+              "key": "ask::field",
+              "operator": ">",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "name": "Expression",
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "0.5 * ($ask + $bid)",
+          "hide": true,
+          "refId": "mid",
+          "type": "math"
+        },
+        {
+          "datasource": {
+            "name": "Expression",
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "10000 * ($signal - $mid) / $mid",
+          "hide": false,
+          "refId": "signalRebaseBps",
+          "type": "math"
+        },
+        {
+          "datasource": {
+            "name": "Expression",
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "10000 * ($bidSignal - $mid) / $mid",
+          "hide": false,
+          "refId": "bidSignalRebaseBps",
+          "type": "math"
+        },
+        {
+          "datasource": {
+            "name": "Expression",
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "10000 * ($askSignal - $mid) / $mid",
+          "hide": false,
+          "refId": "askSignalRebaseBps",
+          "type": "math"
+        },
+        {
+          "alias": "$fillBuyAdd $tag_strategy ",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "measurement": "StrategyFill",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "fillBuyAdd",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "fillPrice"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            },
+            {
+              "condition": "AND",
+              "key": "execside::tag",
+              "operator": "=",
+              "value": "buy"
+            },
+            {
+              "condition": "AND",
+              "key": "aggressorIndicator::tag",
+              "operator": "=",
+              "value": "A"
+            }
+          ]
+        },
+        {
+          "alias": "$fillSellAdd $tag_strategy ",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "measurement": "StrategyFill",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "fillSellAdd",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "fillPrice"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            },
+            {
+              "condition": "AND",
+              "key": "execside::tag",
+              "operator": "=",
+              "value": "sell"
+            },
+            {
+              "condition": "AND",
+              "key": "aggressorIndicator::tag",
+              "operator": "=",
+              "value": "A"
+            }
+          ]
+        },
+        {
+          "alias": "$fillBuyRemove $tag_strategy ",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "measurement": "StrategyFill",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "fillBuyRemove",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "fillPrice"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            },
+            {
+              "condition": "AND",
+              "key": "execside::tag",
+              "operator": "=",
+              "value": "buy"
+            },
+            {
+              "condition": "AND",
+              "key": "aggressorIndicator::tag",
+              "operator": "=",
+              "value": "R"
+            }
+          ]
+        },
+        {
+          "alias": "$fillSellRemove $tag_strategy ",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "measurement": "StrategyFill",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "fillSellRemove",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "fillPrice"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            },
+            {
+              "condition": "AND",
+              "key": "execside::tag",
+              "operator": "=",
+              "value": "sell"
+            },
+            {
+              "condition": "AND",
+              "key": "aggressorIndicator::tag",
+              "operator": "=",
+              "value": "R"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "name": "Expression",
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "10000 * ($fillBuyAdd - $mid) / $mid",
+          "hide": false,
+          "refId": "fill_B_A_RebaseBps",
+          "type": "math"
+        },
+        {
+          "datasource": {
+            "name": "Expression",
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "10000 * ($fillSellAdd - $mid) / $mid",
+          "hide": false,
+          "refId": "fill_S_A_RebaseBps",
+          "type": "math"
+        },
+        {
+          "datasource": {
+            "name": "Expression",
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "10000 * ($fillBuyRemove - $mid) / $mid",
+          "hide": false,
+          "refId": "fill_B_R_RebaseBps",
+          "type": "math"
+        },
+        {
+          "datasource": {
+            "name": "Expression",
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "10000 * ($fillSellRemove - $mid) / $mid",
+          "hide": false,
+          "refId": "fill_S_R_RebaseBps",
+          "type": "math"
+        }
+      ],
+      "title": "Valuation Zero-Based and in Bps",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisWidth": 60,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "stepAfter",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/.*/"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 35
+      },
+      "id": 21,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": true,
+          "width": 400
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "alias": "$tag_strategy Vol Edge",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "baaf210d-cf36-41ba-b20e-6b1ed067afc9"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "default_signals_retention",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "VolEdge"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy Vol Edge",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "VolEdge"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        }
+      ],
+      "title": "Strategy Vol Edge Signal",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisWidth": 60,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "stepAfter",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/.*/"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 39
+      },
+      "id": 20,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": true,
+          "width": 400
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "alias": "$tag_strategy Bid Edge",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "baaf210d-cf36-41ba-b20e-6b1ed067afc9"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "default_signals_retention",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "BidEdgeSignal"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy Bid Edge",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "default_signals_retention",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "BidEdgeSignal"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        }
+      ],
+      "title": "Strategy BidEdge Signal",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisWidth": 60,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "stepAfter",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/.*/"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 43
+      },
+      "id": 19,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": true,
+          "width": 400
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "alias": "$tag_strategy Ask Edge",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "baaf210d-cf36-41ba-b20e-6b1ed067afc9"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "default_signals_retention",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "AskEdgeSignal"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy Ask Edge",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "default_signals_retention",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "AskEdgeSignal"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        }
+      ],
+      "title": "Strategy AskEdge Signal",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisWidth": 60,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "stepAfter",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/.*/"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 47
+      },
+      "id": 18,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": true,
+          "width": 400
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "alias": "$tag_strategy Mft Signal",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "default_signals_retention",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "MftSignal"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        }
+      ],
+      "title": "Strategy Mft Signal",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisWidth": 60,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "stepAfter",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/.*/"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 51
+      },
+      "id": 17,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": true,
+          "width": 400
+        },
+        "timezone": [
+          "utc"
+        ],
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "alias": "$tag_strategy DebugSignal18",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "baaf210d-cf36-41ba-b20e-6b1ed067afc9"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "default_signals_retention",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "MarketSafetySignal"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy DebugSignal18",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "default_signals_retention",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "MarketSafetySignal"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        }
+      ],
+      "title": "Market Safety Signal",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "fe2hufjavhfk0b"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 55
+      },
+      "id": 22,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fe2hufjavhfk0b"
+          },
+          "query": "SELECT last(\"market_participation\") AS \"mkt share\" FROM \"market_share_db\" WHERE ( \"strategy\"::tag =~ /^$Strategy$/) AND $timeFilter GROUP BY time($__interval), \"strategy\"::tag fill(null)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      ],
+      "title": "market share",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 60
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": false,
+          "width": 400
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "alias": "$tag_strategy DebugSignal0",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "baaf210d-cf36-41ba-b20e-6b1ed067afc9"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "default_signals_retention",
+          "query": "SELECT mean(\"DebugSignal0\") FROM \"default_signals_retention\".\"StrategySignal\" WHERE (\"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($interval), \"strategy\" fill(none)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "DebugSignal0"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy DebugSignal0",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "default_signals_retention",
+          "query": "SELECT mean(\"DebugSignal0\") FROM \"default_signals_retention\".\"StrategySignal\" WHERE (\"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($interval), \"strategy\" fill(none)",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "DebugSignal0"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        }
+      ],
+      "title": "Strategy Debug Signal0",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 65
+      },
+      "id": 10,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "alias": "$tag_strategy DebugSignal1",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "baaf210d-cf36-41ba-b20e-6b1ed067afc9"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "StrategySignal",
+          "policy": "retain_30_days",
+          "query": "SELECT mean(\"DebugSignal1\") FROM \"default_signals_retention\".\"StrategySignal\" WHERE (\"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($interval), \"strategy\" fill(none)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "DebugSignal1"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy DebugSignal1",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "StrategySignal",
+          "policy": "retain_30_days",
+          "query": "SELECT mean(\"DebugSignal1\") FROM \"default_signals_retention\".\"StrategySignal\" WHERE (\"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($interval), \"strategy\" fill(none)",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "DebugSignal1"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        }
+      ],
+      "title": "Strategy Debug Signal1",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 70
+      },
+      "id": 4,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "alias": "$tag_strategy DebugSignal2",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "baaf210d-cf36-41ba-b20e-6b1ed067afc9"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "StrategySignal",
+          "policy": "retain_30_days",
+          "query": "SELECT mean(\"DebugSignal2\") FROM \"default_signals_retention\".\"StrategySignal\" WHERE (\"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($interval), \"strategy\" fill(none)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "DebugSignal2"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy DebugSignal2",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "StrategySignal",
+          "policy": "retain_30_days",
+          "query": "SELECT mean(\"DebugSignal2\") FROM \"default_signals_retention\".\"StrategySignal\" WHERE (\"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($interval), \"strategy\" fill(none)",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "DebugSignal2"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        }
+      ],
+      "title": "Strategy Debug Signal2",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 75
+      },
+      "id": 5,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "alias": "$tag_strategy DebugSignal3",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "baaf210d-cf36-41ba-b20e-6b1ed067afc9"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "StrategySignal",
+          "policy": "retain_30_days",
+          "query": "SELECT mean(\"DebugSignal3\") FROM \"default_signals_retention\".\"StrategySignal\" WHERE (\"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($interval), \"strategy\" fill(none)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "DebugSignal3"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy DebugSignal3",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "StrategySignal",
+          "policy": "retain_30_days",
+          "query": "SELECT mean(\"DebugSignal3\") FROM \"default_signals_retention\".\"StrategySignal\" WHERE (\"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($interval), \"strategy\" fill(none)",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "DebugSignal3"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        }
+      ],
+      "title": "Strategy Debug Signal3",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 80
+      },
+      "id": 6,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "alias": "$tag_strategy DebugSignal4",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "baaf210d-cf36-41ba-b20e-6b1ed067afc9"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "StrategySignal",
+          "policy": "retain_30_days",
+          "query": "SELECT mean(\"DebugSignal4\") FROM \"default_signals_retention\".\"StrategySignal\" WHERE (\"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($interval), \"strategy\" fill(none)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "DebugSignal4"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy DebugSignal4",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "StrategySignal",
+          "policy": "retain_30_days",
+          "query": "SELECT mean(\"DebugSignal4\") FROM \"default_signals_retention\".\"StrategySignal\" WHERE (\"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($interval), \"strategy\" fill(none)",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "DebugSignal4"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        }
+      ],
+      "title": "Strategy Debug Signal4",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 85
+      },
+      "id": 7,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "alias": "$tag_strategy DebugSignal5",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "baaf210d-cf36-41ba-b20e-6b1ed067afc9"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "StrategySignal",
+          "policy": "retain_30_days",
+          "query": "SELECT mean(\"DebugSignal5\") FROM \"default_signals_retention\".\"StrategySignal\" WHERE (\"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($interval), \"strategy\" fill(none)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "DebugSignal5"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy DebugSignal5",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "StrategySignal",
+          "policy": "retain_30_days",
+          "query": "SELECT mean(\"DebugSignal5\") FROM \"default_signals_retention\".\"StrategySignal\" WHERE (\"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($interval), \"strategy\" fill(none)",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "DebugSignal5"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        }
+      ],
+      "title": "Strategy Debug Signal5",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 91
+      },
+      "id": 13,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "alias": "$tag_strategy DebugSignal5",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "baaf210d-cf36-41ba-b20e-6b1ed067afc9"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "retain_30_days",
+          "query": "SELECT mean(\"DebugSignal6\") FROM \"default_signals_retention\".\"StrategySignal\" WHERE (\"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($interval), \"strategy\" fill(none)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "DebugSignal6"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy DebugSignal5",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "retain_30_days",
+          "query": "SELECT mean(\"DebugSignal6\") FROM \"default_signals_retention\".\"StrategySignal\" WHERE (\"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($interval), \"strategy\" fill(none)",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "DebugSignal6"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        }
+      ],
+      "title": "Strategy Debug Signal6",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 97
+      },
+      "id": 15,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "alias": "$tag_strategy DebugSignal5",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "baaf210d-cf36-41ba-b20e-6b1ed067afc9"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "retain_30_days",
+          "query": "SELECT mean(\"DebugSignal7\") FROM \"default_signals_retention\".\"StrategySignal\" WHERE (\"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($interval), \"strategy\" fill(none)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "DebugSignal7"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy DebugSignal5",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "retain_30_days",
+          "query": "SELECT mean(\"DebugSignal7\") FROM \"default_signals_retention\".\"StrategySignal\" WHERE (\"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($interval), \"strategy\" fill(none)",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "DebugSignal7"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        }
+      ],
+      "title": "Strategy Debug Signal7",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 103
+      },
+      "id": 14,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "alias": "$tag_strategy DebugSignal5",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "baaf210d-cf36-41ba-b20e-6b1ed067afc9"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "retain_30_days",
+          "query": "SELECT mean(\"DebugSignal8\") FROM \"default_signals_retention\".\"StrategySignal\" WHERE (\"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($interval), \"strategy\" fill(none)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "DebugSignal8"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy DebugSignal5",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "retain_30_days",
+          "query": "SELECT mean(\"DebugSignal8\") FROM \"default_signals_retention\".\"StrategySignal\" WHERE (\"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($interval), \"strategy\" fill(none)",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "DebugSignal8"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        }
+      ],
+      "title": "Strategy Debug Signal8",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 109
+      },
+      "id": 8,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "alias": "$tag_strategy DebugSignal5",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "baaf210d-cf36-41ba-b20e-6b1ed067afc9"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "retain_30_days",
+          "query": "SELECT mean(\"DebugSignal9\") FROM \"default_signals_retention\".\"StrategySignal\" WHERE (\"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($interval), \"strategy\" fill(none)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "DebugSignal9"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        },
+        {
+          "alias": "$tag_strategy DebugSignal5",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "bdx4oxj0828lce"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "strategy"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "StrategySignal",
+          "orderByTime": "ASC",
+          "policy": "retain_30_days",
+          "query": "SELECT mean(\"DebugSignal9\") FROM \"default_signals_retention\".\"StrategySignal\" WHERE (\"strategy\" =~ /^$Strategy$/) AND $timeFilter GROUP BY time($interval), \"strategy\" fill(none)",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "DebugSignal9"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "strategy",
+              "operator": "=~",
+              "value": "/^$Strategy$/"
+            }
+          ]
+        }
+      ],
+      "title": "Strategy Debug Signal9",
+      "type": "timeseries"
+    }
+  ],
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "BDM_BTCUSDT-PERP_MQ_FR_fit"
+          ],
+          "value": [
+            "BDM_BTCUSDT-PERP_MQ_FR_fit"
+          ]
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "bdx4oxj0828lce"
+        },
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "multi": true,
+        "name": "Strategy",
+        "options": [],
+        "query": "SHOW TAG VALUES WITH KEY = strategy",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "300s",
+          "value": "300s"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Walkahead (s)",
+        "multi": false,
+        "name": "walkahead",
+        "options": [
+          {
+            "selected": false,
+            "text": "1s",
+            "value": "1s"
+          },
+          {
+            "selected": false,
+            "text": "10s",
+            "value": "10s"
+          },
+          {
+            "selected": false,
+            "text": "60s",
+            "value": "60s"
+          },
+          {
+            "selected": false,
+            "text": "120s",
+            "value": "120s"
+          },
+          {
+            "selected": true,
+            "text": "300s",
+            "value": "300s"
+          },
+          {
+            "selected": false,
+            "text": "600s",
+            "value": "600s"
+          },
+          {
+            "selected": false,
+            "text": "1800s",
+            "value": "1800s"
+          },
+          {
+            "selected": false,
+            "text": "3600s",
+            "value": "3600s"
+          }
+        ],
+        "query": "100ms,200ms,500ms,1s,10s,60s,120s,300s,600s,1800s,3600s",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "utc",
+  "title": "Strategy Signals With Walkaheads",
+  "uid": "cicd-aefkxto9dkg74b",
+  "weekStart": ""
+}

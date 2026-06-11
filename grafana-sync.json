@@ -1,4 +1,17 @@
 {
   "grafana_url": "https://selini-grafana.selini.tech",
-  "folders": []
+  "folders": [
+    {
+      "uid": "cicd-afbdf0pjzhkaof",
+      "title": "CICD - Peter"
+    },
+    {
+      "uid": "cicd-ddl2hb305rsw0c",
+      "title": "CICD - System_Engineering"
+    },
+    {
+      "uid": "cicd-0ZLlyMH7z",
+      "title": "CICD - Crypto"
+    }
+  ]
 }
