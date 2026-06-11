@@ -4548,7 +4548,8 @@
   "refresh": "5s",
   "schemaVersion": 39,
   "tags": [
-    "For new Symbols added after 11th September"
+    "For new Symbols added after 11th September",
+    "cicd-managed"
   ],
   "templating": {
     "list": [

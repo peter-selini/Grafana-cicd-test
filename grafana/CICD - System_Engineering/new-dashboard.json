@@ -246,7 +246,9 @@
     }
   ],
   "schemaVersion": 39,
-  "tags": [],
+  "tags": [
+    "cicd-managed"
+  ],
   "templating": {
     "list": []
   },

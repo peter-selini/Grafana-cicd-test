@@ -3852,7 +3852,8 @@
   ],
   "schemaVersion": 39,
   "tags": [
-    "New InfluxDb for Field Handlers"
+    "New InfluxDb for Field Handlers",
+    "cicd-managed"
   ],
   "templating": {
     "list": [

@@ -192,7 +192,8 @@
   "refresh": "",
   "schemaVersion": 39,
   "tags": [
-    "Network Interface Utilization"
+    "Network Interface Utilization",
+    "cicd-managed"
   ],
   "templating": {
     "list": []

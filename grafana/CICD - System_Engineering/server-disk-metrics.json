@@ -4658,7 +4658,8 @@
   "schemaVersion": 39,
   "tags": [
     "linux",
-    "disk_monitoring"
+    "disk_monitoring",
+    "cicd-managed"
   ],
   "templating": {
     "list": [

@@ -1247,7 +1247,8 @@
   "refresh": "",
   "schemaVersion": 39,
   "tags": [
-    "New Dashboard for Repeaters"
+    "New Dashboard for Repeaters",
+    "cicd-managed"
   ],
   "templating": {
     "list": [

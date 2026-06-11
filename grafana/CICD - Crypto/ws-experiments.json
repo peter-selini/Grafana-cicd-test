@@ -302,7 +302,9 @@
   "refresh": "",
   "schemaVersion": 38,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "cicd-managed"
+  ],
   "templating": {
     "list": [
       {

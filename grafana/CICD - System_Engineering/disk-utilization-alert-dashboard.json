@@ -912,7 +912,8 @@
   ],
   "schemaVersion": 39,
   "tags": [
-    "Disk_Monitoring_Alert"
+    "Disk_Monitoring_Alert",
+    "cicd-managed"
   ],
   "templating": {
     "list": [

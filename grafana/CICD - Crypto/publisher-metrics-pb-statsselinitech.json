@@ -3629,7 +3629,8 @@
   "refresh": "",
   "schemaVersion": 39,
   "tags": [
-    "New Dashboard for Publishers"
+    "New Dashboard for Publishers",
+    "cicd-managed"
   ],
   "templating": {
     "list": [
